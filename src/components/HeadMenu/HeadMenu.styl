@@ -1,0 +1,206 @@
+.head-menu
+	position fixed
+	z-index 90
+	top 0
+	height 1.306667rem
+	width 100%
+	.header
+		position relative
+		width 100%
+		height 1.306667rem
+		background #000
+		z-index 100
+		.logo
+			position absolute
+			width 1.706667rem
+			height .773333rem
+			left .666667rem
+			top .253333rem
+			background url('./导航logo@2x.png') 0 0 / 1.706667rem .773333rem no-repeat
+		.page-title
+			text-align center
+			color #fff
+			font-size .4796rem
+			line-height 1.306667rem
+		.menu-btn
+			position absolute
+			width .666667rem
+			height .666667rem
+			right .666667rem
+			top .32rem
+			background url('./菜单.png') center center / .533333rem  .373333rem no-repeat
+		.account, .login-btn
+			position absolute
+			width 2.613333rem
+			height .4rem
+			line-height .4rem
+			right 0.666667rem
+			top .453333rem
+			text-align right
+			font-size .32rem
+			color #FFF
+
+	.menu-wrapper
+		position fixed
+		width 100%
+		top 1.306667rem
+		left 0
+		z-index 100
+		.main-menu
+			width 100%
+			height 1.466667rem
+			line-height 1.466667rem
+			background #333
+			box-shadow 0 .04rem .066667rem 0 rgba(0, 0, 0, .49)
+			font-size .373333rem
+			color #FFF
+			.main-menu-item
+				float left
+				position relative
+				margin-right .453333rem
+				.path
+					color #FFF
+				&:first-child
+					margin-left .413333rem
+				&.active
+					color #FFCA00
+					.path
+						color #FFCA00
+					&::after
+						position absolute
+						content ''
+						width 1.013333rem
+						height .053333rem
+						left 50%
+						bottom 0
+						margin-left -0.506667rem
+						background #FFCA00
+		.submenu-wrapper
+			width 100%
+			background #000
+			padding .866667rem 0 .346667rem 0
+			box-sizing border-box
+			box-shadow 0 .026667rem .053333rem 0 rgba(0, 0, 0, .5)
+			color #FFF
+			.submenu
+				width 100%
+				padding-left .8rem
+				overflow hidden
+				.submenu-item
+					float left
+					width 1.92rem
+					height .8rem
+					line-height .8rem
+					text-align center
+					margin-right .226667rem
+					margin-bottom .426667rem
+					background #333
+					box-sizing border-box
+					border-radius .026667rem
+					font-size .32rem
+					color #FFF
+					.path
+						color #FFF
+					&.active
+						line-height .773333rem
+						border 1px solid #FFCA00
+						color #FFCA00
+						.path
+							color #FFCA00
+			.line
+				width 7.426667rem
+				height 0
+				margin 0 auto
+				padding-top .186667rem
+				border-bottom 1px solid #333
+			.page-route
+				position relative
+				padding-left 1.186667rem
+				padding-right 1.186667rem
+				font-size .32rem
+				.route-wrapper
+					display flex
+					flex-wrap wrap
+					padding-top .466667rem
+					overflow hidden
+					.route-content
+						float left
+						width 25%
+						text-align center
+						margin-bottom .4rem
+						&.active
+							.route-item
+								color #FFCA00
+						.route-item
+							color #FFF
+			.close-menu
+				width .586667rem
+				height .586667rem
+				margin 0 auto
+				background url('./返回copy.png') center center / .493333rem .306667rem no-repeat 
+
+	.account-wrapper
+		position fixed
+		width 100%
+		padding .466667rem 0 .453333rem
+		top 1.306667rem
+		left 0
+		background #000
+		box-sizing border-box
+		z-index 100
+		.switch
+			position absolute
+			width .586667rem
+			height .586667rem
+			right .6rem
+			top .493333rem
+			background url('./注销@2x.png') center center / .506667rem .506667rem no-repeat
+		.maccount-wrapper
+			padding-left .8rem
+			&::after
+				display block
+				content ''
+				clear both
+			.account
+				position relative
+				float left
+				width 1.92rem
+				height .8rem
+				line-height .8rem
+				text-align center
+				background #333
+				border-radius .026667rem
+				font-size .32rem
+				color #FFF
+		.line
+			width 8.4rem
+			height 0
+			margin .32rem auto
+			border-bottom 1px solid #333
+		.subaccount
+			padding-left .813333rem
+			ul
+				position relative
+				overflow hidden
+				.subaccount-item
+					float left
+					width 1.92rem
+					height .8rem
+					line-height .8rem
+					background #333
+					margin-right .24rem
+					margin-bottom .266667rem
+					box-sizing border-box
+					text-align center
+					border-radius .026667rem
+					color #FFF
+					font-size .32rem
+					&.active
+						border 1px solid #FFCA00
+						line-height .773333rem
+						color #FFCA00
+		.close-account
+			width .586667rem
+			height .586667rem
+			margin .893333rem auto 0
+			background url('./关闭@2x.png') center center / .44rem .44rem no-repeat

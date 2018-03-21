@@ -1,0 +1,3704 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>lbs-api.md—C:\Users\Think\Desktop\蓝宝石\相关文档\用户前台文档\接口文档</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <p><i id="toc"></p>
+<ul>
+<li><a href="#%E9%80%9A%E7%94%A8%E5%AE%9A%E4%B9%89">通用定义</a></li>
+<li><a href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1">一、基础服务</a><ul>
+<li><a href="#1%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1">1.认证服务</a><ul>
+<li><a href="#1%E7%99%BB%E9%99%86">1.登陆</a></li>
+<li><a href="#2%E7%99%BB%E5%87%BA">2.登出</a></li>
+</ul>
+</li>
+<li><a href="#2%E6%A0%A1%E9%AA%8C%E6%9C%8D%E5%8A%A1">2.校验服务</a><ul>
+<li><a href="#3%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81">3.验证密码</a></li>
+<li><a href="#4%E9%AA%8C%E8%AF%81%E5%AE%89%E5%85%A8%E7%A0%81">4.验证安全码</a></li>
+</ul>
+</li>
+<li><a href="#3%E5%AD%90%E6%AF%8D%E8%B4%A6%E6%88%B7">3.子母账户</a><ul>
+<li><a href="#5%E8%8E%B7%E5%8F%96%E5%AD%90%E8%B4%A6%E6%88%B7%E5%88%97%E8%A1%A8%EF%BC%88%E5%8C%85%E5%90%AB%E6%AF%8D%E8%B4%A6%E6%88%B7%EF%BC%89">5.获取子账户列表（包含母账户）</a></li>
+<li><a href="#6%E5%88%87%E6%8D%A2%E5%AD%90%EF%BC%88%E6%AF%8D%EF%BC%89%E8%B4%A6%E6%88%B7">6.切换子（母）账户</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C%E3%80%81%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83">二、个人中心</a><ul>
+<li><a href="#1%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF">1.个人信息</a><ul>
+<li><a href="#1%E8%8E%B7%E5%8F%96%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF">1.获取个人信息</a></li>
+<li><a href="#2%E4%BF%AE%E6%94%B9%E6%98%B5%E7%A7%B0%E4%BC%9A%E5%91%98%E5%A7%93%E5%90%8D">2.修改昵称(会员姓名)</a></li>
+<li><a href="#3%E4%BF%AE%E6%94%B9%E9%82%AE%E7%AE%B1">3.修改邮箱</a></li>
+<li><a href="#4%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81">4.修改密码</a></li>
+<li><a href="#5%E4%BF%AE%E6%94%B9%E5%AE%89%E5%85%A8%E7%A0%81">5.修改安全码</a></li>
+</ul>
+</li>
+<li><a href="#2%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7">2.收款账户</a><ul>
+<li><a href="#1%E8%8E%B7%E5%8F%96%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7%E4%BF%A1%E6%81%AF">1.获取收款账户信息</a></li>
+<li><a href="#2%E4%BF%AE%E6%94%B9%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7">2.修改收款账户</a></li>
+</ul>
+</li>
+<li><a href="#3c2c%E4%BA%A4%E6%98%93">3.C2C交易</a><ul>
+<li><a href="#1%E8%B4%AD%E4%B9%B0%E5%B8%81">1.购买币</a></li>
+<li><a href="#2%E8%8E%B7%E5%8F%96%E5%B8%81%E7%A7%8D%E4%BB%B7%E6%A0%BC">2.获取币种价格</a></li>
+<li><a href="#3%E8%8E%B7%E5%8F%96%E8%B4%AD%E4%B9%B0%E5%B8%81%E8%AE%B0%E5%BD%95">3.获取购买币记录</a></li>
+<li><a href="#4%E8%B4%AD%E4%B9%B0%E5%B8%81%E8%AE%B0%E5%BD%95%E8%AF%A6%E6%83%85">4.购买币记录详情</a></li>
+</ul>
+</li>
+<li><a href="#4%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86">4.资产管理</a><ul>
+<li><a href="#1%E8%8E%B7%E5%8F%96%E7%8E%B0%E8%B4%A7%E8%B4%A6%E6%88%B7%E4%BF%A1%E6%81%AF">1.获取现货账户信息</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E3%80%81vip%E4%B8%93%E5%8C%BA">三、VIP专区</a><ul>
+<li><a href="#1%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84">1.组织架构</a><ul>
+<li><a href="#1%E8%8E%B7%E5%8F%96%E6%8E%A8%E8%8D%90%E5%9B%BE">1.获取推荐图</a></li>
+<li><a href="#2%E8%8E%B7%E5%8F%96%E6%9E%B6%E6%9E%84%E5%9B%BE">2.获取架构图</a></li>
+<li><a href="#3%E6%8E%A8%E8%8D%90%E5%9B%BE%E6%90%9C%E7%B4%A2">3.推荐图搜索</a></li>
+<li><a href="#4%E6%9E%B6%E6%9E%84%E5%9B%BE%E6%90%9C%E7%B4%A2">4.架构图搜索</a></li>
+</ul>
+</li>
+<li><a href="#2%E6%88%91%E7%9A%84%E9%94%80%E5%94%AE">2.我的销售</a><ul>
+<li><a href="#1%E6%B3%A8%E5%86%8C%E6%AF%8D%E8%B4%A6%E6%88%B7">1.注册母账户</a></li>
+<li><a href="#2usdt%E6%B3%A8%E5%86%8C%E5%AD%90%E8%B4%A6%E6%88%B7">2.USDT注册子账户</a></li>
+<li><a href="#3%E9%87%8D%E6%9E%84%E5%B8%81%E6%B3%A8%E5%86%8C%E5%AD%90%E8%B4%A6%E6%88%B7">3.重构币注册子账户</a></li>
+<li><a href="#4%E8%B4%AD%E4%B9%B0%E9%85%8D%E5%A5%97">4.购买配套</a></li>
+<li><a href="#5%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%B4%AD%E4%B9%B0%E7%9A%84%E9%85%8D%E5%A5%97%E5%88%97%E8%A1%A8">5.获取可购买的配套列表</a></li>
+<li><a href="#6%E7%BB%91%E5%AE%9A%E6%AF%8D%E8%B4%A6%E6%88%B7">6.绑定母账户</a></li>
+<li><a href="#7%E8%A7%A3%E7%BB%91%E5%AD%90%E8%B4%A6%E6%88%B7">7.解绑子账户</a></li>
+</ul>
+</li>
+<li><a href="#3%E6%88%91%E7%9A%84%E9%92%B1%E5%8C%85">3.我的钱包</a><ul>
+<li><a href="#1%E8%8E%B7%E5%8F%96%E9%92%B1%E5%8C%85%E4%BF%A1%E6%81%AF">1.获取钱包信息</a></li>
+<li><a href="#2usdt%E8%BD%AC%E8%B4%A6">2.USDT转账</a></li>
+<li><a href="#3%E6%94%B6%E7%9B%8A%E5%B8%81%E8%BD%AC%E8%B4%A6">3.收益币转账</a></li>
+<li><a href="#4%E8%8E%B7%E5%8F%96%E8%BD%AC%E8%B4%A6%E8%AE%B0%E5%BD%95">4.获取转账记录</a></li>
+<li><a href="#5%E8%8E%B7%E5%8F%96%E4%BD%99%E9%A2%9D%E5%8F%98%E5%8A%A8%E8%AE%B0%E5%BD%95">5.获取余额变动记录</a></li>
+</ul>
+</li>
+<li><a href="#code-%E5%AE%9A%E4%B9%89">CODE 定义</a></li>
+</ul>
+</li>
+</ul>
+<p></i></p>
+<p><a name="%E9%80%9A%E7%94%A8%E5%AE%9A%E4%B9%89"></a></p>
+<h1>通用定义</h1>
+<p><strong>请求地址</strong></p>
+<div class="codehilite"><pre>[GET|POST|DELETE] /api/v1/action
+</pre></div>
+
+
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">access_account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">鉴权账号</td>
+<td align="left">登陆后返回</td>
+</tr>
+<tr>
+<td align="left">access_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">鉴权密码</td>
+<td align="left">登陆后返回</td>
+</tr>
+<tr>
+<td align="left">page_num</td>
+<td align="left">否</td>
+<td align="left">int</td>
+<td align="left">页码</td>
+<td align="left">第几页，默认1</td>
+</tr>
+<tr>
+<td align="left">page_size</td>
+<td align="left">否</td>
+<td align="left">int</td>
+<td align="left">页容量</td>
+<td align="left">每页几条，默认5</td>
+</tr>
+<tr>
+<td align="left">lang</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">语言</td>
+<td align="left">zh_CN/en_US</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求参数说明</strong></p>
+<blockquote>
+<p>这里定义的参数是通用参数，分页参数仅在查询列表时使用。</p>
+<p>两个鉴权参数建议放在请求头中，目前做了兼容，后期将会只支持头部鉴权参数</p>
+<p>测试环境接口地址如下，可尝试访问： http://47.75.6.39:8092/ 如果返回“hello”说明语言是英文环境，如果返回“你好”说明是中文环境， 登陆路径举例：POST --&gt; http://47.75.6.39:8092/api/v1/login</p>
+</blockquote>
+<p><strong>返回数据</strong></p>
+<div class="codehilite"><pre>{
+  code:0,
+  msg:&quot;success&quot;,
+  result:{}
+}
+</pre></div>
+
+
+<p><strong>返回字段说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">键</th>
+<th align="left">含义</th>
+<th align="left">类型</th>
+<th align="left">可能的值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">code</td>
+<td align="left">操作结果</td>
+<td align="left">int</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">msg</td>
+<td align="left">操作结果信息</td>
+<td align="left">string</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">结果信息集</td>
+<td align="left">[object &#124; list]</td>
+<td align="left"></td>
+<td align="left">返回结果 ,根据具体定义</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">code</th>
+<th align="left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">操作成功</td>
+</tr>
+<tr>
+<td align="left">10001</td>
+<td align="left">系统内部错误</td>
+</tr>
+<tr>
+<td align="left">10002</td>
+<td align="left">缺少参数</td>
+</tr>
+<tr>
+<td align="left">10003</td>
+<td align="left">不支持的请求方式</td>
+</tr>
+<tr>
+<td align="left">10004</td>
+<td align="left">缺少鉴权参数</td>
+</tr>
+<tr>
+<td align="left">10005</td>
+<td align="left">登陆过期</td>
+</tr>
+<tr>
+<td align="left">10006</td>
+<td align="left">密码校验过期</td>
+</tr>
+<tr>
+<td align="left">10007</td>
+<td align="left">安全码校验过期</td>
+</tr>
+<tr>
+<td align="left">10008</td>
+<td align="left">拒绝访问</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明</strong></p>
+<blockquote>
+<p>所有接口请求至少都会返回 <em>code</em> 和 <em>msg</em> 这两个字段，<em>code</em> 的定义可用在后面获得。</p>
+</blockquote>
+<hr>
+<p><a name="%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1"></a></p>
+<h1>一、基础服务</h1>
+<p><a name="1%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1"></a></p>
+<h2>1.认证服务</h2>
+<p><a name="1%E7%99%BB%E9%99%86"></a></p>
+<h3>1.登陆</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/login</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+<td align="left">支持数字和英文字母，长度5-18</td>
+</tr>
+<tr>
+<td align="left">pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">密码</td>
+<td align="left">6位数字</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;accessAccount&quot;: &quot;A00000001&quot;,
+        &quot;accessToken&quot;: &quot;75031C4A6107D5303D5AB57D9D6B0FF5&quot;
+    }
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">accessAccount</td>
+<td align="left">string</td>
+<td align="left">登陆用户的标识</td>
+</tr>
+<tr>
+<td align="left">accessToken</td>
+<td align="left">string</td>
+<td align="left">登陆令牌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40008</td>
+<td align="left">会员账号错误</td>
+</tr>
+<tr>
+<td align="left">40009</td>
+<td align="left">会员密码错误</td>
+</tr>
+<tr>
+<td align="left">40010</td>
+<td align="left">登陆失败</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E7%99%BB%E5%87%BA"></a></p>
+<h3>2.登出</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/logout</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+    }
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E6%A0%A1%E9%AA%8C%E6%9C%8D%E5%8A%A1"></a></p>
+<h2>2.校验服务</h2>
+<p><a name="3%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81"></a></p>
+<h3>3.验证密码</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/verifyPwd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">密码</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;pwdToken&quot;: &quot;08B857C90B8B124F6D21E14822AFC6C9&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pwdToken</td>
+<td align="left">string</td>
+<td align="left">密码验证成功后的令牌，用于修改其他信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40009</td>
+<td align="left">会员密码错误</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E9%AA%8C%E8%AF%81%E5%AE%89%E5%85%A8%E7%A0%81"></a></p>
+<h3>4.验证安全码</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/verifySafePwd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">safe_pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;safePwdToken&quot;: &quot;08B857C90B8B124F6D21E14822AFC6C9&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">safePwdToken</td>
+<td align="left">string</td>
+<td align="left">安全码验证成功后的令牌，用于修改其他信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40011</td>
+<td align="left">会员安全码错误</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E5%AD%90%E6%AF%8D%E8%B4%A6%E6%88%B7"></a></p>
+<h2>3.子母账户</h2>
+<p><a name="5%E8%8E%B7%E5%8F%96%E5%AD%90%E8%B4%A6%E6%88%B7%E5%88%97%E8%A1%A8%EF%BC%88%E5%8C%85%E5%90%AB%E6%AF%8D%E8%B4%A6%E6%88%B7%EF%BC%89"></a></p>
+<h3>5.获取子账户列表（包含母账户）</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/attachedList</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: [
+        {
+            &quot;account&quot;: &quot;A00000006&quot;,
+            &quot;uid&quot;: 10
+        },
+        {
+            &quot;account&quot;: &quot;B00000001&quot;,
+            &quot;uid&quot;: 33
+        }
+    ]
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员UID</td>
+</tr>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">账号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="6%E5%88%87%E6%8D%A2%E5%AD%90%EF%BC%88%E6%AF%8D%EF%BC%89%E8%B4%A6%E6%88%B7"></a></p>
+<h3>6.切换子（母）账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>切换后要刷新其他接口获取新的信息</code></li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/switchAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">要切换的账户UID</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: null
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="%E4%BA%8C%E3%80%81%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83"></a></p>
+<h1>二、个人中心</h1>
+<p><a name="1%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"></a></p>
+<h2>1.个人信息</h2>
+<p><a name="1%E8%8E%B7%E5%8F%96%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"></a></p>
+<h3>1.获取个人信息</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/info</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;account&quot;: &quot;A00000000&quot;,
+        &quot;level&quot;: 0,
+        &quot;nickname&quot;: &quot;站在塔尖的人&quot;,
+        &quot;email&quot;: &quot;abc@test.com&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+</tr>
+<tr>
+<td align="left">level</td>
+<td align="left">string</td>
+<td align="left">当前级别</td>
+</tr>
+<tr>
+<td align="left">email</td>
+<td align="left">string</td>
+<td align="left">邮箱</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E4%BF%AE%E6%94%B9%E6%98%B5%E7%A7%B0%E4%BC%9A%E5%91%98%E5%A7%93%E5%90%8D"></a></p>
+<h3>2.修改昵称(会员姓名)</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/updateNickname</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">nickname</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">昵称</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码校验令牌</td>
+<td align="left">需先请求验证安全码接口（verifySafePwd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E4%BF%AE%E6%94%B9%E9%82%AE%E7%AE%B1"></a></p>
+<h3>3.修改邮箱</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/updateEmail</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">email</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">邮箱</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码校验令牌</td>
+<td align="left">需先请求验证安全码接口（verifySafePwd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"></a></p>
+<h3>4.修改密码</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/updatePwd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">新密码</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">旧密码验证后返回的pwdToken</td>
+<td align="left">需先请求验证密码接口（verifyPwd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: null
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40009</td>
+<td align="left">会员密码错误</td>
+</tr>
+<tr>
+<td align="left">40012</td>
+<td align="left">密码修改失败</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="5%E4%BF%AE%E6%94%B9%E5%AE%89%E5%85%A8%E7%A0%81"></a></p>
+<h3>5.修改安全码</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/updateSafePwd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">safe_pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">新安全码</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">旧安全码验证后返回的safePwdToken</td>
+<td align="left">需先请求验证安全码接口（verifySafePwd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: null
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40011</td>
+<td align="left">会员安全码错误</td>
+</tr>
+<tr>
+<td align="left">40013</td>
+<td align="left">安全码修改失败</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7"></a></p>
+<h2>2.收款账户</h2>
+<p><a name="1%E8%8E%B7%E5%8F%96%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7%E4%BF%A1%E6%81%AF"></a></p>
+<h3>1.获取收款账户信息</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/getReceivableAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;activedAccount&quot;: 1,
+        &quot;alipayAccount&quot;: &quot;fdsfsd12315&quot;,
+        &quot;bankCardNo&quot;: &quot;大大大&quot;,
+        &quot;bankName&quot;: &quot;磊&quot;,
+        &quot;createdAt&quot;: 1515489307000,
+        &quot;display&quot;: 1,
+        &quot;id&quot;: 3,
+        &quot;realName&quot;: &quot;磊大大&quot;,
+        &quot;subBankName&quot;: &quot;123456789&quot;,
+        &quot;uid&quot;: 1,
+        &quot;updatedAt&quot;: 1515489307000,
+        &quot;wechatAccount&quot;: &quot;dsf12313&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员UID</td>
+</tr>
+<tr>
+<td align="left">bankName</td>
+<td align="left">string</td>
+<td align="left">开户银行</td>
+</tr>
+<tr>
+<td align="left">subBankName</td>
+<td align="left">string</td>
+<td align="left">银行支行</td>
+</tr>
+<tr>
+<td align="left">bankCardNo</td>
+<td align="left">string</td>
+<td align="left">银行账号</td>
+</tr>
+<tr>
+<td align="left">realName</td>
+<td align="left">string</td>
+<td align="left">开户姓名</td>
+</tr>
+<tr>
+<td align="left">wechatAccount</td>
+<td align="left">string</td>
+<td align="left">微信账户</td>
+</tr>
+<tr>
+<td align="left">alipayAccount</td>
+<td align="left">string</td>
+<td align="left">支付宝账户</td>
+</tr>
+<tr>
+<td align="left">activedAccount</td>
+<td align="left">int</td>
+<td align="left">启用账户 银行(1) 微信(2) 支付宝(3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E4%BF%AE%E6%94%B9%E6%94%B6%E6%AC%BE%E8%B4%A6%E6%88%B7"></a></p>
+<h3>2.修改收款账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>此功能暂时不做具体要求，可以简单修改就行</code></li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/updateReceivableAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bank_name</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">开户银行</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sub_bank_name</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">银行支行</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">bank_card_no</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">银行账号</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">real_name</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">开户姓名</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">wechat_account</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">微信账号</td>
+<td align="left">暂时不做</td>
+</tr>
+<tr>
+<td align="left">alipay_account</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">支付宝账号</td>
+<td align="left">暂时不做</td>
+</tr>
+<tr>
+<td align="left">actived_account</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">启用账户</td>
+<td align="left">选择要使用哪个账户：银行（1），微信（2），支付宝（3）</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码校验令牌</td>
+<td align="left">需先请求验证安全码接口（verifySafePwd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3c2c%E4%BA%A4%E6%98%93"></a></p>
+<h2>3.C2C交易</h2>
+<p><a name="1%E8%B4%AD%E4%B9%B0%E5%B8%81"></a></p>
+<h3>1.购买币</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/c2c/buyCoin</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">currency</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">购买的币种</td>
+<td align="left">0：USDT 1: 收益币 2:重构币 3:众筹币 4:拆分币  5:消费币。 目前只支持0 USDT购买</td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">购买的数量</td>
+<td align="left">正整数，上限1亿</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;result&quot;:{
+        &quot;bankCardNo&quot;:&quot;123456789&quot;,
+        &quot;bankName&quot;:&quot;招商银行&quot;,
+        &quot;realName&quot;:&quot;张三&quot;,
+        &quot;status&quot;:0,
+        &quot;totalPrice&quot;:67.0,
+        &quot;verifyCode&quot;:&quot;896295&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bankName</td>
+<td align="left">收款人开户行</td>
+</tr>
+<tr>
+<td align="left">bankCardNo</td>
+<td align="left">收款人账号</td>
+</tr>
+<tr>
+<td align="left">realName</td>
+<td align="left">收款人姓名</td>
+</tr>
+<tr>
+<td align="left">totalPrice</td>
+<td align="left">转账金额</td>
+</tr>
+<tr>
+<td align="left">verifyCode</td>
+<td align="left">汇款备注</td>
+</tr>
+<tr>
+<td align="left">status</td>
+<td align="left">状态</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E8%8E%B7%E5%8F%96%E5%B8%81%E7%A7%8D%E4%BB%B7%E6%A0%BC"></a></p>
+<h3>2.获取币种价格</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/c2c/getCoinPrice</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;regPrice&quot;: 6.7
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">说明</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">regPrice</td>
+<td align="left">USDT价格，暂时只开放这一种</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E8%8E%B7%E5%8F%96%E8%B4%AD%E4%B9%B0%E5%B8%81%E8%AE%B0%E5%BD%95"></a></p>
+<h3>3.获取购买币记录</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/c2c/getBuyCoinLog</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">status</td>
+<td align="left">否</td>
+<td align="left">int</td>
+<td align="left">订单状态</td>
+<td align="left">未支付(0),已支付(1),交易异常(2).不传默认返回所有记录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;result&quot;:[
+        {
+            &quot;createdAt&quot;:1515823280000,
+            &quot;currency&quot;:0,
+            &quot;display&quot;:1,
+            &quot;id&quot;:1,
+            &quot;number&quot;:10,
+            &quot;orderNo&quot;:&quot;1515823280156&quot;,
+            &quot;status&quot;:0,
+            &quot;totalPrice&quot;:67.00,
+            &quot;uid&quot;:1,
+            &quot;unitPrice&quot;:6.70,
+            &quot;updatedAt&quot;:1515823280000,
+            &quot;verifyCode&quot;:&quot;027487&quot;
+        }
+    ]
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">说明</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">操作人UID</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">orderNo</td>
+<td align="left">订单号</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">verifyCode</td>
+<td align="left">六位验证码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">购买数量</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">unitPrice</td>
+<td align="left">单价</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">totalPrice</td>
+<td align="left">总价</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">currency</td>
+<td align="left">购买币种：USDT（0），BTC（1），ETH（2）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">status</td>
+<td align="left">状态</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E8%B4%AD%E4%B9%B0%E5%B8%81%E8%AE%B0%E5%BD%95%E8%AF%A6%E6%83%85"></a></p>
+<h3>4.购买币记录详情</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/c2c/getBuyCoinLogInfo</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">order_id</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">订单id</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;result&quot;:{
+            &quot;createdAt&quot;:1515823280000,
+            &quot;currency&quot;:0,
+            &quot;display&quot;:1,
+            &quot;id&quot;:1,
+            &quot;number&quot;:10,
+            &quot;orderNo&quot;:&quot;1515823280156&quot;,
+            &quot;status&quot;:0,
+            &quot;totalPrice&quot;:67.00,
+            &quot;uid&quot;:1,
+            &quot;unitPrice&quot;:6.70,
+            &quot;updatedAt&quot;:1515823280000,
+            &quot;verifyCode&quot;:&quot;027487&quot;
+        }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">说明</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">操作人UID</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">orderNo</td>
+<td align="left">订单号</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">verifyCode</td>
+<td align="left">验证码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">购买数量</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">unitPrice</td>
+<td align="left">单价</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">totalPrice</td>
+<td align="left">总价</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">currency</td>
+<td align="left">购买币种：USDT（0），BTC（1），ETH（2）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">status</td>
+<td align="left">状态</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86"></a></p>
+<h2>4.资产管理</h2>
+<p><a name="1%E8%8E%B7%E5%8F%96%E7%8E%B0%E8%B4%A7%E8%B4%A6%E6%88%B7%E4%BF%A1%E6%81%AF"></a></p>
+<h3>1.获取现货账户信息</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/getCashWallet</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;result&quot;:{
+        &quot;btc&quot;:0,
+        &quot;eth&quot;:0,
+        &quot;usdt&quot;:1000000
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">usdt</td>
+<td align="left">int</td>
+<td align="left">USDT余额</td>
+</tr>
+<tr>
+<td align="left">btc</td>
+<td align="left">int</td>
+<td align="left">BTC余额</td>
+</tr>
+<tr>
+<td align="left">eth</td>
+<td align="left">int</td>
+<td align="left">ETH余额</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="%E4%B8%89%E3%80%81vip%E4%B8%93%E5%8C%BA"></a></p>
+<h1>三、VIP专区</h1>
+<p><a name="1%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84"></a></p>
+<h2>1.组织架构</h2>
+<p><a name="1%E8%8E%B7%E5%8F%96%E6%8E%A8%E8%8D%90%E5%9B%BE"></a></p>
+<h3>1.获取推荐图</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/getRefMap</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">target_uid</td>
+<td align="left">否</td>
+<td align="left">int</td>
+<td align="left">要查询的账号（目标账号）</td>
+<td align="left">如果为空，则查询当前登陆人的推荐分布图，如果目标账号不在登陆人的推荐图下方，则返回为空</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;uid&quot;: &quot;1&quot;,
+        &quot;account&quot;: &quot;A00000000&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;uid&quot;: &quot;5&quot;,
+                &quot;account&quot;: &quot;A00000001&quot;,
+                &quot;children&quot;: [
+                    {
+                        &quot;uid&quot;: &quot;12&quot;,
+                        &quot;account&quot;: &quot;A00000009&quot;,
+                        &quot;children&quot;: null,
+                        &quot;nickname&quot;: &quot;四三&quot;
+                    }
+                ],
+                &quot;nickname&quot;: &quot;我是测试&quot;
+            },
+            {
+                &quot;uid&quot;: &quot;6&quot;,
+                &quot;account&quot;: &quot;A00000002&quot;,
+                &quot;children&quot;: null,
+                &quot;nickname&quot;: &quot;我是测试&quot;
+            }
+        ],
+        &quot;nickname&quot;: &quot;站在塔尖的人&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员UID</td>
+</tr>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+</tr>
+<tr>
+<td align="left">children</td>
+<td align="left">array</td>
+<td align="left">会员所有推荐的人JSON对象的数组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E8%8E%B7%E5%8F%96%E6%9E%B6%E6%9E%84%E5%9B%BE"></a></p>
+<h3>2.获取架构图</h3>
+<p><strong>请求URL：</strong> 
+- <code>/account/getPosMap</code></p>
+<p><strong>请求方式：</strong>
+- GET </p>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">target_uid</td>
+<td align="left">否</td>
+<td align="left">int</td>
+<td align="left">要查询的账号UID（目标账号UID）</td>
+<td align="left">如果为空，则查询当前登陆人的架构图，如果目标账号不在当前登陆人下级，则返回为空</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;uid&quot;: &quot;1&quot;,
+        &quot;account&quot;: &quot;A00000000&quot;,
+        &quot;nickname&quot;: &quot;站在塔尖的人&quot;,
+        &quot;leftAccount&quot;: {
+            &quot;uid&quot;: &quot;5&quot;,
+            &quot;account&quot;: &quot;A00000001&quot;,
+            &quot;nickname&quot;: &quot;我是测试&quot;,
+            &quot;leftAccount&quot;: null,
+            &quot;rightAccount&quot;: null
+        },
+        &quot;rightAccount&quot;: {
+            &quot;uid&quot;: &quot;6&quot;,
+            &quot;account&quot;: &quot;A00000002&quot;,
+            &quot;nickname&quot;: &quot;我是测试&quot;,
+            &quot;leftAccount&quot;: null,
+            &quot;rightAccount&quot;: null
+        }
+    }
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员uid</td>
+</tr>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+</tr>
+<tr>
+<td align="left">leftAccount</td>
+<td align="left">string</td>
+<td align="left">左区会员JSON对象</td>
+</tr>
+<tr>
+<td align="left">rightAccount</td>
+<td align="left">string</td>
+<td align="left">右区会员JSON对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E6%8E%A8%E8%8D%90%E5%9B%BE%E6%90%9C%E7%B4%A2"></a></p>
+<h3>3.推荐图搜索</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/searchRefMap</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">target_account</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">要查询的账号（目标账号）</td>
+<td align="left">如果为空，则查询当前登陆人的推荐分布图，如果目标账号不在登陆人的推荐图下方，则返回为空</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;uid&quot;: &quot;1&quot;,
+        &quot;account&quot;: &quot;A00000000&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;uid&quot;: &quot;5&quot;,
+                &quot;account&quot;: &quot;A00000001&quot;,
+                &quot;children&quot;: [
+                    {
+                        &quot;uid&quot;: &quot;12&quot;,
+                        &quot;account&quot;: &quot;A00000009&quot;,
+                        &quot;children&quot;: null,
+                        &quot;nickname&quot;: &quot;四三&quot;
+                    }
+                ],
+                &quot;nickname&quot;: &quot;我是测试&quot;
+            },
+            {
+                &quot;uid&quot;: &quot;6&quot;,
+                &quot;account&quot;: &quot;A00000002&quot;,
+                &quot;children&quot;: null,
+                &quot;nickname&quot;: &quot;我是测试&quot;
+            }
+        ],
+        &quot;nickname&quot;: &quot;站在塔尖的人&quot;
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员UID</td>
+</tr>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+</tr>
+<tr>
+<td align="left">children</td>
+<td align="left">array</td>
+<td align="left">会员所有推荐的人JSON对象的数组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E6%9E%B6%E6%9E%84%E5%9B%BE%E6%90%9C%E7%B4%A2"></a></p>
+<h3>4.架构图搜索</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/searchPosMap</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">target_account</td>
+<td align="left">否</td>
+<td align="left">string</td>
+<td align="left">要查询的账号（目标账号）</td>
+<td align="left">如果为空，则查询当前登陆人的架构图，如果目标账号不在当前登陆人下级，则返回为空</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;uid&quot;: &quot;1&quot;,
+        &quot;account&quot;: &quot;A00000000&quot;,
+        &quot;nickname&quot;: &quot;站在塔尖的人&quot;,
+        &quot;leftAccount&quot;: {
+            &quot;uid&quot;: &quot;5&quot;,
+            &quot;account&quot;: &quot;A00000001&quot;,
+            &quot;nickname&quot;: &quot;我是测试&quot;,
+            &quot;leftAccount&quot;: null,
+            &quot;rightAccount&quot;: null
+        },
+        &quot;rightAccount&quot;: {
+            &quot;uid&quot;: &quot;6&quot;,
+            &quot;account&quot;: &quot;A00000002&quot;,
+            &quot;nickname&quot;: &quot;我是测试&quot;,
+            &quot;leftAccount&quot;: null,
+            &quot;rightAccount&quot;: null
+        }
+    }
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">会员uid</td>
+</tr>
+<tr>
+<td align="left">account</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+</tr>
+<tr>
+<td align="left">leftAccount</td>
+<td align="left">string</td>
+<td align="left">左区会员JSON对象</td>
+</tr>
+<tr>
+<td align="left">rightAccount</td>
+<td align="left">string</td>
+<td align="left">右区会员JSON对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2%E6%88%91%E7%9A%84%E9%94%80%E5%94%AE"></a></p>
+<h2>2.我的销售</h2>
+<p><a name="1%E6%B3%A8%E5%86%8C%E6%AF%8D%E8%B4%A6%E6%88%B7"></a></p>
+<h3>1.注册母账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li>注册时，要额外扣除10个USDT</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/register</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+<td align="left">支持数字和英文字母，长度5-18</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">会员姓名</td>
+<td align="left">支持中英文字符（特殊字符除外），长度4-16（中文2-8）</td>
+</tr>
+<tr>
+<td align="left">pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">密码</td>
+<td align="left">6位数字</td>
+</tr>
+<tr>
+<td align="left">safe_pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码</td>
+<td align="left">6位数字</td>
+</tr>
+<tr>
+<td align="left">email</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">邮箱</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">sup_account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">接入点</td>
+<td align="left">接入人账号</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">市场位置</td>
+<td align="left">左（0），右（1）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40001</td>
+<td align="left">会员账号不合法</td>
+</tr>
+<tr>
+<td align="left">40002</td>
+<td align="left">会员姓名不合法</td>
+</tr>
+<tr>
+<td align="left">40003</td>
+<td align="left">密码不合法</td>
+</tr>
+<tr>
+<td align="left">40004</td>
+<td align="left">安全码不合法</td>
+</tr>
+<tr>
+<td align="left">40005</td>
+<td align="left">接点人不存在</td>
+</tr>
+<tr>
+<td align="left">40006</td>
+<td align="left">市场位置不正确</td>
+</tr>
+<tr>
+<td align="left">40007</td>
+<td align="left">会员账号已存在</td>
+</tr>
+<tr>
+<td align="left">40028</td>
+<td align="left">邮箱不合法</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2usdt%E6%B3%A8%E5%86%8C%E5%AD%90%E8%B4%A6%E6%88%B7"></a></p>
+<h3>2.USDT注册子账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li>注册时，要额外扣除10个USDT</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/registerByRegCoin</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+<td align="left">支持数字和英文字母，长度5-18</td>
+</tr>
+<tr>
+<td align="left">level</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">配套级别</td>
+<td align="left">1-5级，可以从/pkg/list获取全部级别</td>
+</tr>
+<tr>
+<td align="left">sup_account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">接入点</td>
+<td align="left">接入人账号</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">市场位置</td>
+<td align="left">左（0），右（1）</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码校验令牌</td>
+<td align="left">需先请求verifySafePwd接口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40001</td>
+<td align="left">会员账号不合法</td>
+</tr>
+<tr>
+<td align="left">40005</td>
+<td align="left">接点人不存在</td>
+</tr>
+<tr>
+<td align="left">40006</td>
+<td align="left">市场位置不正确</td>
+</tr>
+<tr>
+<td align="left">40007</td>
+<td align="left">会员账号已存在</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E9%87%8D%E6%9E%84%E5%B8%81%E6%B3%A8%E5%86%8C%E5%AD%90%E8%B4%A6%E6%88%B7"></a></p>
+<h3>3.重构币注册子账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li>注册时，要额外扣除10个USDT</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/registerByRecCoin</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">会员账号</td>
+<td align="left">支持数字和英文字母，长度5-18</td>
+</tr>
+<tr>
+<td align="left">level</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">配套级别</td>
+<td align="left">1-5级，可以从/pkg/list获取全部级别</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">安全码校验令牌</td>
+<td align="left">需先请求verifySafePwd接口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40001</td>
+<td align="left">会员账号不合法</td>
+</tr>
+<tr>
+<td align="left">40007</td>
+<td align="left">会员账号已存在</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E8%B4%AD%E4%B9%B0%E9%85%8D%E5%A5%97"></a></p>
+<h3>4.购买配套</h3>
+<ul>
+<li>购买配套（只能用USDT购买）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/pkg/buy</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">level</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">星级</td>
+<td align="left">1-5星</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="5%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%B4%AD%E4%B9%B0%E7%9A%84%E9%85%8D%E5%A5%97%E5%88%97%E8%A1%A8"></a></p>
+<h3>5.获取可购买的配套列表</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/pkg/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: [
+        {
+            &quot;memo&quot;: &quot;一星会员&quot;,
+            &quot;level&quot;: 1,
+            &quot;price&quot;: 100
+        }
+    ]
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">level</td>
+<td align="left">int</td>
+<td align="left">等级</td>
+</tr>
+<tr>
+<td align="left">price</td>
+<td align="left">int</td>
+<td align="left">价格</td>
+</tr>
+<tr>
+<td align="left">memo</td>
+<td align="left">string</td>
+<td align="left">描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="6%E7%BB%91%E5%AE%9A%E6%AF%8D%E8%B4%A6%E6%88%B7"></a></p>
+<h3>6.绑定母账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li>
+<p>只有孤立的账户才可以绑定到其他账户</p>
+</li>
+<li>
+<p>绑定要扣除当前账户10个注册币</p>
+</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/bindAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要绑定的母账号</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要绑定的母账号安全码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">当前账户的安全码校验令牌</td>
+<td align="left">需先请求verifySafePwd接口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="7%E8%A7%A3%E7%BB%91%E5%AD%90%E8%B4%A6%E6%88%B7"></a></p>
+<h3>7.解绑子账户</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li>
+<p>解绑前要切换到对应的子账户，重构币注册的子账户不可解绑</p>
+</li>
+<li>
+<p>解绑要扣除母账户10个注册币</p>
+</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/account/unbindAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要解绑的子账号新密码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要解绑的子账号新安全码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">email</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要解绑的子账号新邮箱</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">当前账户的安全码校验令牌</td>
+<td align="left">需先请求verifySafePwd接口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: {}
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E6%88%91%E7%9A%84%E9%92%B1%E5%8C%85"></a></p>
+<h2>3.我的钱包</h2>
+<p><a name="1%E8%8E%B7%E5%8F%96%E9%92%B1%E5%8C%85%E4%BF%A1%E6%81%AF"></a></p>
+<h3>1.获取钱包信息</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/getByAccount</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre> {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;consumptionCoin&quot;: 0,
+        &quot;crowdfundingCoin&quot;: 0,
+        &quot;earningsCoin&quot;: 0,
+        &quot;reconstructionCoin&quot;: 0,
+        &quot;registerCoin&quot;: 0,
+        &quot;splitCoin&quot;: 0
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">registerCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">USDT</td>
+</tr>
+<tr>
+<td align="left">earningsCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">收益币</td>
+</tr>
+<tr>
+<td align="left">reconstructionCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">重构币</td>
+</tr>
+<tr>
+<td align="left">crowdfundingCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">众筹币</td>
+</tr>
+<tr>
+<td align="left">splitCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">拆分币</td>
+</tr>
+<tr>
+<td align="left">consumptionCoin</td>
+<td align="left">BigDecimal</td>
+<td align="left">消费币</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="2usdt%E8%BD%AC%E8%B4%A6"></a></p>
+<h3>2.USDT转账</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/transferRegCoin</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">transfer_account</td>
+<td align="left">是</td>
+<td align="left">sting</td>
+<td align="left">要转给的人账号</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">amount</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">转账金额</td>
+<td align="left">正整数，上限1亿</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">旧安全码验证后返回的safePwdToken</td>
+<td align="left">要先调用verifySafePwd接口获取</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: null
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40008</td>
+<td align="left">会员账号错误</td>
+</tr>
+<tr>
+<td align="left">40017</td>
+<td align="left">USDT余额不足</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="3%E6%94%B6%E7%9B%8A%E5%B8%81%E8%BD%AC%E8%B4%A6"></a></p>
+<h3>3.收益币转账</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/transferEarCoin</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">transfer_account</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">要转给的人账号</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">amount</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">转账金额</td>
+<td align="left">正整数，上限1亿</td>
+</tr>
+<tr>
+<td align="left">safe_pwd_token</td>
+<td align="left">是</td>
+<td align="left">string</td>
+<td align="left">旧安全码验证后返回的safePwdToken</td>
+<td align="left">要先调用verifySafePwd接口获取</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>  {
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;result&quot;: null
+  }
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">无</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">40008</td>
+<td align="left">会员账号错误</td>
+</tr>
+<tr>
+<td align="left">40018</td>
+<td align="left">收益币余额不足</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="4%E8%8E%B7%E5%8F%96%E8%BD%AC%E8%B4%A6%E8%AE%B0%E5%BD%95"></a></p>
+<h3>4.获取转账记录</h3>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>现在还用不上这个接口，以后可能会删除</code></li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/getTransferLog</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">currency</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">币种</td>
+<td align="left">USDT（0），收益币（1），重构币（2），众筹币（3），拆分币（4），消费币（5）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;count&quot;: 2,
+        &quot;list&quot;: [
+            {
+                &quot;amount&quot;: 10,
+                &quot;create_uid&quot;: 0,
+                &quot;createdAt&quot;: 1516020835000,
+                &quot;currency&quot;: 0,
+                &quot;id&quot;: 2,
+                &quot;transfer_uid&quot;: 0
+            },
+            {
+                &quot;amount&quot;: 10,
+                &quot;create_uid&quot;: 0,
+                &quot;createdAt&quot;: 1516020673000,
+                &quot;currency&quot;: 0,
+                &quot;id&quot;: 1,
+                &quot;transfer_uid&quot;: 0
+            }
+        ],
+        &quot;pageNum&quot;: 1,
+        &quot;pageSize&quot;: 5
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">说明</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">transfer_uid</td>
+<td align="left">收款人uid</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">amount</td>
+<td align="left">变动金额</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">createdAt</td>
+<td align="left">操作时间</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">currency</td>
+<td align="left">币种</td>
+<td align="left">USDT（0），收益币（1），重构币（2），众筹币（3），拆分币（4），消费币（5）</td>
+</tr>
+<tr>
+<td align="left">create_uid</td>
+<td align="left">操作人UID</td>
+<td align="left">谁转的</td>
+</tr>
+<tr>
+<td align="left">transfer_uid</td>
+<td align="left">转账对象UID</td>
+<td align="left">转给谁</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="5%E8%8E%B7%E5%8F%96%E4%BD%99%E9%A2%9D%E5%8F%98%E5%8A%A8%E8%AE%B0%E5%BD%95"></a></p>
+<h3>5.获取余额变动记录</h3>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/wallet/getWalletLog</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">必选</th>
+<th align="left">类型</th>
+<th align="left">含义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">currency</td>
+<td align="left">是</td>
+<td align="left">int</td>
+<td align="left">币种</td>
+<td align="left">注册币（0），收益币（1），重构币（2），众筹币（3），拆分币（4），消费币（5）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="codehilite"><pre>{
+    &quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;SUCCESS&quot;,
+    &quot;result&quot;: {
+        &quot;count&quot;: 3,
+        &quot;list&quot;: [
+            {
+                &quot;amount&quot;: -10,
+                &quot;balanceAfter&quot;: 999970,
+                &quot;balanceBefore&quot;: 999980,
+                &quot;createdAt&quot;: 1516020835000,
+                &quot;currency&quot;: 0,
+                &quot;memo&quot;: &quot;注册币转账给 uid: 2 扣款：&quot;,
+                &quot;id&quot;: 4,
+                &quot;uid&quot;: 1
+            },
+            {
+                &quot;amount&quot;: -10,
+                &quot;balanceAfter&quot;: 999980,
+                &quot;balanceBefore&quot;: 999990,
+                &quot;createdAt&quot;: 1516020672000,
+                &quot;currency&quot;: 0,
+                &quot;memo&quot;: &quot;注册币转账给 uid: 2 扣款：&quot;,
+                &quot;id&quot;: 2,
+                &quot;uid&quot;: 1
+            },
+            {
+                &quot;amount&quot;: -10,
+                &quot;balanceAfter&quot;: 999990,
+                &quot;balanceBefore&quot;: 1000000,
+                &quot;createdAt&quot;: 1516019873000,
+                &quot;currency&quot;: 0,
+                &quot;memo&quot;: &quot;注册币注册母账户扣款:10&quot;,
+                &quot;id&quot;: 1,
+                &quot;uid&quot;: 1
+            }
+        ],
+        &quot;pageNum&quot;: 1,
+        &quot;pageSize&quot;: 5
+    }
+}
+</pre></div>
+
+
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">说明</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">amount</td>
+<td align="left">变动金额</td>
+<td align="left">正入负出</td>
+</tr>
+<tr>
+<td align="left">balanceBefore</td>
+<td align="left">变动前余额</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">balanceAfter</td>
+<td align="left">变动后余额</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">createdAt</td>
+<td align="left">变动时间</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">currency</td>
+<td align="left">变动币种：注册币（0），收益币（1），重构币（2），众筹币（3），拆分币（4），消费币（5）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">memo</td>
+<td align="left">备注</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可能的错误</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left">错误码</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">无</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="code-%E5%AE%9A%E4%B9%89"></a></p>
+<h2>CODE 定义</h2>
+<table>
+<thead>
+<tr>
+<th align="left">code</th>
+<th align="left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">操作成功</td>
+</tr>
+</tbody>
+</table>
+<!-- 悬浮返回顶部按钮 -->
+
+<p><span id="go_to_top"><a href="#top">返回顶部</a></span></p>
+<!-- 样式调整，难看就难看吧，已经觉得自己很屌了，叫我小瑞哥就好了，哈哈哈哈 -->
+
+<style type="text/css">
+    #go_to_top {
+        position: fixed;
+        border: 1px solid #C0C0C0;
+        padding: 5px;
+        right: 10px; 
+        top: 10px;
+    }
+    #toc {
+        position: fixed;
+        left: 1%;
+        top: 10px;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    #toc ul {
+        list-style-type: none;
+    }
+    #content {
+        margin-left: 25%;
+    }
+</style>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
