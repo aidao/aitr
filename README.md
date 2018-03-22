@@ -27,3 +27,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 	3. 完善我的钱包，我的销售页面
 	4. headmenu问题修复
 	5. bugdone部分问题修复
+  6. vue-i18n
