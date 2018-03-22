@@ -5,13 +5,13 @@
 			<div class="top">
 				<router-link to="/organizationchart/placementchart" tag="div" data-aa="1">
 					<span  @click="changeComponent('placement')">安置结构图</span>
-					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="!isShowTriangle">
+					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="isShowTriangle">
 				</router-link>
 				<router-link to="/organizationchart/recommendchart" tag="div" data-aa="0" >
 					<span @click="changeComponent('recommed')">推荐图</span>
-					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="isShowTriangle">
+					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="!isShowTriangle">
 				</router-link>
-				
+
 			</div>
 			<router-view></router-view>
 		</div>
@@ -24,7 +24,7 @@ import HeadMenu from 'components/HeadMenu/HeadMenu'
 export default {
 	data () {
 		return {
-			isShowTriangle: false,
+			isShowTriangle: true,
 			title: '安置结构图'
 		}
 	},

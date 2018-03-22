@@ -303,7 +303,7 @@ const routes = [
 	{
 		path: '/organizationchart',
 		component: OrganizationChart,
-		redirect: '/organizationchart/recommendchart',
+		redirect: '/organizationchart/placementchart',
 		children: [
 			{
 				path: 'recommendchart',

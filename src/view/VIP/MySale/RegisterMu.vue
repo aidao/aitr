@@ -6,17 +6,17 @@
 			<div class="form-content">
 				<div class="m-input">
 					<div class="title">会员账号:</div>
-					<input type="text" @blur="checkAccount(account)" v-model="account" ref="account" name="account" placeholder="输入会员账号" />
+					<input type="text" @blur="checkAccount(account)" v-model="account" ref="account" name="account" placeholder="请输入5-8位汉字或字母......" />
 				</div>
 
 				<div class="m-input">
 					<div class="title">会员姓名:</div>
-					<input type="text" @blur="checkNickname(nickname)" v-model="nickname" ref="nickname" placeholder="输入4~16个字符..." />
+					<input type="text" @blur="checkNickname(nickname)" v-model="nickname" ref="nickname" placeholder="输入2-16位汉字或字母......" />
 				</div>
 
 				<div class="m-input">
 					<div class="title">登录密码:</div>
-					<input type="password" @blur="checkPwd(pwd)" v-model="pwd" ref="pwd" placeholder="输入8位数字或字母......" />
+					<input type="password" @blur="checkPwd(pwd)" v-model="pwd" ref="pwd" placeholder="请输入8-16位字母或数字......" />
 				</div>
 
 				<div class="m-input">
@@ -26,7 +26,7 @@
 
 				<div class="m-input">
 					<div class="title">安全码:</div>
-					<input type="password" @blur="checkSafepwd(safepwd)" v-model="safepwd" ref="safepwd" placeholder="输入8位数字或字母......" />
+					<input type="password" @blur="checkSafepwd(safepwd)" v-model="safepwd" ref="safepwd" placeholder="输入8-16位英文或数字......" />
 				</div>
 
 				<div class="m-input">
