@@ -147,7 +147,7 @@ export default {
 
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	.jiangjin-detail
-		height 100%
+		min-height 100%
 		background #f2f2f2
 		.detail-container
 			
@@ -174,11 +174,11 @@ export default {
 				.tr
 					height 1.65333rem
 					line-height .853333rem
-					padding 0 .346667rem 0 .466667rem
+					padding 0 .36rem
 					&:last-child
 						text-align right
 					.td
-						padding .4rem
+						padding .4rem 0
 						&:first-child
 							float left
 						&:last-child
@@ -187,9 +187,10 @@ export default {
 				height :1.333333rem
 				color :white
 				background :#FFCA00
-				position :absolute
-				width:100%
-				bottom:0
+				position fixed
+				width 100%
+				bottom 0
+				z-index 91
 				span
 					display :block
 					line-height :1.333333rem
