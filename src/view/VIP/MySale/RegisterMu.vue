@@ -372,7 +372,7 @@ export default {
 		.modal-select-data
 			position absolute
 			top 1.04533rem
-			bottom 1.14533rem
+			bottom 1.0671113rem
 			width 100%
 			overflow auto
 			background #fff
