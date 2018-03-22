@@ -256,8 +256,7 @@ export default {
 				display :block
 				margin-top :.133333rem
 		.branch
-			position :absolute
-			left : 2.593333rem
+			margin-left : 2.593333rem
 			.branchlist
 				display :flex
 				align-items :center
@@ -265,7 +264,7 @@ export default {
 				position :relative
 				.add
 					position :absolute
-					z-index 100
+					z-index 80
 					left :-.113333rem
 					top :50%
 					margin-top :-.333333rem
@@ -281,6 +280,7 @@ export default {
 		width .8793rem
 		height .8793rem
 		margin-left .4396rem
+
 .kuai
 	box-shadow :0 .026667rem .053333rem 0 #CCCCCC
 	border-radius: .053333rem
@@ -332,4 +332,11 @@ export default {
 	background-color :#FFCA00
 .v6
 	background-color :#FD7C7C
+
+.with-footnav 
+	.recommend-chart 
+		.content
+			&>.second 
+				&>.branch
+					padding-bottom 2.0671113rem
 </style>
