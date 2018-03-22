@@ -55,22 +55,15 @@ export default {
       loadLanguageAsync(this.lang)
     },
 		toLogin () {
+      if(!this.checkUserName(this.userName)) return
+      if(!this.checkUserPwd(this.userPwd)) return
+
 			let params = new URLSearchParams()
 			params.append('account', this.userName)
 			params.append('pwd', this.userPwd)
 			Login(params).then(res => {
-				this.checkUserName(this.userName)
-				this.checkUserPwd(this.userPwd)
-				if (res.data.code === 40008) {
-					this.tip = '会员账号错误'
-					this.$refs.promptRef.show()
-				}
-				if (res.data.code === 40009) {
-					this.tip = '会员密码错误'
-					this.$refs.promptRef.show()
-				}
-				if (res.data.code === 400010) {
-					this.tip = '登陆失败'
+				if (res.data.code === 40008 || res.data.code === 40009 || res.data.code === 400010) {
+					this.tip = '用户名/密码错误，登录失败'
 					this.$refs.promptRef.show()
 				}
 				if (res.data.code === 40003) {
@@ -80,7 +73,7 @@ export default {
 				if (res.data.code === 0) {
 					localStorage.setItem('__token__', JSON.stringify(res.data.result))
 					sessionStorage.setItem('__token__', JSON.stringify(res.data.result))
-					this.tip = res.data.msg
+					this.tip = '登录成功'
 					this.$refs.promptRef.show()
 					this.$router.push('/vip')
 				}
@@ -88,21 +81,27 @@ export default {
 		},
 		checkUserName (userName) {
 			if (!userName) {
-				this.tip = '会员账号不能为空'
+				this.tip = '用户名不能为空'
 				this.$refs.promptRef.show()
+        return false
 			} else if (!/^\w{5,18}$/.test(userName)) {
-				this.tip = '用户名不合法'
+				this.tip = '用户名只允许输入5-18位字母或数字'
 				this.$refs.promptRef.show()
+        return false
 			}
+			return true
 		},
 		checkUserPwd (userpwd) {
 			if (!userpwd) {
-				this.tip = '账号密码不能为空'
+				this.tip = '密码不能为空'
 				this.$refs.promptRef.show()
+        return false
 			} else if (!/^[a-zA-Z0-9]{8,16}$/.test(userpwd)) {
-				this.tip = '账号密码不合法'
+				this.tip = '密码不合法'
 				this.$refs.promptRef.show()
+        return false
 			}
+			return true
 		}
 	},
 	components: {

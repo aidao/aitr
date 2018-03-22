@@ -36,8 +36,9 @@
 				</div>
 			</div>
 
-			<div class="submit">
-				<input type="submit" value="确定">
+			<div class="bottom">
+				<input type="submit" class="oks" value="确认修改">
+				<span class="back" @click="callbackUrl">返回</span>
 			</div>
 		</form>
 
@@ -85,6 +86,9 @@ export default {
 		this.getUserInfo()
 	},
 	methods: {
+		callbackUrl () {
+			this.$router.go(-1)
+		},
 		getUserInfo () {
 			// const level = ['一星会员', '二星会员', '三星会员', '四星会员', '五星会员', '六星会员']
 			getAccountInfo().then(res => {
@@ -127,8 +131,9 @@ export default {
 				updateNickname(paramsForUpdateNickname).then(res => {
 					this.$refs.confirmPwd.value = ''
 					if (res.data.code === 0) {
-						this.tip = res.data.msg
+						this.tip = '修改成功'
 						this.$refs.promptRef.show()
+						this.callbackUrl()
 					}
 					this.maskShow = false
 				})
@@ -144,7 +149,7 @@ export default {
 		},
 		cancel () {
 			this.maskShow = false
-      this.safePwd = ''
+			this.safePwd = ''
 			this.$refs.confirmPwd.value = ''
 		},
 		getVerifySafePwd () {
@@ -203,19 +208,19 @@ export default {
 				this.$refs.promptRef.show()
 			}
 		},
-    getByteLen(val) { //  输出汉字和字母的字符数
-      let len = 0;
-      for (let i = 0; i < val.length; i++) {
-        let a = val.charAt(i);
-        if (a.match(/[^\x00-\xff]/ig) != null) {
-          len += 2;
-        }
-        else {
-          len += 1;
-        }
-      }
-      return len;
-    }
+		getByteLen(val) { //  输出汉字和字母的字符数
+			let len = 0;
+			for (let i = 0; i < val.length; i++) {
+				let a = val.charAt(i);
+				if (a.match(/[^\x00-\xff]/ig) != null) {
+					len += 2;
+				}
+				else {
+					len += 1;
+				}
+			}
+			return len;
+		}
 	}
 }
 </script>
@@ -329,4 +334,33 @@ export default {
 					.decide
 						color #FFAE11
 						border-left 1px solid #CCC
+		.bottom
+			display :block
+			margin-top: 15px
+			width :100%
+			input
+				display block
+				width 8.72rem
+				height 1.12rem
+				box-sizing border-box
+				margin 0 auto
+				background #ffca00
+				border-radius .133333rem
+				color #fff
+				border none
+				font-size .426667rem
+			span
+				display: block
+				margin: .39999rem .6666rem
+				border-radius: .133333rem
+				text-align :center
+				font-size :.426667rem
+				color :white
+				width 8.72rem
+				height 1.12rem
+				line-height 1.12rem
+				&.back
+					background-color :#D2D2D2
+				&.oks
+					background :#FFCA00
 </style>

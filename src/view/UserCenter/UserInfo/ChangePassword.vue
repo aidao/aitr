@@ -4,6 +4,17 @@
 		<form action="" @submit.prevent="getVerifySafePwd">
 			<div class="form-content">
 				<div class="m-input">
+					<div class="title">旧的密码:</div>
+					<input
+						type="password"
+						@blur="checkConfirmPwd(confirmPwd)"
+						ref="confirmPwd"
+						name="pwd"
+						v-model="confirmPwd"
+						placeholder="输入旧密码"
+					/>
+				</div>
+				<div class="m-input">
 					<div class="title">新的密码:</div>
 					<input
 						type="password"
@@ -27,8 +38,9 @@
 				</div>
 			</div>
 
-			<div class="submit">
-				<input type="submit" value="确定">
+			<div class="bottom">
+				<input type="submit" class="oks" value="确认修改">
+				<span class="back" @click="callbackUrl">返回</span>
 			</div>
 		</form>
 
@@ -74,6 +86,9 @@ export default {
 		Prompt
 	},
 	methods: {
+		callbackUrl () {
+			this.$router.go(-1)
+		},
 		changeUserPwd () {
 			if (!this.confirmPwd) {
 				this.tip = '当前密码不能为空'
@@ -114,8 +129,9 @@ export default {
 						this.$refs.promptRef.show()
 					}
 					if (res.data.code === 0) {
-						this.tip = res.data.msg
+						this.tip = '修改成功'
 						this.$refs.promptRef.show()
+            this.callbackUrl()
 					}
 					this.maskShow = false
 					this.$refs.confirmPwd.value = ''
@@ -124,6 +140,7 @@ export default {
 		},
 		cancel () {
 			this.maskShow = false
+			this.confirmPwd = ''
 			this.$refs.confirmPwd.value = ''
 		},
 		getVerifySafePwd () {
@@ -145,7 +162,8 @@ export default {
 				this.$refs.promptRef.show()
 				return
 			}
-			this.maskShow = true
+			// this.maskShow = true
+			this.changeUserPwd()
 		},
 		checkPwd (pwd) {
 			if (!pwd) {
@@ -280,4 +298,34 @@ export default {
 					.decide
 						color #FFAE11
 						border-left 1px solid #CCC
+
+		.bottom
+			display :block
+			margin-top: 15px
+			width :100%
+			input
+				display block
+				width 8.72rem
+				height 1.12rem
+				box-sizing border-box
+				margin 0 auto
+				background #ffca00
+				border-radius .133333rem
+				color #fff
+				border none
+				font-size .426667rem
+			span
+				display: block
+				margin: .39999rem .6666rem
+				border-radius: .133333rem
+				text-align :center
+				font-size :.426667rem
+				color :white
+				width 8.72rem
+				height 1.12rem
+				line-height 1.12rem
+				&.back
+					background-color :#D2D2D2
+				&.oks
+					background :#FFCA00
 </style>

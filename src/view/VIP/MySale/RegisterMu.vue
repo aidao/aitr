@@ -214,8 +214,8 @@ export default {
 				this.tipShow('会员姓名只允许输入汉字或者字母')
 				return false
 			}
-			if (calcCharLen(nickname) < 4 || calcCharLen(nickname) > 16) {
-				this.tipShow('字符长度需要在4-16之间')
+			if (calcCharLen(nickname) < 2 || calcCharLen(nickname) > 32) {
+				this.tipShow('会员姓名只允许输入2-16位英文或汉字')
 				return false
 			}
 		},
@@ -260,7 +260,7 @@ export default {
 		checkEmail (email) {
 			// if (!/^\w+([-+.]\w+)@\w+([-.]\w+).\w+([-.]\w+)*$/.test(email)) {
 			if (!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(email)) {
-				this.tipShow('邮箱不合法')
+				this.tipShow('邮箱格式应为 英文/数字+“@”符号+英文/数字+“.”符号+com/cn/net')
 				return false
 			}
 		},

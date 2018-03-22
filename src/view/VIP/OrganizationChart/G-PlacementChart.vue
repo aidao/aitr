@@ -527,7 +527,7 @@ export default {
 							this.s = res.data.result
 						} else {
 							// 不存在
-							this.tip = '查询错误,请重新查询'
+							this.tip = '查询的账户不存在'
 							this.$refs.promptAlert.show()
 						}
 					}

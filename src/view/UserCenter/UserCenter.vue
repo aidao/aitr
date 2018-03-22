@@ -3,21 +3,21 @@
 		<HeadMenu pageTitle="个人信息"></HeadMenu>
 		<div>
 			<ul class="nav-list">
-				<router-link to="/userinfo" tag="li">
+				<li>
 					<div class="nav-label">会员账号</div>
-					<div class="arrow">></div>
-				</router-link>
+          <span class="nav-value">{{userInfo.account}}</span>
+				</li>
 				<router-link to="/userinfo" tag="li">
 					<div class="nav-label">会员名称</div>
-					<div class="arrow">></div>
+          <span class="nav-value">{{userInfo.nickname}}</span><div class="arrow">></div>
 				</router-link>
 				<li>
 					<div class="nav-label">当前级别</div>
-					<div class="arrow"></div>
+          <span class="nav-value">{{userInfo.level}}</span>
 				</li>
 				<router-link to="/userinfo" tag="li">
 					<div class="nav-label">邮箱</div>
-					<div class="arrow">></div>
+          <span class="nav-value">{{userInfo.email}}</span><div class="arrow">></div>
 				</router-link>
 			</ul>
 			<ul class="nav-list">
@@ -41,16 +41,31 @@
 
 <script>
 import HeadMenu from 'components/HeadMenu/HeadMenu'
-import {LoginOut, getMuAccount, switchAccount} from 'util/http'
+import {LoginOut, getAccountInfo} from 'util/http'
 
 export default {
 	data () {
-		return {}
+		return {
+      userInfo: {}
+    }
 	},
 	components: {
 		HeadMenu
 	},
+  mounted () {
+    this.getUserInfo()
+  },
 	methods: {
+    getUserInfo () {
+      // const level = ['一星会员', '二星会员', '三星会员', '四星会员', '五星会员', '六星会员']
+      var _this = this
+      getAccountInfo().then(res => {
+        if (res.data.code === 0) {
+          // res.data.result.level = level[res.data.result.level - 1]
+          _this.userInfo = res.data.result
+        }
+      })
+    },
 		callbackUrl () {
 			this.$router.go(-1)
 		},
