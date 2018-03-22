@@ -406,9 +406,6 @@ export default {
 					display block
 					box-sizing border-box
 					width 9.28rem
-					height 1.013333rem
-					padding-left .213333rem
-					line-height 1.013333rem
 					border-radius .133333rem
 					border 1px solid #ababab
 					color #333
