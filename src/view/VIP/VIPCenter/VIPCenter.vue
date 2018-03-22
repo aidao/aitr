@@ -104,7 +104,7 @@
             </ul>
           </div>
           <div class="map-time">
-            <span>2018-01-25</span>
+            <span v-for="(item, index) in mapTIME" :key="index">{{item.time}}</span>
           </div>
         </div>
       </div>
@@ -208,6 +208,14 @@ export default {
         { txt: '二拆' },
         { txt: '三拆' },
         { txt: '卖出' },
+      ],
+      mapTIME: [
+        { time: '2018-01-25'},
+        { time: '2.88' },
+        { time: '' },
+        { time: '' },
+        { time: '' },
+        { time: '' },
       ],
       roundList:[
         [
@@ -336,25 +344,23 @@ export default {
       position absolute
       top -12px
       left 45%
-      font-size .24rem
+      font-size .3478783rem
       color #eee
   .vip-map
     display flex
     flex-direction column
     padding 20px 0
-    .map-txt
+    .map-txt, .map-time
       display flex
+      padding 0 0 0 .3230299rem
       justify-content space-evenly
       span
         width 2.333333rem
         font-size 0.273333rem
         color #ccc
         text-align center
-     .map-time
-      span
-        position absolute
-        font-size 0.273333rem
-        color #ccc
+        &:first-child
+          text-align left
     .map-round
       width 8.426667rem
       margin 0 auto
