@@ -164,7 +164,7 @@ export default {
 		},
 		selectData (dataType) {
 			this.inSelectMode = true
-			this.selectDataType = dataType	
+			this.selectDataType = dataType
 		},
 		selectRecommend (selected) {
 			this.inSelectMode = false

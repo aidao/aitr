@@ -1,25 +1,31 @@
 <template>
 	<div class="login">
 		<header class="m-header">
-			<router-link class="logo" tag="h1" to="/index"></router-link>
-			<div class="lanChoose">简体中文<span class="arrow"></span></div>
+			<h1 class="logo"></h1>
+			<!--<div class="lanChoose">简体中文<span class="arrow"></span></div>-->
+      <select class="select-lang" v-model="lang" @change="changeLang">
+        <option selected value="ch">简体中文</option>
+        <option value="en">English</option>
+        <option value="ko">韩文</option>
+        <option value="ja">日文</option>
+      </select>
 		</header>
 		<div class="login-content">
-			<div class="login-logo">欢迎登录</div>
+			<div class="login-logo">{{ $t('login.welcome') }}</div>
 			<form action="#" class="login-form" @submit.prevent="toLogin">
 				<div class="userName">
-					<input type="text" name="username" v-model="userName" @blur="checkUserName(userName)" placeholder="请输入用户名">
+					<input type="text" name="username" v-model="userName" @blur="checkUserName(userName)" :placeholder="$t('login.tips.name')">
 				</div>
 				<div class="userPwd">
-					<input v-if="!showPwd" type="password" @blur="checkUserPwd(userPwd)" v-model="userPwd" name="userpwd" placeholder="请输入密码">
-					<input v-if="showPwd" type="text" @blur="checkUserPwd(userPwd)" v-model="userPwd" name="userpwd" placeholder="请输入密码">
+					<input v-if="!showPwd" type="password" @blur="checkUserPwd(userPwd)" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
+					<input v-if="showPwd" type="text" @blur="checkUserPwd(userPwd)" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
 				</div>
 				<div class="loginBtn">
-					<input type="submit" value="登录">
+          <input type="submit" :value="$t('common.Login')" />
 				</div>
 			</form>
 			<div class="forgetPwd">
-				<router-link to="/reset">忘记密码?</router-link>
+				<router-link to="/reset">{{ $t('login.forgotPwd') }}</router-link>
 			</div>
 		</div>
 		<prompt :tip="tip" ref="promptRef"></prompt>
@@ -29,6 +35,7 @@
 <script>
 import {Login} from 'util/http'
 import Prompt from 'components/Prompt/Prompt'
+import { loadLanguageAsync } from '../../common/js/i18n-setup.js'
 
 export default {
 	data () {
@@ -36,17 +43,19 @@ export default {
 			showPwd: false,
 			userName: '',
 			userPwd: '',
-			tip: ''
+			tip: '',
+      lang: 'ch'
 		}
 	},
 	methods: {
+	  changeLang () {
+      loadLanguageAsync(this.lang)
+    },
 		toLogin () {
 			let params = new URLSearchParams()
 			params.append('account', this.userName)
 			params.append('pwd', this.userPwd)
-
 			Login(params).then(res => {
-				console.log(res.data)
 				this.checkUserName(this.userName)
 				this.checkUserPwd(this.userPwd)
 				if (res.data.code === 40008) {

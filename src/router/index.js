@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
+import { loadLanguageAsync } from '../common/js/i18n-setup.js'
 Vue.use(Router)
 
 const Index = resolve => {
@@ -380,7 +381,7 @@ const routes = [
 			}
 		]
 	},
-	
+
 	{
 		path: '/shouyicoin',
 		component: ShouYiCoin
@@ -447,6 +448,10 @@ const router = new Router({
 })
 
 router.beforeEach ((to, from, next) => {
+  // 加载多语言
+  const lang = to.params.lang || 'ch'
+  loadLanguageAsync(lang).then(() => next())
+
 	if (to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth'&& to.path !== '/reset/new-pwd'&& to.path !== '/reset/new-safe' ) {
 		localStorage.setItem('lastVisitPath', to.path)
 
