@@ -28,3 +28,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 	4. headmenu问题修复
 	5. bugdone部分问题修复
   6. vue-i18n
+  7. url-params-search-polyfill
