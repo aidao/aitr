@@ -254,7 +254,7 @@ export default {
 		background-color :#000000
 	.content
 		position: absolute
-		top: 1rem
+		top: 1.133333rem
 		left: 0
 		right: 0
 		bottom: 0

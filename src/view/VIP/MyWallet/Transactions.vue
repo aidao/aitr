@@ -71,6 +71,7 @@ export default {
 					display :block
 					height :100%
 					width :100%
+					font-size 0.3478783rem
 			.triangle
 				height :.133333rem
 				position :absolute
