@@ -557,6 +557,7 @@ export default {
 		.search
 			width :3.733333rem
 			height :.666667rem
+			padding-right .1rem
 			border :.013333rem solid #ccc
 			border-radius :.053333rem
 			display :flex
