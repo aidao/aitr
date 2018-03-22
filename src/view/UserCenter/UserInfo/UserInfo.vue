@@ -144,6 +144,7 @@ export default {
 		},
 		cancel () {
 			this.maskShow = false
+      this.safePwd = ''
 			this.$refs.confirmPwd.value = ''
 		},
 		getVerifySafePwd () {
@@ -155,8 +156,8 @@ export default {
 				this.tip = '会员姓名只能输入汉字或字母'
 				this.$refs.promptRef.show()
 				return
-			} else if (this.userInfo.nickname.length < 4 || this.userInfo.nickname.length > 16) {
-				this.tip = '字符长度需要在4-16之间'
+			} else if (this.userInfo.nickname.length < 2 || this.userInfo.nickname.length > 16) {
+				this.tip = '会员姓名长度只允许输入2-16位字母或数字'
 				this.$refs.promptRef.show()
 				return
 			}

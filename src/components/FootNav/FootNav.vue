@@ -39,9 +39,9 @@ export default {
           path: '/mysale'
         },
         {
-          name: '奖金明细',
+          name: '交易中心',
           icon: 'bonusDetail',
-          path: '/jiangjindetail'
+          path: '/noOpn'
         },
         {
           name: '我的钱包',

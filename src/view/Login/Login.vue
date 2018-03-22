@@ -35,7 +35,7 @@
 <script>
 import {Login} from 'util/http'
 import Prompt from 'components/Prompt/Prompt'
-import { loadLanguageAsync } from '../../common/js/i18n-setup.js'
+import { i18n, loadLanguageAsync } from '../../common/js/i18n-setup.js'
 
 export default {
 	data () {
@@ -47,6 +47,9 @@ export default {
       lang: 'ch'
 		}
 	},
+  created () {
+	  this.lang = i18n.locale
+  },
 	methods: {
 	  changeLang () {
       loadLanguageAsync(this.lang)

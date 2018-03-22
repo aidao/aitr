@@ -158,7 +158,7 @@
 					<span class="dot"></span>
 					<span class="dot"></span>
 					<span class="dot"></span>
-					<div class="kuai" :class="'v'+s.rightAccount.rightAccount.level" v-if="s.rightAccount.rightAccount" @click="changeRootMap(s.rightAccount.rightAccount.uid)">
+					<div class="kuai" :class="'v'+s.rightAccount.rightAccount.level" v-if="s.rightAccount && s.rightAccount.rightAccount" @click="changeRootMap(s.rightAccount.rightAccount.uid)">
 						<div>{{s.rightAccount.rightAccount.account}}</div>
 						<div class="account">{{s.rightAccount.rightAccount.nickname}}</div>
 						<img v-if="s.rightAccount.rightAccount.level==0" src="../../../assets/v0@2x.png" alt="">
@@ -169,7 +169,7 @@
 						<img v-else-if="s.rightAccount.rightAccount.level==5" src="../../../assets/v5@2x.png" alt="">
 						<img v-else-if="s.rightAccount.rightAccount.level==6" src="../../../assets/v6@2x.png" alt="">
 					</div>
-					<div v-else-if="!s.rightAccount.rightAccount" class="more" @click="addAccount(s.rightAccount.account,'r')">
+					<div v-else-if="!(s.rightAccount && s.rightAccount.rightAccount)" class="more" @click="addAccount(s.rightAccount.account,'r')">
 						<img src="../../../assets/添加@2x.png" alt="">
 					</div>
 				</div>
@@ -183,7 +183,7 @@
 					<span class="dot"></span>
 					<span class="dot"></span>
 					<span class="dot"></span>
-					<div class="kuai" :class="'v'+s.rightAccount.leftAccount.level" v-if="s.rightAccount.leftAccount"  @click="changeRootMap(s.rightAccount.leftAccount.uid)">
+					<div class="kuai" :class="'v'+s.rightAccount.leftAccount.level" v-if="s.rightAccount && s.rightAccount.leftAccount"  @click="changeRootMap(s.rightAccount.leftAccount.uid)">
 						<div>{{s.rightAccount.leftAccount.account}}</div>
 						<div class="account">{{s.rightAccount.leftAccount.nickname}}</div>
 						<img v-if="s.rightAccount.leftAccount.level==0" src="../../../assets/v0@2x.png" alt="">
@@ -194,7 +194,7 @@
 						<img v-else-if="s.rightAccount.leftAccount.level==5" src="../../../assets/v5@2x.png" alt="">
 						<img v-else-if="s.rightAccount.leftAccount.level==6" src="../../../assets/v6@2x.png" alt="">
 					</div>
-					<div v-else-if="!s.rightAccount.leftAccount" class="more"  @click="addAccount(s.rightAccount.account,'l')">
+					<div v-else-if="!(s.rightAccount && s.rightAccount.leftAccount)" class="more"  @click="addAccount(s.rightAccount.account,'l')">
 						<img src="../../../assets/添加@2x.png" alt="">
 					</div>
 				</div>
@@ -481,7 +481,7 @@ export default {
 		addAccount (parentId, direction) {
 			console.log(parentId, direction)
 			// this.$router.push({name: 'RegisterMu', params: {parentId, direction}})
-			
+
 			if(this.selectMode) {
 				this.$emit('selectSupAccount', {parentId: parentId, direction:direction})
 			} else {
@@ -509,6 +509,10 @@ export default {
 				})
 			}
 		},
+    tipShow (msg) {
+      this.tip = msg
+      this.$refs.promptAlert.show()
+    },
 		searchAccountMap () {
 			if (this.searchAccount) {
 				axios.get(searchPosMap, {
@@ -528,7 +532,9 @@ export default {
 						}
 					}
 				})
-			}
+			} else {
+        this.tipShow('请输入要查找的会员账号')
+      }
 		}
 	}
 }

@@ -220,6 +220,10 @@ export default {
 			}
 		},
 		checkPwd (pwd) {
+      if (!pwd) {
+        this.tipShow('登录密码不能为空')
+        return false
+      }
 			if (!/^[0-9a-zA-Z]+$/.test(pwd)) {
 				this.tipShow('登录密码只允许输入字母或者数字')
 				return false
@@ -330,7 +334,7 @@ export default {
 				if (res.data.code === 0) {
 					this.tipShow(res.data.msg)
 					this.$store.commit('emptyTempInf')
-					this.$router.push({path: '/index'})
+					this.callbackUrl()
 				} else {
 
 					this.tipShow(res.data.msg)
