@@ -57,4 +57,5 @@
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	#app
 		height 100%
+		overflow hidden
 </style>

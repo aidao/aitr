@@ -1,22 +1,22 @@
 <template>
 	<div class="registermu">
-		<HeadMenu pageTitle="注册母账户"></HeadMenu>
+		<HeadMenu :pageTitle="pageTitle"></HeadMenu>
 		<div style="height:100%; overflow: auto">
 		<form action="" @submit.prevent="registerMuAcc">
 			<div class="form-content">
 				<div class="m-input">
 					<div class="title">会员账号:</div>
-					<input type="text" @blur="checkAccount(account)" v-model="account" ref="account" name="account" placeholder="请输入5-8位汉字或字母......" />
+					<input type="text" @blur="validate('account', account)" v-model="account" ref="account" name="account" placeholder="请输入5-8位汉字或字母......" />
 				</div>
 
 				<div class="m-input">
 					<div class="title">会员姓名:</div>
-					<input type="text" @blur="checkNickname(nickname)" v-model="nickname" ref="nickname" placeholder="输入2-16位汉字或字母......" />
+					<input type="text" @blur="validate('nickname', nickname)" v-model="nickname" ref="nickname" placeholder="输入2-16位汉字或字母......" />
 				</div>
 
 				<div class="m-input">
 					<div class="title">登录密码:</div>
-					<input type="password" @blur="checkPwd(pwd)" v-model="pwd" ref="pwd" placeholder="请输入8-16位字母或数字......" />
+					<input type="password" @blur="validate('pwd', pwd)" v-model="pwd" ref="pwd" placeholder="请输入8-16位字母或数字......" />
 				</div>
 
 				<div class="m-input">
@@ -26,7 +26,7 @@
 
 				<div class="m-input">
 					<div class="title">安全码:</div>
-					<input type="password" @blur="checkSafepwd(safepwd)" v-model="safepwd" ref="safepwd" placeholder="输入8-16位英文或数字......" />
+					<input type="password" @blur="validate('safepwd', safepwd)" v-model="safepwd" ref="safepwd" placeholder="输入8-16位英文或数字......" />
 				</div>
 
 				<div class="m-input">
@@ -61,7 +61,7 @@
 
 				<div class="m-input">
 					<div class="title">邮箱:</div>
-					<input type="mail" @blur="checkEmail(email)" v-model="email" ref="email" name="mail" placeholder="输入您的邮箱地址" />
+					<input type="mail" @blur="validate('email', email)" v-model="email" ref="email" name="mail" placeholder="输入您的邮箱地址" />
 				</div>
 
 				<div class="m-input">
@@ -87,7 +87,7 @@
 
 <script>
 import {registerMu, getUSDTBalance, verifyRefAccount} from 'util/http'
-import {calcCharLen} from 'util/util'
+import {calcCharLen, validator} from 'util/util'
 
 import HeadMenu from '@/components/HeadMenu/HeadMenu'
 import Prompt from '@/components/Prompt/Prompt'
@@ -112,7 +112,8 @@ export default {
 			balance: 0,
 			showJieDian: false,
 			inSelectMode: false,
-			selectDataType: null
+			selectDataType: null,
+      pageTitle: '注册母账户'
 		}
 	},
 	components: {
@@ -165,10 +166,13 @@ export default {
 		selectData (dataType) {
 			this.inSelectMode = true
 			this.selectDataType = dataType
+      this.pageTitle = dataType === 'recommend' ? '推荐图' : '安置结构图'
 		},
 		selectRecommend (selected) {
 			this.inSelectMode = false
 			this.refaccount = selected
+      this.detection()
+      this.pageTitle = '注册母账户'
 		},
 		selectSupAccount (selected) {
 			this.inSelectMode = false
@@ -176,6 +180,7 @@ export default {
 				this.direction = selected.direction === 'l' ? '左区' : '右区'
 			}
 			this.supaccount = selected.parentId
+      this.pageTitle = '注册母账户'
 		},
 		detection(){  //  检测推荐人获取接点图
 			let params = new URLSearchParams()
@@ -199,40 +204,52 @@ export default {
 			}
 
 		},
-		checkAccount (account) {
-			if (!/^[0-9a-zA-Z]+$/.test(account)) {
-				this.tipShow('会员账号只允许输入英文或者数字')
-				return false
-			}
-			if (account.length > 18 || account.length < 5) {
-				this.tipShow('字符长度需要在5-18之间')
-				return false
-			}
-		},
-		checkNickname (nickname) {
-			if (!/^[a-zA-Z\u4E00-\u9F45\uac00-\ud7ff\u0800-\u4e00]+$/.test(nickname)) {
-				this.tipShow('会员姓名只允许输入汉字或者字母')
-				return false
-			}
-			if (calcCharLen(nickname) < 2 || calcCharLen(nickname) > 32) {
-				this.tipShow('会员姓名只允许输入2-16位英文或汉字')
-				return false
-			}
-		},
-		checkPwd (pwd) {
-      if (!pwd) {
-        this.tipShow('登录密码不能为空')
+    validate (fieldName, fieldValue) {
+		  const options = {
+		    account: {
+		      rules: ['enOrNumber', { type: 'size', min: 5, max: 18 }],
+          msg: {
+            enOrNumber: '会员账号只允许输入英文或者数字',
+            size: '字符长度需要在5-18之间'
+          }
+        },
+        nickname: {
+          rules: ['cnOrEn', { type: 'size', min: 2, max: 16 }],
+          msg: {
+            cnOrEn: '会员姓名只允许输入汉字或者字母',
+            size: '会员姓名只允许输入2-16位字母或汉字'
+          }
+        },
+        pwd: {
+          rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
+          msg: {
+            required: '登录密码不能为空',
+            enOrNumber: '登录密码只允许输入8-16位英文或数字',
+            size: '登录密码只允许输入8-16位英文或数字'
+          }
+        },
+        safepwd: {
+          rules: ['enOrNumber', { type: 'size', min: 8, max: 16 }],
+          msg: {
+            enOrNumber: '安全码只允许输入8-16位英文或数字',
+            size: '安全码只允许输入8-16位英文或数字'
+          }
+        },
+        email: {
+          rules: ['email'],
+          msg: {
+            email: '邮箱格式应为 英文/数字+“@”符号+英文/数字+“.”符号+com/cn/net'
+          }
+        }
+      }
+      const fieldOptions = options[fieldName]
+      const res = validator.check(fieldValue, fieldOptions.rules)
+      if (!res.valid) {
+		    this.tipShow(fieldOptions.msg[res.err])
         return false
       }
-			if (!/^[0-9a-zA-Z]+$/.test(pwd)) {
-				this.tipShow('登录密码只允许输入字母或者数字')
-				return false
-			}
-			if (pwd.length < 8 || pwd.length > 16) {
-				this.tipShow('只允许输入8-16位英文或数字')
-				return false
-			}
-		},
+      return true
+    },
 		checkCfmPwd (cfmPwd) {
 			let password = this.$refs.pwd.value
 			if (password !== cfmPwd) {
@@ -240,27 +257,10 @@ export default {
 				return false
 			}
 		},
-		checkSafepwd (safepwd) {
-			if (!/^[0-9a-zA-Z]+$/.test(safepwd)) {
-				this.tipShow('安全码只允许输入字母或者数字')
-				return false
-			}
-			if (safepwd.length < 8 || safepwd.length > 16) {
-				this.tipShow('只允许输入8-16位英文或数字')
-				return false
-			}
-		},
 		checkCfmSafepwd (cfmSafepwd) {
 			let safeword = this.$refs.safepwd.value
 			if (safeword !== cfmSafepwd) {
 				this.tipShow('两次输入的安全码不同')
-				return false
-			}
-		},
-		checkEmail (email) {
-			// if (!/^\w+([-+.]\w+)@\w+([-.]\w+).\w+([-.]\w+)*$/.test(email)) {
-			if (!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(email)) {
-				this.tipShow('邮箱格式应为 英文/数字+“@”符号+英文/数字+“.”符号+com/cn/net')
 				return false
 			}
 		},
@@ -295,6 +295,18 @@ export default {
 				this.tipShow('邮箱不能为空')
 				return false
 			}
+
+			const fields = ['account', 'nickname', 'pwd', 'safepwd', 'email']
+      let isFormValid = true
+			for(let i = 0; i < fields.length; i++) {
+			  if(!this.validate(fields[i], this[fields[i]])) {
+          isFormValid = false
+          this.$refs[fields[i]].focus()
+			    break;
+        }
+      }
+      if(!isFormValid) return
+
 			let params = new URLSearchParams()
 			params.append('account', this.$refs.account.value)
 			params.append('nickname', this.$refs.nickname.value)
@@ -305,32 +317,6 @@ export default {
 			params.append('position', this.$refs.position.value === '左区' ? 0 : 1)
 			params.append('ref_account', this.refaccount)
 			registerMu(params).then(res => {
-				// if (res.data.code === 40001) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40002) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40003) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40004) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40005) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40006) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40007) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 40028) {
-				// 	this.tipShow(res.data.msg)
-				// } else if (res.data.code === 10005) {
-				// 	this.tipShow(res.data.msg)
-				// 	this.$router.push({path: '/login'})
-				// } else if (res.data.code === 0) {
-				// 	this.tipShow(res.data.msg)
-				// 	this.$store.commit('emptyTempInfo')
-				// 	this.$router.push({path: '/index'})
-				// } else if (res.data.code === 40008) {
-				// 	this.tipShow(res.data.msg)
-				// }
 				if (res.data.code === 0) {
 					this.tipShow(res.data.msg)
 					this.$store.commit('emptyTempInf')
@@ -346,7 +332,8 @@ export default {
 			this.$refs.promptAlert.show()
 		},
 		saveInfo () {
-			let obj = {
+		  // 不保存模板信息
+			/*let obj = {
 				account: this.account,
 				nickname: this.nickname,
 				pwd: this.pwd,
@@ -355,7 +342,7 @@ export default {
 				cfmSafepwd: this.cfmSafepwd,
 				email: this.email
 			}
-			this.$store.commit('saveRegisterTempInfo', obj)
+			this.$store.commit('saveRegisterTempInfo', obj)*/
 		}
 	}
 }
@@ -363,16 +350,11 @@ export default {
 
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	.registermu
-		position absolute
-		overflow hidden
-		width 100%
-		top 0
-		bottom 0
 		background #f2f2f2
 		.modal-select-data
 			position absolute
 			top 1.04533rem
-			bottom 1.0671113rem
+			bottom 0
 			width 100%
 			overflow auto
 			background #fff
