@@ -148,7 +148,7 @@
 				</div>
 			</div>
 			<div class="three" v-if="s.leftAccount || s.rightAccount">
-				<div class="branchlist t1" vif="s.rightAccount">
+				<div class="branchlist t1" v-if="s.rightAccount">
 					<span class="rl">R</span>
 					<span class="dot"></span>
 					<span class="dot"></span>
@@ -509,10 +509,10 @@ export default {
 				})
 			}
 		},
-    tipShow (msg) {
-      this.tip = msg
-      this.$refs.promptAlert.show()
-    },
+		tipShow (msg) {
+			this.tip = msg
+			this.$refs.promptAlert.show()
+		},
 		searchAccountMap () {
 			if (this.searchAccount) {
 				axios.get(searchPosMap, {
@@ -533,8 +533,8 @@ export default {
 					}
 				})
 			} else {
-        this.tipShow('请输入要查找的会员账号')
-      }
+				this.tipShow('请输入要查找的会员账号')
+			}
 		}
 	}
 }
@@ -558,8 +558,9 @@ export default {
 			width :3.733333rem
 			height :.666667rem
 			padding-right .1rem
-			border :.013333rem solid #ccc
-			border-radius :.053333rem
+			box-sizing border-box
+			border : 1px solid #ccc
+			border-radius :2px
 			display :flex
 			align-items :center
 			color :#ABABAB

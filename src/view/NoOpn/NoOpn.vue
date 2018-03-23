@@ -23,7 +23,7 @@ export default {
 	mounted () {
 	  this.$store.commit('commonPrompt', this.obj)
 
-    this.$router.go(-1)
+    // this.$router.go(-1)
 	}
 }
 </script>
