@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-      <p>重置密码</p>
+      <p>忘记密码</p>
       <div class="input-box">
         <input type="text" placeholder="请输入用户名" v-model="account" @blur="checkAccount(account)">
       </div>
