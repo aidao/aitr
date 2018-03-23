@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<router-view :class="{'with-footnav app-content': hasLogined && !isIndexPage}" />
-		<FootNav v-if="hasLogined && !isIndexPage"></FootNav>
+		<router-view :class="{'with-footnav app-content': hasLogined && !isIndexPage, 'hide-foot-nav': hideFootNav }" />
+		<FootNav v-if="hasLogined && !hideFootNav"></FootNav>
 		<prompt :tip="prompt.tip" v-show="prompt.show"></prompt>
 	</div>
 </template>
@@ -16,7 +16,8 @@
 		return {
 			show:undefined,
 			hasLogined: false,
-			isIndexPage: false
+			isIndexPage: false,
+			hideFootNav: false
 		}
 	},
 	mounted() {
@@ -33,6 +34,7 @@
 		},
 		$route (state) {
 			this.isIndexPage = state.path === '/index'
+			this.hideFootNav = ['/index', '/registermu'].indexOf(state.path) > -1 || state.path.indexOf('cointransfer') > -1
 			this.checkLogin()
 		}
 	} ,

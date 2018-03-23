@@ -1,18 +1,24 @@
 <template>
 	<div class="earning-transfer">
 		<div class="content">
-			<div class="center" v-if="types == 1">
-				<div class="tips">
+			<div class="center" >
+				<div class="tips" v-if="types == 1">
 					收益币余额:
 				</div>
-				<div class="values">
+				<div class="values" v-if="types == 1">
 					{{walletData.earningsCoin}}
 				</div>
+        <div class="tips" v-if="types == 0">
+          注册币余额:
+        </div>
+        <div class="values" v-if="types == 0">
+          {{walletData.registerCoin}}
+        </div>
 				<div class="tips">
 					接收会员账号:
 				</div>
 				<div class="valuess">
-					<input type="text" placeholder="输入收款会员编号" v-model="transformInfo.userId">
+					<input type="text" placeholder="输入收款会员编号" @blur="validate('userId', transformInfo.userId)" v-model="transformInfo.userId">
 				</div>
 				<div class="tips">
 					转出积分数量:
@@ -21,37 +27,12 @@
 					<input
 						type="tel"
 						placeholder="输入转出积分数量"
-						@blur="checkIntegral(transformInfo.coinNum)"
+						@blur="validate('coinNum', transformInfo.coinNum)"
 						v-model="transformInfo.coinNum"
 					>
 				</div>
 			</div>
-			<div class="center" v-if="types == 0">
-				<div class="tips">
-					注册币余额:
-				</div>
-				<div class="values">
-					{{walletData.registerCoin}}
-				</div>
-				
-				<div class="tips">
-					接收会员账号:
-				</div>
-				<div class="valuess">
-					<input type="text" placeholder="输入收款会员编号" v-model="transformInfo.userId">
-				</div>
-				<div class="tips">
-					转出积分数量:
-				</div>
-				<div class="valuess">
-					<input
-						type="tel"
-						placeholder="输入转出积分数量"
-						@blur="checkIntegral(transformInfo.coinNum)"
-						v-model="transformInfo.coinNum"
-					>
-				</div>
-			</div>
+
 			<div class="bottom">
 				<span class="oks" @click="comfirmTransfer">确定</span>
 				<span class="back" @click="callbackUrl">返回</span>
@@ -75,6 +56,8 @@ import Prompt from 'components/Prompt/Prompt'
 import {getToken, getByWallet, transferRegCoinUrl, transferEarCoinUrl, checkSafeCodeUrl} from '../../../api/GApi'
 import axios from 'axios'
 import GAlert from 'components/GAlert/GAlert'
+import { validator } from 'util/util'
+
 export default {
 	data () {
 		return {
@@ -120,7 +103,7 @@ export default {
 	},
 	methods: {
 		callbackUrl () {
-			this.$router.go(-1)
+			this.$router.push('/mywallet')
 		},
 		initPage () {
 			let types = parseInt(this.$route.params.typeid)
@@ -130,6 +113,14 @@ export default {
 				this.title = '收益币'
 			}
 			this.types = types
+
+      // 清空数据
+      this.transformInfo = {
+        userId: null,
+        coinNum: null
+      }
+      this.safeCode = null
+
 			// 获取钱包余额
 			axios.get(getByWallet, {headers: getToken()}).then(res => {
 				// 没获取到数据，所以先不填
@@ -139,12 +130,17 @@ export default {
 				}
 			})
 		},
+    showTips (tip) {
+		  this.tip = tip
+      this.$refs.promptAlert.show()
+    },
 		// 监听安全码验证
 		safeCodeOptions (flag) {
 			console.log(flag)
 			this.showSafeCodeAlert = false
 			if (flag === 'cancal') {
 				// 取消
+        this.safeCode = ''
 			} else {
 				// 确认
 				if (!this.safeCode) {
@@ -169,6 +165,7 @@ export default {
 						} else if (this.title === '收益币') {
 							url = transferEarCoinUrl
 						}
+            this.safeCode = ''
 						// 获取成功，获取转账连接需要的参数
 						let params = new URLSearchParams()
 						params.append('transfer_account', this.transformInfo.userId)
@@ -184,13 +181,13 @@ export default {
 								this.$refs.promptAlert.show()
 								this.$router.push(`/coininfo/${this.$route.params.typeid}`)
 							} else {
-								/*if (res.data.code === 40009) {
-									this.tip = '输入的会员编号不存在'
-									this.$refs.promptAlert.show()
-									return
-								}*/
-								this.tip = '转账失败'
-								this.$refs.promptAlert.show()
+								if (res.data.code === 40009) {
+                  this.showTips('接收会员账号不存在或')
+								} else if (res.data.code === 40014) {
+								  this.showTips('账号没有推荐关系')
+                } else {
+                  this.showTips(res.data.msg)
+                }
 							}
 						})
 					} else {
@@ -203,52 +200,48 @@ export default {
 			}
 		},
 		comfirmTransfer () {
-			/*if (!this.transformInfo.userId) {
-				this.tip = '会员编号不能为空'
-				this.$refs.promptAlert.show()
-				return
-			}*/
-			if (!this.transformInfo.coinNum) {
-        this.tip = '转账积分数量不能为空'
-				this.$refs.promptAlert.show()
-				return
-			} else if (!/^[0-9]*[1-9][0-9]*$/.test(this.transformInfo.coinNum) || this.transformInfo.coinNum === 0) {
-        this.tip = '转出数量只能为正整数'
-        this.$refs.promptAlert.show()
-				return
-			} else if (this.transformInfo.coinNum > this.walletData.registerCoin) {
-        this.tip = '注册币余额不足'
-        this.$refs.promptAlert.show()
+      if(!this.validate('userId', this.transformInfo.userId)) return
+      if(!this.validate('coinNum', this.transformInfo.coinNum)) return
+			if (this.transformInfo.coinNum > this.walletData.registerCoin) {
+        this.showTips('注册币余额不足')
 				return
 			} else if (this.transformInfo.coinNum >= 100000000) {
-        this.tip = '转出积分数量不能超出1亿'
-        this.$refs.promptAlert.show()
+        this.showTips('转出积分数量不能超出1亿')
 				return
 			}
 			this.showSafeCodeAlert = true
 		},
-		checkIntegral (integral) {
-			if (!integral) {
-        this.tip = '转账积分数量不能为空'
-        this.$refs.promptAlert.show()
-			} else if (!/^[0-9]*[1-9][0-9]*$/.test(integral) || integral === 0) {
-        this.tip = '转出数量只能为正整数'
-        this.$refs.promptAlert.show()
-			} else if (integral > this.walletData.registerCoin) {
-        this.tip = '注册币余额不足'
-        this.$refs.promptAlert.show()
-			} else if (integral >= 100000000) {
-        this.tip = '转出积分数量不能超出1亿'
-        this.$refs.promptAlert.show()
-			}
-		}
+    validate (fieldName, fieldValue) {
+      const options = {
+        userId: {
+          rules: ['required'],
+          msg: {
+            required: '接收会员账号不能为空'
+          }
+        },
+        coinNum: {
+          rules: ['required', 'positiveInt'],
+          msg: {
+            required: '转账积分数量不能为空',
+            positiveInt: '转出数量只能为正整数'
+          }
+        }
+      }
+      const fieldOptions = options[fieldName]
+      const res = validator.check(fieldValue, fieldOptions.rules)
+      if (!res.valid) {
+        this.showTips(fieldOptions.msg[res.err])
+        return false
+      }
+      return true
+    }
 	}
 }
 </script>
 
 <style scoped lang="stylus">
 .earning-transfer
-	height 100%
+	/*height 100%*/
 	.header
 		height: 1.306667rem
 		background-color :#000000

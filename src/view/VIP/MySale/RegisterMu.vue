@@ -87,7 +87,7 @@
 
 <script>
 import {registerMu, getUSDTBalance, verifyRefAccount} from 'util/http'
-import {calcCharLen, validator} from 'util/util'
+import {validator} from 'util/util'
 
 import HeadMenu from '@/components/HeadMenu/HeadMenu'
 import Prompt from '@/components/Prompt/Prompt'
