@@ -54,7 +54,7 @@ export const validator = {
     return /^[a-zA-Z\u4E00-\u9F45\uac00-\ud7ff\u0800-\u4e00]+$/.test(value)
   },
   email: value => {
-    return /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(value)
+    return /^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(value)
   },
   positiveInt: value => {
     return /^[0-9]*[1-9][0-9]*$/.test(value) && value !== 0

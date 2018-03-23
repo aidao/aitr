@@ -238,7 +238,7 @@ const resetNewSafe = resolve => {
 const routes = [
 	{
 		path: '/',
-		redirect: 'index'
+		redirect: 'vip'
 	},
 	{
 		path: '/index',
@@ -448,6 +448,14 @@ const router = new Router({
 })
 
 router.beforeEach ((to, from, next) => {
+  if(to.path === '/noOpn') {
+    router.app.$store.commit('commonPrompt', {
+      show: true,
+      tip: '暂未开放'
+    })
+    next(false)
+    return
+  }
   // 加载多语言
   const lang = i18n.locale || 'ch'
   loadLanguageAsync(lang).then(() => next())

@@ -80,7 +80,7 @@ export default {
 	data () {
 		return {
 			imgIcon: '../../../assets/减号@2x.png',
-			showChild: true,
+			showChild: false,
 			refMapData: {},
 			accountName: '',
 			tip: ''
@@ -333,10 +333,10 @@ export default {
 .v6
 	background-color :#FD7C7C
 
-.with-footnav 
-	.recommend-chart 
+.with-footnav
+	.recommend-chart
 		.content
-			&>.second 
+			&>.second
 				&>.branch
 					padding-bottom 2.0671113rem
 </style>
