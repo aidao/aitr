@@ -7,7 +7,7 @@
 					<div class="nav-label">会员账号</div>
           <span class="nav-value">{{userInfo.account}}</span>
 				</li>
-				<router-link to="/userinfo" tag="li">
+				<router-link to="/changeuserinfo/nickname" tag="li">
 					<div class="nav-label">会员名称</div>
           <span class="nav-value">{{userInfo.nickname}}</span><div class="arrow">></div>
 				</router-link>
@@ -15,7 +15,7 @@
 					<div class="nav-label">当前级别</div>
           <span class="nav-value">{{userInfo.level}}</span>
 				</li>
-				<router-link to="/userinfo" tag="li">
+				<router-link to="/changeuserinfo/email" tag="li">
 					<div class="nav-label">邮箱</div>
           <span class="nav-value">{{userInfo.email}}</span><div class="arrow">></div>
 				</router-link>
@@ -44,18 +44,18 @@ import HeadMenu from 'components/HeadMenu/HeadMenu'
 import {LoginOut, getAccountInfo} from 'util/http'
 
 export default {
-	data () {
-		return {
+  data () {
+    return {
       userInfo: {}
     }
-	},
-	components: {
-		HeadMenu
-	},
+  },
+  components: {
+    HeadMenu
+  },
   mounted () {
     this.getUserInfo()
   },
-	methods: {
+  methods: {
     getUserInfo () {
       // const level = ['一星会员', '二星会员', '三星会员', '四星会员', '五星会员', '六星会员']
       var _this = this
@@ -66,23 +66,23 @@ export default {
         }
       })
     },
-		callbackUrl () {
-			this.$router.go(-1)
-		},
-		logOut () {
-			LoginOut().then(res => {
-				if (res.data.code === 10005) {
-					this.$router.push('/index')
-				}
-				if (res.data.code === 0) {
-					localStorage.removeItem('__token__')
-					// sessionStorage.removeItem('__token__')
-					sessionStorage.clear()
-					this.$router.push('/index')
-				}
-			})
-		},
-	}
+    callbackUrl () {
+      this.$router.go(-1)
+    },
+    logOut () {
+      LoginOut().then(res => {
+        if (res.data.code === 10005) {
+          this.$router.push('/index')
+        }
+        if (res.data.code === 0) {
+          localStorage.removeItem('__token__')
+          // sessionStorage.removeItem('__token__')
+          sessionStorage.clear()
+          this.$router.push('/index')
+        }
+      })
+    }
+  }
 }
 </script>
 

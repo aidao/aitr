@@ -39,6 +39,11 @@ const UserInfo = resolve => {
 		resolve(module)
 	})
 }
+const ChangeUserInfo = resolve => {
+	import('view/UserCenter/UserInfo/ChangeUserInfo').then(module => {
+		resolve(module)
+	})
+}
 const ChangePassword = resolve => {
 	import('view/UserCenter/UserInfo/ChangePassword').then(module => {
 		resolve(module)
@@ -381,7 +386,6 @@ const routes = [
 			}
 		]
 	},
-
 	{
 		path: '/shouyicoin',
 		component: ShouYiCoin
@@ -427,17 +431,19 @@ const routes = [
 		path: '/noOpn',
 		component: NoOpn
 	},
-  {
+	{
 		path: '/reset',
 		component: resetPwd
 	},
-  {
+	{
 		path: '/reset/auth',
 		component: resetAuth
-	},{
+	},
+	{
 		path: '/reset/new-pwd',
 		component: resetNewPwd
-	},{
+	},
+	{
 		path: '/reset/new-safe',
 		component: resetNewSafe
 	}
@@ -448,19 +454,19 @@ const router = new Router({
 })
 
 router.beforeEach ((to, from, next) => {
-  if(to.path === '/noOpn') {
-    router.app.$store.commit('commonPrompt', {
-      show: true,
-      tip: '暂未开放'
-    })
-    next(false)
-    return
-  }
-  // 加载多语言
-  const lang = i18n.locale || 'ch'
-  loadLanguageAsync(lang).then(() => next())
+	if(to.path === '/noOpn') {
+		router.app.$store.commit('commonPrompt', {
+			show: true,
+			tip: '暂未开放'
+		})
+		next(false)
+		return
+	}
+	// 加载多语言
+	const lang = i18n.locale || 'ch'
+	loadLanguageAsync(lang).then(() => next())
 
-	if (to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth'&& to.path !== '/reset/new-pwd'&& to.path !== '/reset/new-safe' ) {
+	if (to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth' && to.path !== '/reset/new-pwd' && to.path !== '/reset/new-safe') {
 		localStorage.setItem('lastVisitPath', to.path)
 
 		if (!sessionStorage.getItem('__token__')) {
