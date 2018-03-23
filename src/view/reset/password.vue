@@ -82,14 +82,15 @@ import Prompt from 'components/Prompt/Prompt'
         content ''
         width .506667rem
         height .506667rem
-        top .253333rem
+        top .713333rem
         left .2rem
+        margin-top -0.45rem
         background url('../Login/用户-2@0.96x.png') center center / .426667rem .458667rem no-repeat
     input
       flex 1
       border-radius 6px
       border 1px solid #ccc
-      font-size 18px
+      font-size .373333rem
       line-height 1
       padding 6px 12px
       padding-left .726667rem

@@ -209,7 +209,7 @@
           border-radius 6px
           background-color #FFCA00
           color: #fff
-          font-size 18px
+          font-size .373333rem
           line-height 1
           border none
           margin 8px 0 8px 8px
@@ -220,7 +220,7 @@
       flex 1
       border-radius 6px
       border 1px solid #ccc
-      font-size 18px
+      font-size .373333rem
       line-height 1
       padding 6px 12px
       margin 8px 0

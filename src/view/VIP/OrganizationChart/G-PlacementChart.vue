@@ -552,7 +552,6 @@ export default {
 		box-sizing :border-box
 		color:#666
 		line-height :.666667rem
-		height :1.433333rem
 		justify-content :center
 		.search
 			width :3.733333rem
