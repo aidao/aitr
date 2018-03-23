@@ -34,7 +34,7 @@
 		},
 		$route (state) {
 			this.isIndexPage = state.path === '/index'
-			this.hideFootNav = ['/index', '/registermu'].indexOf(state.path) > -1 || state.path.indexOf('cointransfer') > -1
+			this.hideFootNav = ['/index', '/registermu', '/usercenter'].indexOf(state.path) > -1 || state.path.indexOf('cointransfer') > -1 || state.path.indexOf('changeuserinfo') > -1
 			this.checkLogin()
 		}
 	} ,
