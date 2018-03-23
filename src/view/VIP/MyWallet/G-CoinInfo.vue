@@ -147,10 +147,9 @@ export default {
 
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	.jiangjin-detail
-		min-height 100%
 		background #f2f2f2
 		.detail-container
-			
+
 			.title
 				height .96rem
 				line-height .96rem
