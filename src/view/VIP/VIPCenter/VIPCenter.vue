@@ -286,7 +286,7 @@ export default {
     display flex
     flex-direction column
     color #eee
-    font-size .18rem
+    font-size .319rem
     .data-bottom
 
     .data-top
@@ -304,6 +304,7 @@ export default {
           justify-content space-between
           >p
             margin 4px 0
+            font-size .266rem
         .box-color
           display flex
           /*justify-content center*/
