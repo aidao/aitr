@@ -2,41 +2,39 @@
 	<div class="changepwd">
 		<HeadMenu pageTitle="修改密码"></HeadMenu>
 		<form action="" @submit.prevent="getVerifySafePwd">
-			<div class="form-content">
-				<div class="m-input">
-					<div class="title">旧的密码:</div>
-					<input
-						type="password"
-						@blur="checkConfirmPwd(confirmPwd)"
-						ref="confirmPwd"
-						name="pwd"
-						v-model="confirmPwd"
-						placeholder="输入旧密码"
-					/>
-				</div>
-				<div class="m-input">
-					<div class="title">新的密码:</div>
-					<input
-						type="password"
-						@blur="checkPwd(pwd)"
-						ref="pwd"
-						name="pwd"
-						v-model="pwd"
-						placeholder="输入新的密码"
-					/>
-				</div>
-
-				<div class="m-input">
-					<div class="title">确认新密码:</div>
-					<input
-						type="password"
-						ref="verifyPwd"
-						placeholder="再次输入新密码"
-						v-model="cfmPwd"
-						@blur="checkCfmPwd(cfmPwd)"
-					/>
-				</div>
-			</div>
+      <div>
+        <ul class="nav-list">
+          <li>
+            <input
+              type="password"
+              @blur="checkConfirmPwd(confirmPwd)"
+              ref="confirmPwd"
+              name="pwd"
+              v-model="confirmPwd"
+              placeholder="输入旧密码"
+            />
+          </li>
+          <li>
+            <input
+              type="password"
+              @blur="checkPwd(pwd)"
+              ref="pwd"
+              name="pwd"
+              v-model="pwd"
+              placeholder="输入新的密码"
+            />
+          </li>
+          <li>
+            <input
+              type="password"
+              ref="verifyPwd"
+              placeholder="再次输入新密码"
+              v-model="cfmPwd"
+              @blur="checkCfmPwd(cfmPwd)"
+            />
+          </li>
+        </ul>
+      </div>
 
 			<div class="bottom">
 				<input type="submit" class="oks" value="确认修改">
@@ -328,4 +326,13 @@ export default {
 					background-color :#D2D2D2
 				&.oks
 					background :#FFCA00
+</style>
+
+<style>
+  .nav-list input{
+    width: 100%;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
 </style>
