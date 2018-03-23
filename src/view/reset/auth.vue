@@ -8,6 +8,30 @@
         <input type="text" placeholder="请输入邮箱验证码" v-model="verifyCode">
         <button type="button" @click="getAuth" :disabled="btndisabled">{{bthTxt}}</button>
       </div>
+      <input
+        type="password"
+        placeholder="输入新密码，仅限8-16位英文或者数字"
+        v-model="pwd"
+        @blur="validate('pwd', pwd)"
+        ref="pwd">
+      <input
+        type="password"
+        placeholder="确认新密码，与新密码相同"
+        v-model="cfmPwd"
+        @blur="checkCfmPwd(cfmPwd)"
+        ref="cfmPwd">
+      <input
+        type="password"
+        placeholder="输入新安全码，仅限8-16位英文或者数字"
+        v-model="safepwd"
+        @blur="validate('safepwd', safepwd)"
+        ref="safepwd">
+      <input
+        type="password"
+        placeholder="确认新安全码，与新安全码相同"
+        v-model="cfmSafepwd"
+        @blur="checkCfmSafepwd(cfmSafepwd)"
+        ref="cfmSafepwd">
     </div>
     <button type="button" @click="onSubmit">下一步</button>
     <prompt :tip="tip" ref="promptAlert"></prompt>
@@ -25,6 +49,10 @@
         account: undefined,
         userEmail: undefined,
         verifyCode: undefined,
+        pwd: '',
+        cfmPwd: '',
+        safepwd: '',
+        cfmSafepwd: '',
         bthTxt: '发送验证',
         tip: '',
         btndisabled: false,
@@ -100,7 +128,58 @@
           this.curCount--;
           this.bthTxt = this.curCount + 's';
         }
-      }
+      },
+
+      // 密码等校验
+      validate (fieldName, fieldValue) {
+        const options = {
+          pwd: {
+            rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
+            msg: {
+              required: '登录密码不能为空',
+              enOrNumber: '登录密码只允许输入8-16位英文或数字',
+              size: '登录密码只允许输入8-16位英文或数字'
+            }
+          },
+          safepwd: {
+            rules: ['enOrNumber', { type: 'size', min: 8, max: 16 }],
+            msg: {
+              enOrNumber: '安全码只允许输入8-16位英文或数字',
+              size: '安全码只允许输入8-16位英文或数字'
+            }
+          },
+        }
+        const fieldOptions = options[fieldName]
+        const res = validator.check(fieldValue, fieldOptions.rules)
+        if (!res.valid) {
+          this.tipShow(fieldOptions.msg[res.err])
+          return false
+        }
+        return true
+      },
+
+      // 确认密码
+      checkCfmPwd (cfmPwd) {
+        let password = this.$refs.pwd.value
+        if (password !== cfmPwd) {
+          this.tipShow('两次输入的密码不同')
+          return false
+        }
+      },
+
+      // 确认安全码
+      checkCfmSafepwd (cfmSafepwd) {
+        let safeword = this.$refs.safepwd.value
+        if (safeword !== cfmSafepwd) {
+          this.tipShow('两次输入的安全码不同')
+          return false
+        }
+      },
+
+      tipShow (msg) {
+        this.tip = msg
+        this.$refs.promptAlert.show()
+      },
     }
   }
 </script>
@@ -134,6 +213,9 @@
           line-height 1
           border none
           margin 8px 0 8px 8px
+          white-space nowrap
+          display inline-block
+          width auto
     input
       flex 1
       border-radius 6px
@@ -142,6 +224,7 @@
       line-height 1
       padding 6px 12px
       margin 8px 0
+      min-width 20px
     button
       width 80%
       margin 0 auto
