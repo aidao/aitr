@@ -276,6 +276,10 @@ const routes = [
 	{
 		path: '/userinfo',
 		component: UserInfo
+  },
+  {
+		path: '/changeuserinfo/:type',
+		component: ChangeUserInfo
 	},
 	{
 		path: '/cgpwd',
