@@ -46,7 +46,7 @@
   import GHeader from 'components/GHeader/GHeader'
   import LangSeletor from 'components/LangSeletor/LangSeletor'
   import Prompt from 'components/Prompt/Prompt'
-  import { getEmailByAccount, sendVerifyCodeEmail } from 'util/http'
+  import {sendVerifyCodeEmail } from 'util/http'
   import {validator} from 'util/util'
   import { resetPwdAndSafePwd } from 'util/http'
 
@@ -77,17 +77,9 @@
     },
     mounted (){
       this.account = sessionStorage.getItem('account')
-      this.getEmailByAccount()
+      this.userEmail = sessionStorage.getItem('userEmail')
     },
     methods:{
-      getEmailByAccount(){
-        getEmailByAccount(this.account).then(res =>{
-          if (res.data.code === 0) {
-            // res.data.result.level = level[res.data.result.level - 1]
-            this.userEmail = res.data.result.email
-          }
-        })
-      },
       getAuth(){  //  获取验证码
         sendVerifyCodeEmail(this.account).then(res =>{
 

@@ -1,24 +1,29 @@
 <template>
-    <div class="main">
-      <GHeader>
-        <lang-seletor></lang-seletor>
-      </GHeader>
-      <div class="triangle"></div>
-      <p>忘记密码</p>
-      <div class="input-box">
-        <input type="text" placeholder="请输入用户名" v-model="account" @blur="checkAccount(account)">
-      </div>
-      <button type="button" @click="onSubmit(account)">下一步</button>
-      <prompt :tip="tip" ref="promptAlert"></prompt>
+  <div class="main">
+    <GHeader>
+      <lang-seletor></lang-seletor>
+    </GHeader>
+    <div class="triangle"></div>
+    <p>忘记密码</p>
+    <div class="input-box">
+      <input type="text"
+             placeholder="请输入用户名"
+             v-model="account"
+             @blur="checkAccount(account)">
     </div>
+    <button type="button" @click="onSubmit(account)">下一步</button>
+    <prompt :tip="tip" ref="promptAlert"></prompt>
+  </div>
 </template>
 
 <script>
-import Prompt from 'components/Prompt/Prompt'
-import GHeader from 'components/GHeader/GHeader'
-import LangSeletor from 'components/LangSeletor/LangSeletor'
+  import Prompt from 'components/Prompt/Prompt'
+  import GHeader from 'components/GHeader/GHeader'
+  import LangSeletor from 'components/LangSeletor/LangSeletor'
 
-export default {
+  import { getEmailByAccount } from 'util/http'
+
+  export default {
     name: 'pwd',
     data () {
       return {
@@ -45,12 +50,25 @@ export default {
         if (!account) {
           this.tip = '用户名不能为空'
           this.$refs.promptAlert.show()
-        } else if (this.getByteLen(account)<4 || this.getByteLen(account) > 16) {
-          this.tip = '用户名格必须为4-16个字符'
+          return
+        } else if (!/^\w{5,18}$/.test(account)) {
+          this.tip = '用户名格必须为5-18个字符'
           this.$refs.promptAlert.show()
+          return
         }else{
-          sessionStorage.setItem('account',this.account);
-          this.$router.replace('/reset/auth')
+          getEmailByAccount(this.account).then(res =>{
+
+            const {code, result, msg} = res.data
+
+            if (code === 0) {
+              sessionStorage.setItem('account',this.account);
+              sessionStorage.setItem('userEmail',result.email);
+              this.$router.replace('/reset/auth')
+            } else {
+              this.tip = msg
+              this.$refs.promptAlert.show()
+            }
+          })
         }
       },
       getByteLen(val) { //  输出汉字和字母的字符数
