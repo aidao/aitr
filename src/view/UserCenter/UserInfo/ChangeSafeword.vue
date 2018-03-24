@@ -7,7 +7,7 @@
         <li>
           <input
             type="password"
-            @blur="checkVerifySafePwd(safecode)"
+            @blur="checkVerifySafePwd(verifySafePwd)"
             ref="verifySafePwd"
             name="account"
             v-model="verifySafePwd"
