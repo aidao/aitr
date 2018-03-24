@@ -76,7 +76,7 @@ export default {
 				height: '.8rem',
 				width: '6.293333rem',
 				color: '#ABABAB',
-				border: '.013333rem solid #CCCCCC',
+				border: '1px solid #CCCCCC',
 				fontSzie: '.32rem',
 				paddingLeft: '.133333rem'
 			},

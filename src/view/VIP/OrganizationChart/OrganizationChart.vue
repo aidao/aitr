@@ -40,6 +40,13 @@ export default {
 			}
 		}
 	},
+  watch: {
+    $route () {
+      if (this.$route.path.indexOf('placementchart') > -1) {
+        this.changeComponent('placement')
+      }
+    }
+  },
 	components: {
 		HeadMenu
 	}

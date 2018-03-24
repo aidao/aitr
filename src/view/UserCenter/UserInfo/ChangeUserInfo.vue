@@ -110,7 +110,7 @@ export default {
 			if (!email) {
 				this.tip = '邮箱不能为空'
 				this.$refs.promptRef.show()
-			} else if (!/^[A-Za-z0-9]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(email)) {
+			} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(email)) {
 				this.tip = '邮箱格式不正确'
 				this.$refs.promptRef.show()
 			}
@@ -145,7 +145,7 @@ export default {
 				this.tip = '邮箱不能为空'
 				this.$refs.promptRef.show()
 				return
-			} else if (!/^[A-Za-z0-9]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(this.userInfo.email)) {
+			} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(this.userInfo.email)) {
 				this.tip = '邮箱格式不正确'
 				this.$refs.promptRef.show()
 				return
@@ -182,7 +182,7 @@ export default {
           return
         }
         safePwdToken = res.data.result.safePwdToken
-        
+
         if (this.type === 'nickname') {
           let paramsForUpdateNickname = new URLSearchParams()
           let nickName = this.$refs.nickName.value
