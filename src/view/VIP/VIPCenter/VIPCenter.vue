@@ -103,7 +103,7 @@
               <li></li>
             </ul>
           </div>
-          <div class="map-time">
+          <div class="map-time" v-if="splitProcessLoaded">
             <span v-for="(item, index) in mapTIME" :key="index">{{item.time}}</span>
           </div>
         </div>
@@ -193,6 +193,7 @@
         maskShow: false,
         buyShow:false,
         sum: undefined,
+        splitProcessLoaded: false,
         columnarList: [
           { height: '16%' },
           { height: '20%' },
@@ -303,11 +304,11 @@
       // 获取拆分进程
       getSplitProcess().then(res => {
         const {code, result} = res.data
-
         if (code === 0) {
           this.mapTIME[0] = {time: this.fDate(result.lineupTime)}
           this.mapTIME[1] = {time: result.price || ''}
           this.mapStatus = result.status
+          this.splitProcessLoaded = true
         }
       })
     },
