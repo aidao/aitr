@@ -2,21 +2,26 @@
 	<div class="jiangjin-detail">
 		<HeadMenu :pageTitle="title"></HeadMenu>
 		<div class="detail-container">
-			<ul>
-				<li class="detail-item" v-for="(v, i) in transferData" :key="i">
-					<div class="th">
-						<div class="bianhao">{{v.createdAt}}</div>
-						<div class="date">{{v.amount}}</div>
-					</div>
-					<div class="tr">
-						<div class="td">{{v.memo}}</div>
-						<div class="td">&nbsp;</div>
-					</div>
-				</li>
-				<li class="detail-item" v-if="isDataLoaded && !transferData.length">
-					<div class="tr" style="text-align: center">暂无数据</div>
-				</li>
-			</ul>
+      <scroller style="top: 44px"
+                :on-refresh="refresh"
+                :on-infinite="infinite">
+        <div v-for="(v, i) in transferData" :key="i" class="detail-item">
+          <div class="th">
+            <div class="bianhao">{{v.createdAt}}</div>
+            <div class="date">{{v.amount}}</div>
+          </div>
+          <div class="tr">
+            <div class="td">{{v.memo}}</div>
+            <div class="td">&nbsp;</div>
+          </div>
+        </div>
+        <div class="detail-container">
+          <div class="detail-item" v-if="isDataLoaded && !transferData.length">
+            <div class="tr" style="text-align: center">暂无数据</div>
+          </div>
+        </div>
+      </scroller>
+
 			<div class="btn">
 				<router-link :to="{name: 'mywallet'}" tag="span">返回</router-link>
 			</div>
@@ -28,6 +33,10 @@
 import HeadMenu from 'components/HeadMenu/HeadMenu'
 import {getToken, getWalletLogUrl} from '../../../api/GApi'
 import axios from 'axios'
+import Vue from 'vue'
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
+
 export default {
 	data () {
 		return {
@@ -35,7 +44,9 @@ export default {
 			title: '',
 			showTransfer: true,
 			transferData: [],
-			isDataLoaded: false
+			isDataLoaded: false,
+      pagenum: 1,
+      totalPageCount: 1
 		}
 	},
 	components: {
@@ -72,7 +83,7 @@ export default {
 			this.showTransfer = false
 			break
 		}
-		this.getData(typesid)
+		this.getData(typesid, this.pagenum)
 	},
 	watch: {
 		$route () {
@@ -122,23 +133,44 @@ export default {
 			var s = date.getSeconds()
 			return Y + M + D + h + m + s
 		},
-		getData (typesid) {
+    refresh (done) {
+      this.transferData = []
+      this.getData(this.types, 1, () => {
+        done()
+      })
+    },
+    infinite (done) {
+		  if(this.pagenum === this.totalPageCount) {
+		    done()
+        return
+      } else {
+        this.getData(this.types, this.pagenum + 1, () => {
+          done()
+        })
+      }
+
+    },
+		getData (typesid, pagenum, cb) {
 			this.isDataLoaded = false
 			axios.get(getWalletLogUrl, {
 				headers: getToken(),
 				params: {
-					currency: typesid
+					currency: typesid,
+          page_size: 5,
+          page_num: pagenum
 				}
 			}).then(res => {
 				// 没获取到数据，所以先不填
-				console.log(res)
 				let list = res.data.result.list
 				list.forEach((item) => {
 					item.createdAt = this.timestampToTime(item.createdAt)
 				})
-				this.transferData = list
+				this.transferData = this.transferData.concat(list)
 				this.isDataLoaded = true
-				console.log(this.transferData)
+				this.pagenum = res.data.result.pageNum
+        this.totalPageCount = res.data.result.count
+
+        if(cb) cb()
 			})
 		}
 	}
