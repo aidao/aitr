@@ -111,6 +111,13 @@
 
           let verifyPwdParams = new URLSearchParams()
           let confirmPwd = this.$refs.confirmPwd.value
+
+          if (safePwd === this.pwd) {
+            this.tip = '密码和安全码不能相同'
+            this.$refs.promptRef.show()
+            return
+          }
+
           verifyPwdParams.append('pwd', confirmPwd)
 
           verifyPwd(verifyPwdParams).then(_res => {
