@@ -26,8 +26,8 @@
         <li>
           <input
             type="password"
-            ref="verifyPwd"
-            placeholder="再次输入新密码"
+            ref="cfmPwd"
+            placeholder="确认新密码"
             v-model="cfmPwd"
             @blur="checkCfmPwd(cfmPwd)"
           />
@@ -122,7 +122,7 @@
             }
 
             let pwdToken = _res.data.result.pwdToken
-            let verifyPwdd = this.$refs.verifyPwd.value
+            let verifyPwdd = this.$refs.cfmPwd.value
             let updatePwdParams = new URLSearchParams()
             updatePwdParams.append('pwd', verifyPwdd)
             updatePwdParams.append('pwd_token', pwdToken)
@@ -150,50 +150,56 @@
         this.$refs.confirmPwd.value = ''
       },
       getVerifySafePwd () {
+        if (!this.confirmPwd) {
+          this.tip = '旧密码不能为空'
+          this.$refs.promptRef.show()
+          this.$refs.confirmPwd.focus()
+          return
+        } else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.confirmPwd)) {
+          this.tip = '旧密码应为8-16位的数字或字母'
+          this.$refs.promptRef.show()
+          this.$refs.confirmPwd.focus()
+          return
+        }
         if (!this.pwd) {
           this.tip = '新密码不能为空'
           this.$refs.promptRef.show()
+          this.$refs.pwd.focus()
           return
         } else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.pwd)) {
           this.tip = '只能输入8-16位的数字或字母'
           this.$refs.promptRef.show()
+          this.$refs.pwd.focus()
           return
         }
         if (!this.cfmPwd) {
           this.tip = '确认新密码不能为空'
+          this.$refs.cfmPwd.focus()
           this.$refs.promptRef.show()
           return
         } else if (this.cfmPwd !== this.pwd) {
           this.tip = '两次密码输入不一致'
           this.$refs.promptRef.show()
+          this.$refs.cfmPwd.focus()
           return
         }
         this.maskShow = true
       },
       checkPwd (pwd) {
-        if (!pwd) {
-          this.tip = '新密码不能为空'
-          this.$refs.promptRef.show()
-        } else if (!/^[a-zA-Z0-9]{8,16}$/.test(pwd)) {
-          this.tip = '只能输入8-16位的数字或字母'
+        if (!/^[a-zA-Z0-9]{8,16}$/.test(pwd)) {
+          this.tip = '新密码密码只能输入8-16位的数字或字母'
           this.$refs.promptRef.show()
         }
       },
       checkCfmPwd (cfmPwd) {
-        if (!cfmPwd) {
-          this.tip = '确认新密码不能为空'
-          this.$refs.promptRef.show()
-        } else if (cfmPwd !== this.pwd) {
+        if (cfmPwd !== this.pwd) {
           this.tip = '两次密码输入不一致'
           this.$refs.promptRef.show()
         }
       },
       checkConfirmPwd (confirmPwd) {
-        if (!confirmPwd) {
-          this.tip = '当前密码不能为空'
-          this.$refs.promptRef.show()
-        } else if (!/^[a-zA-Z0-9]{8,16}$/.test(confirmPwd)) {
-          this.tip = '只能输入8-16位的数字或字母'
+        if (!/^[a-zA-Z0-9]{8,16}$/.test(confirmPwd)) {
+          this.tip = '旧密码应为8-16位的数字或字母'
           this.$refs.promptRef.show()
         }
       },
