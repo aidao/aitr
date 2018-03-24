@@ -182,7 +182,7 @@ export default {
 								this.$router.push(`/coininfo/${this.$route.params.typeid}`)
 							} else {
 								if (res.data.code === 40009) {
-                  this.showTips('接收会员账号不存在或')
+                  this.showTips('接收会员账号不存在')
 								} else if (res.data.code === 40014) {
 								  this.showTips('账号没有推荐关系')
                 } else {

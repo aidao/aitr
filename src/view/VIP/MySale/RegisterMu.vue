@@ -145,6 +145,9 @@ export default {
 				this.direction = this.$route.query.direction === 'l' ? '左区' : '右区'
 			}
 			this.supaccount = this.$route.query.parentId
+      if (this.$route.query.refaccount) {
+			  this.refaccount = this.$route.query.refaccount
+      }
 		}
 		getUSDTBalance().then(res => {
 			if (res.data.code === 0) {
