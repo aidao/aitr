@@ -47,5 +47,5 @@
       top .24rem
       width .266667rem
       height .266667rem
-      background url('./选择@2x.png') left  center / .266667rem .16rem no-repeat
+      background url('../LangSeletor/选择@2x.png') left  center / .266667rem .16rem no-repeat
 </style>
