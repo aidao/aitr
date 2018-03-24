@@ -19,6 +19,7 @@
 import {LoginOut, getMuAccount, switchAccount} from 'util/http'
 
 export default {
+  props: ['mainMenuActiveItem'],
 	data () {
 		return {
       // 菜单
@@ -49,8 +50,7 @@ export default {
           path: '/mywallet'
         }
       ],
-      hasLogined: false,
-      mainMenuActiveItem: 0
+      hasLogined: false
 		}
 	},
 	mounted () {
@@ -62,7 +62,8 @@ export default {
 	methods: {
 		// 选中菜单
     getMainMenuActiveItem (index) {
-      this.mainMenuActiveItem = index
+      // this.mainMenuActiveItem = index
+      this.$emit('switchFootNav', index)
     },
 	},
 	computed: {}

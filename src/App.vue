@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<router-view :class="{'with-footnav app-content': hasLogined && !isIndexPage, 'hide-foot-nav': hideFootNav }" />
-		<FootNav v-if="hasLogined && !hideFootNav"></FootNav>
+		<FootNav v-if="hasLogined && !hideFootNav" :mainMenuActiveItem="mainMenuActiveItem" v-on:switchFootNav="switchFootNav"></FootNav>
 		<prompt :tip="prompt.tip" v-show="prompt.show"></prompt>
 	</div>
 </template>
@@ -17,7 +17,8 @@
 			show:undefined,
 			hasLogined: false,
 			isIndexPage: false,
-			hideFootNav: false
+			hideFootNav: false,
+      mainMenuActiveItem: 0
 		}
 	},
 	mounted() {
@@ -36,6 +37,12 @@
 			this.isIndexPage = state.path === '/index'
 			this.hideFootNav = ['/index', '/registermu', '/usercenter', '/cgpwd', '/cgsfw' ].indexOf(state.path) > -1 || state.path.indexOf('coininfo') > -1 || state.path.indexOf('cointransfer') > -1 || state.path.indexOf('changeuserinfo') > -1
 			this.checkLogin()
+
+      if(state.path.indexOf('organizationchart') > -1) {
+			  this.mainMenuActiveItem = 1
+      } else {
+        this.mainMenuActiveItem = ['/vip', '/organizationchart', '/mysale', '/tradecenter', '/mywallet'].indexOf(state.path)
+      }
 		}
 	} ,
 	components:{
@@ -51,7 +58,10 @@
 		checkLogin () {
 			const token = JSON.parse(localStorage.getItem('__token__'))
 			this.hasLogined = token ? true : false
-		}
+		},
+    switchFootNav (index) {
+		  this.mainMenuActiveItem = index
+    }
 	}
 }
 </script>
