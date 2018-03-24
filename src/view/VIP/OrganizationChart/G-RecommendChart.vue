@@ -115,12 +115,12 @@ export default {
 	},
 	methods: {
 		selectRefAccount(selected) {
-		  const refaccount = selected.account
-		  if(this.selectMode) {
-			  this.$emit('selectRecommend', refaccount)
-      } else {
-        this.$router.push({name: 'RegisterMu', query: {refaccount}})
-      }
+			const refaccount = selected.account
+			if(this.selectMode) {
+				this.$emit('selectRecommend', refaccount)
+			} else {
+				this.$router.push({name: 'RegisterMu', query: {refaccount}})
+			}
 		},
 		spread(v){
 			/*if(v.children){
@@ -137,9 +137,9 @@ export default {
 		toogleIcon(){
 			this.showChild=!this.showChild
 		},
-    search () {
-		  this.searchAccount(this.accountName)
-    },
+		search () {
+			this.searchAccount(this.accountName)
+		},
 		searchAccount (targetAccount) {
 			if (targetAccount) {
 				axios.get(searchRefMap, {
@@ -209,9 +209,10 @@ export default {
 		.search
 			width :3.733333rem
 			height :.666667rem
-			border :.013333rem solid #ccc
+			box-sizing border-box
+			border : 1px solid #ccc
+			border-radius :2px
 			margin-left :.266667rem
-			border-radius :.053333rem
 			display :flex
 			justify-content :flex-start
 			align-items :center
