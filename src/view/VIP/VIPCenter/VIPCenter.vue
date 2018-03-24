@@ -276,14 +276,14 @@
 
       getPosPerson().then(res => {
         if (res.data.code === 0) {
-          _this.person = res.data.result;
-          _this.person.topSum = _this.person.leftToday + _this.person.rightToday
-          _this.person.buttonSum = _this.person.leftTotal + _this.person.rightTotal
+          this.person = res.data.result;
+          this.person.topSum = this.person.leftToday + this.person.rightToday
+          this.person.buttonSum = this.person.leftTotal + this.person.rightTotal
 
-          _this.leftToday.width = (_this.person.leftTodayPercent * 50)+ '%'
-          _this.leftTotal.width = (_this.person.leftTotalPercent * 50) +'%';
-          _this.rightToday.width =  (_this.person.rightTodayPercent * 50) +'%';
-          _this.rightTotal.width = (_this.person.rightTotalPercent * 50) +'%';
+          this.leftToday.width = (this.person.leftTodayPercent * 50)+ '%'
+          this.leftTotal.width = (this.person.leftTotalPercent * 50) +'%';
+          this.rightToday.width =  (this.person.rightTodayPercent * 50) +'%';
+          this.rightTotal.width = (this.person.rightTotalPercent * 50) +'%';
         }
       })
 
