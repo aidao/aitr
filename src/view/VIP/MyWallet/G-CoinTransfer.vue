@@ -23,7 +23,6 @@
             ref="userId"
             placeholder="输入收款会员编号"
             @blur="validate('userId', transformInfo.userId)"
-            @focus="countFocus('userId')"
             @click.prevent="countFocus('userId')"
             v-model="transformInfo.userId">
         </div>
@@ -36,7 +35,6 @@
             ref="count"
             placeholder="输入转出积分数量"
             @blur="validate('coinNum', transformInfo.coinNum)"
-            @focus="countFocus('count')"
             @click.prevent="countFocus('count')"
             v-model="transformInfo.coinNum">
         </div>
@@ -145,7 +143,6 @@
       },
       // 监听安全码验证
       safeCodeOptions (flag) {
-        console.log(flag)
         this.showSafeCodeAlert = false
         if (flag === 'cancal') {
           // 取消
