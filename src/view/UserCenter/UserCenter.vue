@@ -61,7 +61,6 @@ export default {
       var _this = this
       getAccountInfo().then(res => {
         if (res.data.code === 0) {
-          // res.data.result.level = level[res.data.result.level - 1]
           _this.userInfo = res.data.result
         }
       })
@@ -76,7 +75,6 @@ export default {
         }
         if (res.data.code === 0) {
           localStorage.removeItem('__token__')
-          // sessionStorage.removeItem('__token__')
           sessionStorage.clear()
           this.$router.push('/index')
         }

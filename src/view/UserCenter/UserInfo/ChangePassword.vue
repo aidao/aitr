@@ -2,8 +2,7 @@
 	<div class="changepwd">
 		<HeadMenu pageTitle="修改密码"></HeadMenu>
 		<form action="" @submit.prevent="getVerifySafePwd">
-      <div>
-        <ul class="nav-list">
+      <ul class="nav-list">
           <li>
             <input
               type="password"
@@ -34,7 +33,6 @@
             />
           </li>
         </ul>
-      </div>
 
 			<div class="bottom">
 				<input type="submit" class="oks" value="确认修改">
@@ -197,34 +195,6 @@ export default {
 		.form-content
 			overflow hidden
 			background #FFF
-			.m-input
-				display block
-				width 9.28rem
-				height 1.946667rem
-				margin-left .373333rem
-				margin-bottom .48rem
-				&:first-child
-					margin-top .106667rem
-				.title
-					height .56rem
-					line-height .56rem
-					padding .133333rem
-					font-family 'PingFangSC-Regular'
-					color #333
-					font-size .4rem
-				input
-					display block
-					box-sizing border-box
-					width 9.28rem
-					height 1.013333rem
-					padding-left .213333rem
-					line-height 1.013333rem
-					border-radius .133333rem
-					border 1px solid #ababab
-					color #333
-					font-size .373333rem
-					&::-webkit-input-placeholder
-						color #ababab
 		.submit
 			width 8.72rem
 			height 1.12rem
@@ -327,7 +297,8 @@ export default {
 <style>
   .nav-list input{
     width: 100%;
-    border: none;
+		outline: none;
+		border: none;
     padding-left: 0;
     padding-right: 0;
   }
