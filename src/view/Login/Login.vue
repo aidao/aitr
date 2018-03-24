@@ -7,11 +7,11 @@
 			<div class="login-logo">{{ $t('login.welcome') }}</div>
 			<form action="#" class="login-form" @submit.prevent="toLogin">
 				<div class="userName">
-					<input type="text" name="username" ref="userName" v-model="userName" @blur="validate('userName', userName)" :placeholder="$t('login.tips.name')">
+					<input type="text" name="username" ref="userName" v-model="userName" :placeholder="$t('login.tips.name')">
 				</div>
 				<div class="userPwd">
-					<input v-if="!showPwd" type="password" ref="userPwd" @blur="validate('userPwd', userPwd)" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
-					<input v-if="showPwd" type="text" ref="userPwd" @blur="validate('userPwd', userPwd)" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
+					<input v-if="!showPwd" type="password" ref="userPwd" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
+					<input v-if="showPwd" type="text" ref="userPwd" v-model="userPwd" name="userpwd" :placeholder="$t('login.tips.pwd')">
 				</div>
 				<div class="loginBtn">
           <input type="submit" :value="$t('common.Login')" />
