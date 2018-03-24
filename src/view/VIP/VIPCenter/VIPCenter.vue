@@ -289,7 +289,7 @@
       getSplitProcess().then(res => {
         const {code, result} = res.data
         if (code === 0) {
-          this.mapTIME[0] = {time: this.fDate(result.lineupTime)}
+          this.mapTIME[0] = {time: result.lineupTime ? this.fDate(result.lineupTime) : ''}
           this.mapTIME[1] = {time: result.price || ''}
           this.mapStatus = result.status
           this.splitProcessLoaded = true
