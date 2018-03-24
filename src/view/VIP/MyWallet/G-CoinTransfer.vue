@@ -18,7 +18,14 @@
           接收会员账号:
         </div>
         <div class="valuess">
-          <input type="text" placeholder="输入收款会员编号" @blur="validate('userId', transformInfo.userId)" v-model="transformInfo.userId">
+          <input
+            type="text"
+            ref="userId"
+            placeholder="输入收款会员编号"
+            @blur="validate('userId', transformInfo.userId)"
+            @focus="countFocus('userId')"
+            @click.prevent="countFocus('userId')"
+            v-model="transformInfo.userId">
         </div>
         <div class="tips">
           转出积分数量:
@@ -26,10 +33,12 @@
         <div class="valuess">
           <input
             type="tel"
+            ref="count"
             placeholder="输入转出积分数量"
             @blur="validate('coinNum', transformInfo.coinNum)"
-            v-model="transformInfo.coinNum"
-          >
+            @focus="countFocus('count')"
+            @click.prevent="countFocus('count')"
+            v-model="transformInfo.coinNum">
         </div>
       </div>
 
@@ -234,6 +243,12 @@
           return false
         }
         return true
+      },
+      countFocus (ref) {
+        setTimeout(() => {
+          const _el = this.$refs[ref]
+          _el.scrollIntoView(true)
+        }, 200)
       }
     }
   }
