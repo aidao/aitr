@@ -8,7 +8,7 @@
 					<img src="../../../assets/搜索.png" alt="" class="search-icon">
 					<input type="text" v-model="accountName">
 				</div>
-				<div class="search-text" @click="search">搜索</div>
+				<div class="search-text" @click="searchAccount">搜索</div>
 		</div>
 		<div class="content">
 				<div class="first">
@@ -28,7 +28,7 @@
 						<img v-else-if="refMapData.level=='v5'" src="../../../assets/v5@2x.png" alt="">
 						<img v-else-if="refMapData.level=='v6'" src="../../../assets/v6@2x.png" alt="">
 					</div>
-					<img src="../../../assets/添加@2x.png" class="select-btn" alt="" @click="selectRefAccount(refMapData)">
+					<img src="../../../assets/添加@2x.png" class="select-btn" alt="" @click="selectRefAccount(refMapData)" v-show="selectMode">
 
 				</div>
 				<div class="second" v-show="showChild">
@@ -115,15 +115,10 @@ export default {
 	},
 	methods: {
 		selectRefAccount(selected) {
-		  const refaccount = selected.account
-		  if(this.selectMode) {
-			  this.$emit('selectRecommend', refaccount)
-      } else {
-        this.$router.push({name: 'RegisterMu', query: {refaccount}})
-      }
+			this.$emit('selectRecommend', selected.account)
 		},
 		spread(v){
-			/*if(v.children){
+			if(v.children){
 				let list = v
 				if (list.children) {
 					list.children.forEach(item => {
@@ -131,21 +126,17 @@ export default {
 					})
 				}
 				this.refMapData=list
-			}*/
-			this.searchAccount(v.account)
+			}
 		},
 		toogleIcon(){
 			this.showChild=!this.showChild
 		},
-    search () {
-		  this.searchAccount(this.accountName)
-    },
-		searchAccount (targetAccount) {
-			if (targetAccount) {
+		searchAccount () {
+			if (this.accountName) {
 				axios.get(searchRefMap, {
 					headers: getToken(),
 					params: {
-						target_account: targetAccount
+						target_account: this.accountName
 					}
 				}).then(res => {
 					console.log(res)
