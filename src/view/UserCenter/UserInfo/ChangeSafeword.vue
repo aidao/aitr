@@ -2,41 +2,38 @@
 	<div class="changepwd">
 		<HeadMenu pageTitle="修改安全码"></HeadMenu>
 		<form action="" @submit.prevent="getVerifySafePwd">
-			<div class="form-content">
-				<div class="m-input">
-					<div class="title">旧的安全码:</div>
-					<input
-						type="password"
-						@blur="checkVerifySafePwd(safecode)"
-						ref="verifySafePwd"
-						name="account"
-						v-model="verifySafePwd"
-						placeholder="输入旧的安全码"
-					/>
-				</div>
-				<div class="m-input">
-					<div class="title">新的安全码:</div>
-					<input
-						type="password"
-						@blur="checkSafecode(safecode)"
-						ref="safecode"
-						name="account"
-						v-model="safecode"
-						placeholder="输入新的安全码"
-					/>
-				</div>
 
-				<div class="m-input">
-					<div class="title">确认新安全码:</div>
+			<ul class="nav-list">
+				<li>
 					<input
-						type="password"
-						ref="verifySafecode"
-						placeholder="再次输入新安全码"
-						v-model="cfmSafecode"
-						@blur="checkCfmSafecode(cfmSafecode)"
+							type="password"
+							@blur="checkVerifySafePwd(safecode)"
+							ref="verifySafePwd"
+							name="account"
+							v-model="verifySafePwd"
+							placeholder="输入旧的安全码"
 					/>
-				</div>
-			</div>
+				</li>
+				<li>
+					<input
+							type="password"
+							@blur="checkSafecode(safecode)"
+							ref="safecode"
+							name="account"
+							v-model="safecode"
+							placeholder="输入新的安全码"
+					/>
+				</li>
+				<li>
+					<input
+							type="password"
+							ref="verifySafecode"
+							placeholder="再次输入新安全码"
+							v-model="cfmSafecode"
+							@blur="checkCfmSafecode(cfmSafecode)"
+					/>
+				</li>
+			</ul>
 
 			<div class="bottom">
 				<input type="submit" class="oks" value="确认修改">
@@ -202,34 +199,6 @@ export default {
 		.form-content
 			overflow hidden
 			background #FFF
-			.m-input
-				display block
-				width 9.28rem
-				height 1.946667rem
-				margin-left .373333rem
-				margin-bottom .48rem
-				&:first-child
-					margin-top .106667rem
-				.title
-					height .56rem
-					line-height .56rem
-					padding .133333rem
-					font-family 'PingFangSC-Regular'
-					color #333
-					font-size .4rem
-				input
-					display block
-					box-sizing border-box
-					width 9.28rem
-					height 1.013333rem
-					padding-left .213333rem
-					line-height 1.013333rem
-					border-radius .133333rem
-					border 1px solid #ababab
-					color #333
-					font-size .373333rem
-					&::-webkit-input-placeholder
-						color #ababab
 		.submit
 			width 8.72rem
 			height 1.12rem
@@ -326,4 +295,14 @@ export default {
 					background-color :#D2D2D2
 				&.oks
 					background :#FFCA00
+</style>
+
+<style>
+	.nav-list input{
+		width: 100%;
+		outline: none;
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
 </style>
