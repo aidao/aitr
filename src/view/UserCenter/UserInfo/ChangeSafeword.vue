@@ -273,7 +273,7 @@
       input
         display block
         width 8.72rem
-        height 1.12rem
+        height 1.12rem!important
         box-sizing border-box
         margin 0 auto
         background #ffca00
