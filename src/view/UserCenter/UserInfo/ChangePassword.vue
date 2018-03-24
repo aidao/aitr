@@ -118,10 +118,6 @@ export default {
 				updatePwdParams.append('pwd', verifyPwdd)
 				updatePwdParams.append('pwd_token', pwdToken)
 				updatePwd(updatePwdParams).then(res => {
-					if (res.data.code === 40009) {
-						this.tip = '会员密码错误'
-						this.$refs.promptRef.show()
-					}
 					if (res.data.code === 40012) {
 						this.tip = '密码修改失败'
 						this.$refs.promptRef.show()

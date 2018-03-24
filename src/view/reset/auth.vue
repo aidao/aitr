@@ -1,5 +1,9 @@
 <template>
   <div class="main">
+    <GHeader>
+      <lang-seletor></lang-seletor>
+    </GHeader>
+    <div class="triangle"></div>
     <p>确认重置</p>
     <div class="input-box">
       <input type="text" v-model="account" readonly="readonly">
@@ -33,14 +37,18 @@
         @blur="checkCfmSafepwd(cfmSafepwd)"
         ref="cfmSafepwd">
     </div>
-    <button type="button" @click="onSubmit">下一步</button>
+    <button type="button" @click="onSubmit">完成</button>
     <prompt :tip="tip" ref="promptAlert"></prompt>
   </div>
 </template>
 
 <script>
+  import GHeader from 'components/GHeader/GHeader'
+  import LangSeletor from 'components/LangSeletor/LangSeletor'
   import Prompt from 'components/Prompt/Prompt'
   import { getEmailByAccount, sendVerifyCodeEmail } from 'util/http'
+  import {validator} from 'util/util'
+  import { resetPwdAndSafePwd } from 'util/http'
 
   export default {
     name: 'auth',
@@ -63,7 +71,9 @@
       }
     },
     components: {
-      Prompt
+      Prompt,
+      GHeader,
+      LangSeletor
     },
     mounted (){
       this.account = sessionStorage.getItem('account')
@@ -82,9 +92,6 @@
         sendVerifyCodeEmail(this.account).then(res =>{
 
           if (res.data.code === 0) {
-            // res.data.result.level = level[res.data.result.level - 1]
-            // this.verifyCode = res.data.msg
-
             this.btndisabled=true;
             this.curCount = this.count;
             this.bthTxt = this.curCount + 's';
@@ -100,11 +107,31 @@
         if (!this.verifyCode) {
           this.tip = '验证码不能为空'
           this.$refs.promptAlert.show()
-        }else{
-          sessionStorage.setItem('verifyCode',this.verifyCode);
-          this.$router.replace('/reset/new-pwd')
+          return
         }
 
+        const isPwdCorrect = this.validate('pwd', this.pwd) && this.checkCfmPwd(this.cfmPwd)
+        if(!isPwdCorrect) return
+
+
+        const isSafePwdCorrect = this.validate('safepwd', this.safepwd) && this.checkCfmSafepwd(this.cfmSafepwd)
+        if(!isSafePwdCorrect) return
+
+        let params = new URLSearchParams()
+        params.append('account', this.account)
+        params.append('pwd', this.pwd)
+        params.append('safePwd', this.safePwd)
+        params.append('verifyCode', this.verifyCode)
+
+        resetPwdAndSafePwd(params).then(res =>{
+          const {code, msg} = res.data
+          if (code === 0) {
+            this.tipShow('重置成功')
+            this.$router.replace('/login')
+          } else {
+            this.tipShow(msg)
+          }
+        })
       },
       getByteLen(val) { //  输出汉字和字母的字符数
         let len = 0;
@@ -142,8 +169,9 @@
             }
           },
           safepwd: {
-            rules: ['enOrNumber', { type: 'size', min: 8, max: 16 }],
+            rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
             msg: {
+              required: '安全码不能为空',
               enOrNumber: '安全码只允许输入8-16位英文或数字',
               size: '安全码只允许输入8-16位英文或数字'
             }
@@ -161,19 +189,35 @@
       // 确认密码
       checkCfmPwd (cfmPwd) {
         let password = this.$refs.pwd.value
+
+        if (!cfmPwd) {
+          this.tipShow('请确认密码')
+          return false
+        }
+
         if (password !== cfmPwd) {
           this.tipShow('两次输入的密码不同')
           return false
         }
+
+        return true
       },
 
       // 确认安全码
       checkCfmSafepwd (cfmSafepwd) {
         let safeword = this.$refs.safepwd.value
+
+        if (!cfmSafepwd) {
+          this.tipShow('请确认安全码')
+          return false
+        }
+
         if (safeword !== cfmSafepwd) {
           this.tipShow('两次输入的安全码不同')
           return false
         }
+
+        return true
       },
 
       tipShow (msg) {
@@ -215,7 +259,7 @@
           margin 8px 0 8px 8px
           white-space nowrap
           display inline-block
-          width auto
+          width 2.293rem
     input
       flex 1
       border-radius 6px
@@ -233,4 +277,8 @@
       font-size 18px
       line-height 38px
       border none
+  .triangle
+    height 0.186rem
+    margin-top 2px
+    background url('./Triangle.png') center center / 0.293rem 0.186rem no-repeat
 </style>

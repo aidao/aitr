@@ -1,15 +1,8 @@
 <template>
 	<div class="login">
-		<header class="m-header">
-			<h1 class="logo"></h1>
-			<!--<div class="lanChoose">简体中文<span class="arrow"></span></div>-->
-      <select class="select-lang" v-model="lang" @change="changeLang">
-        <option selected value="ch">简体中文</option>
-        <option value="en">English</option>
-        <option value="ko">韩文</option>
-        <option value="ja">日文</option>
-      </select>
-		</header>
+		<GHeader>
+			<lang-seletor></lang-seletor>
+		</GHeader>
 		<div class="login-content">
 			<div class="login-logo">{{ $t('login.welcome') }}</div>
 			<form action="#" class="login-form" @submit.prevent="toLogin">
@@ -35,7 +28,8 @@
 <script>
 import {Login} from 'util/http'
 import Prompt from 'components/Prompt/Prompt'
-import { i18n, loadLanguageAsync } from '../../common/js/i18n-setup.js'
+import GHeader from 'components/GHeader/GHeader'
+import LangSeletor from 'components/LangSeletor/LangSeletor'
 import {validator} from 'util/util'
 
 export default {
@@ -49,16 +43,12 @@ export default {
 		}
 	},
   created () {
-	  this.lang = i18n.locale
     const token = JSON.parse(localStorage.getItem('__token__'))
     if(token) {
       this.$router.push('/vip')
     }
   },
 	methods: {
-	  changeLang () {
-      loadLanguageAsync(this.lang)
-    },
     validate (fieldName, fieldValue) {
       const options = {
         userName: {
@@ -123,7 +113,9 @@ export default {
 		}
 	},
 	components: {
-		Prompt
+		Prompt,
+    LangSeletor,
+    GHeader
 	}
 }
 </script>

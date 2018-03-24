@@ -31,7 +31,7 @@
 						<li class="dot golden"></li>
 						<li class="dot golden"></li>
 					</ul>
-					<div class="btn">买配套</div>
+					<div class="btn" @click="buyShow = true">买配套</div>
 					<ul class="dots">
 						<li class="dot golden"></li>
 						<li class="dot golden"></li>
@@ -97,7 +97,7 @@
           <div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
           <div class="map-round">
             <ul v-for="(item, index) in 5" :key="index">
-              <li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index <= balance.splitCoin}"></li>
+              <li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index <= mapStatus}"></li>
             </ul>
             <ul>
               <li></li>
@@ -162,11 +162,26 @@
         </div>
       </div>
     </div>
+    <div class="mask" v-show="buyShow">
+      <div class="alert-content">
+        <div class="title">买配套</div>
+        <div class="tips">注册币余额：<span class="f-golden">{{balance.registerCoin}}</span></div>
+        <select name="buyLvl" id="buyPT" v-model="buyLvl">
+          <option v-for="lvl in pkgLvl" :value="lvl.level">{{pkgLvlMap[lvl.memo]}} ( {{lvl.price}} )</option>
+        </select>
+        <div class="decision">
+          <div class="cancel" @click="buyShow = false">取消</div>
+          <div class="decide" @click="confirmBuyPKG">确定</div>
+        </div>
+      </div>
+    </div>
+    <prompt ref="promptRef" :tip="tip"></prompt>
 	</div>
 </template>
 
 <script>
-import {getUSDTBalance,getPosPerson} from 'util/http'
+import Prompt from 'components/Prompt/Prompt'
+import {getUSDTBalance,getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
 import HeadMenu from 'components/HeadMenu/HeadMenu'
 import FootNav from 'components/FootNav/FootNav'
 
@@ -176,6 +191,7 @@ export default {
 			balance: {},
       test: {width: '50%'},
       maskShow: false,
+      buyShow:false,
       sum: undefined,
       columnarList: [
         { height: '16%' },
@@ -210,13 +226,14 @@ export default {
         { txt: '卖出' },
       ],
       mapTIME: [
-        { time: '2018-01-25'},
-        { time: '2.88' },
+        { time: ''},
+        { time: '' },
         { time: '' },
         { time: '' },
         { time: '' },
         { time: '' },
       ],
+      mapStatus: 0,
       roundList:[
         [
           '1','2','3','4'
@@ -236,9 +253,20 @@ export default {
       leftTotal:{width: ''},
       rightToday:{width: ''},
       rightTotal:{width: ''},
+      tip: '',
+      pkgLvl: [],
+      pkgLvlMap: {
+        'LV1': '一星会员',
+        'LV2': '二星会员',
+        'LV3': '三星会员',
+        'LV4': '四星会员',
+        'LV5': '五星会员'
+      },
+      buyLvl: '1'
 		}
 	},
 	components: {
+    Prompt,
 		HeadMenu,
     FootNav
 	},
@@ -248,7 +276,6 @@ export default {
 			if (res.data.code === 0) {
 				// console.log(res.data)
 				_this.balance = res.data.result
-
 			}
 		})
     getPosPerson().then(res => {
@@ -263,9 +290,34 @@ export default {
         _this.rightTotal.width = (_this.person.rightTotalPercent * 50) +'%';
       }
 		})
+
+    // 获取配套列表
+    getPKGList().then(res=>{
+      const {code, result} = res.data
+
+      if (code === 0) {
+        this.pkgLvl = result
+      }
+    })
+
+    // 获取拆分进程
+    getSplitProcess().then(res => {
+      const {code, result} = res.data
+
+      if (code === 0) {
+        this.mapTIME[0] = {time: this.fDate(result.lineupTime)}
+        this.mapTIME[1] = result.price || ''
+        this.mapStatus = result.status
+      }
+    })
 	},
   methods: {
     recharge(){
+      // 暂不开放
+      this.tip = '暂未开放'
+      this.$refs.promptRef.show()
+      return
+
       this.maskShow=true
     },
     checkSafePwd(){
@@ -276,12 +328,36 @@ export default {
     },
     changeUserInfo(){
       this.maskShow=false
+    },
+    confirmBuyPKG () {
+      const lvl = parseInt(this.buyLvl)
+      buyPKG(lvl).then(res => {
+        const {code, msg} = res.data
+
+        this.tip = msg
+        this.$refs.promptRef.show()
+
+        if (code === 0) {
+          this.buyShow = false
+        }
+      })
+    },
+    /**
+     * 格式化时间
+     * @param {String} strDate
+     * @returns {*}
+     */
+    fDate (strDate) {
+      const d = new Date(strDate)
+      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
     }
   }
 }
 </script>
 
-<style scoped lang='stylus' rel='stylesheet/stylus'>
+<style lang='stylus' rel='stylesheet/stylus'>
+  .f-golden
+    color #FFAE11
   .vip-data
     display flex
     flex-direction column
@@ -338,7 +414,6 @@ export default {
               /*flex 1*/
             }
           }
-
   .vip-title
     position relative
     >p
@@ -357,7 +432,7 @@ export default {
       justify-content space-evenly
       span
         width 2.333333rem
-        font-size 0.273333rem
+        font-size 0.266rem
         color #ccc
         text-align center
         &:first-child
@@ -454,6 +529,11 @@ export default {
         text-align center
         font-size .426667rem
         color #333
+      .tips
+        width 6.293333rem
+        margin 0 auto
+        font-size 0.293rem
+        text-align right
       .confirmpwd, select
         display block
         width 6.293333rem
@@ -651,7 +731,6 @@ export default {
 				border-radius .133333rem
 			.vip-title
 				position relative
-				/*width 100%*/
 				height 1.333333rem
 				line-height 1.333333rem
 				padding-left .586667rem
