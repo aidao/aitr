@@ -1,81 +1,81 @@
 <template>
-	<div class="vipcenter">
-		<HeadMenu pageTitle="VIP中心"></HeadMenu>
-		<div class="vip-content">
-			<div class="huobijiaoyi">
-				<div class="vip-title">货币交易</div>
-				<div class="process-container">
-					<div class="process-item">
-						<div class="process-item-title">注册币</div>
-						<div class="process-item-price">{{balance.registerCoin}}</div>
-					</div>
+  <div class="vipcenter">
+    <HeadMenu pageTitle="VIP中心"></HeadMenu>
+    <div class="vip-content">
+      <div class="huobijiaoyi">
+        <div class="vip-title">货币交易</div>
+        <div class="process-container">
+          <div class="process-item">
+            <div class="process-item-title">注册币</div>
+            <div class="process-item-price">{{balance.registerCoin}}</div>
+          </div>
 
-					<div class="process-item">
-						<div class="process-item-title">众筹币</div>
-						<div class="process-item-price">{{balance.crowdfundingCoin}}</div>
-					</div>
+          <div class="process-item">
+            <div class="process-item-title">众筹币</div>
+            <div class="process-item-price">{{balance.crowdfundingCoin}}</div>
+          </div>
 
-					<div class="process-item">
-						<div class="process-item-title">拆分币</div>
-						<div class="process-item-price">{{balance.splitCoin}}</div>
-					</div>
-				</div>
+          <div class="process-item">
+            <div class="process-item-title">拆分币</div>
+            <div class="process-item-price">{{balance.splitCoin}}</div>
+          </div>
+        </div>
 
-				<div class="flow-process-container">
-					<div class="btn" @click="recharge">充值</div>
-					<ul class="dots complate">
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-					</ul>
-					<div class="btn" @click="buyShow = true">买配套</div>
-					<ul class="dots">
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot golden"></li>
-						<li class="dot gray"></li>
-						<li class="dot gray"></li>
-						<li class="dot gray"></li>
-					</ul>
-					<div class="btn ">卖出</div>
-					<ul class="dots">
-						<li class="dot gray"></li>
-						<li class="dot gray"></li>
-						<li class="dot gray"></li>
-						<li class="dot gray"></li>
-					</ul>
-				</div>
+        <div class="flow-process-container">
+          <div class="btn" @click="recharge">充值</div>
+          <ul class="dots complate">
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+          </ul>
+          <div class="btn" @click="buyShow = true">买配套</div>
+          <ul class="dots">
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot golden"></li>
+            <li class="dot gray"></li>
+            <li class="dot gray"></li>
+            <li class="dot gray"></li>
+          </ul>
+          <div class="btn ">卖出</div>
+          <ul class="dots">
+            <li class="dot gray"></li>
+            <li class="dot gray"></li>
+            <li class="dot gray"></li>
+            <li class="dot gray"></li>
+          </ul>
+        </div>
 
-				<div class="coin-container">
-					<div class="coin-item">
-						<div class="coin-item-title">收益币</div>
-						<div class="coin-item-price">{{balance.earningsCoin}}</div>
-					</div>
+        <div class="coin-container">
+          <div class="coin-item">
+            <div class="coin-item-title">收益币</div>
+            <div class="coin-item-price">{{balance.earningsCoin}}</div>
+          </div>
 
-					<div class="coin-item">
-						<div class="coin-item-title">重构币</div>
-						<div class="coin-item-price">{{balance.reconstructionCoin}}</div>
-					</div>
+          <div class="coin-item">
+            <div class="coin-item-title">重构币</div>
+            <div class="coin-item-price">{{balance.reconstructionCoin}}</div>
+          </div>
 
-					<div class="coin-item">
-						<div class="coin-item-title">消费币</div>
-						<div class="coin-item-price">{{balance.consumptionCoin}}</div>
-					</div>
-				</div>
-			</div>
-			<div class="todayR">
-				<div class="vip-title">今日奖金<span class="jine">{{ person.todayReward || 0}}</span>
-					<div class="totalR">奖金总额<span class="jine">{{ person.totalReward || 0}}</span></div>
-				</div>
-			</div>
-			<div class="chaifenzoushi">
-				<div class="vip-title">拆分走势</div>
-				<div class="zoushi-container">
-					<div class="current-price">当前价格:2.0</div>
-					<div class="chart-content">
+          <div class="coin-item">
+            <div class="coin-item-title">消费币</div>
+            <div class="coin-item-price">{{balance.consumptionCoin}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="todayR">
+        <div class="vip-title">今日奖金<span class="jine">{{ person.todayReward || 0}}</span>
+          <div class="totalR">奖金总额<span class="jine">{{ person.totalReward || 0}}</span></div>
+        </div>
+      </div>
+      <div class="chaifenzoushi">
+        <div class="vip-title">拆分走势</div>
+        <div class="zoushi-container">
+          <div class="current-price">当前价格:2.0</div>
+          <div class="chart-content">
             <ul class="line-white">
               <li class="white-li" v-for="(item, idx) in 4" :key="idx"></li>
             </ul>
@@ -88,9 +88,9 @@
               <li>4</li>
             </ul>
           </div>
-					<div class="price-block"></div>
-				</div>
-			</div>
+          <div class="price-block"></div>
+        </div>
+      </div>
       <div class="chaifenjincheng">
         <div class="vip-title">拆分进程</div>
         <div class="vip-map">
@@ -141,7 +141,7 @@
           </div>
         </div>
       </div>
-		</div>
+    </div>
     <div class="mask" v-show="maskShow">
       <div class="alert-content">
         <div class="title">注册币兑换</div>
@@ -176,183 +176,184 @@
       </div>
     </div>
     <prompt ref="promptRef" :tip="tip"></prompt>
-	</div>
+  </div>
 </template>
 
 <script>
-import Prompt from 'components/Prompt/Prompt'
-import {getUSDTBalance,getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
-import HeadMenu from 'components/HeadMenu/HeadMenu'
-import FootNav from 'components/FootNav/FootNav'
+  import Prompt from 'components/Prompt/Prompt'
+  import {getUSDTBalance,getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
+  import HeadMenu from 'components/HeadMenu/HeadMenu'
+  import FootNav from 'components/FootNav/FootNav'
 
-export default {
-	data () {
-		return {
-			balance: {},
-      test: {width: '50%'},
-      maskShow: false,
-      buyShow:false,
-      sum: undefined,
-      columnarList: [
-        { height: '16%' },
-        { height: '20%' },
-        { height: '24%' },
-        { height: '28%' },
-        { height: '32%' },
-        { height: '36%' },
-        { height: '40%' },
-        { height: '44%' },
-        { height: '48%' },
-        { height: '52%' },
-        { height: '56%' },
-        { height: '60%' },
-        { height: '64%' },
-        { height: '68%' },
-        { height: '72%' },
-        { height: '76%' },
-        { height: '80%' },
-        { height: '84%' },
-        { height: '88%' },
-        { height: '92%' },
-        { height: '96%' },
-        { height: '100%' },
-      ],
-      mapTXT: [
-        { txt: '开始排队'},
-        { txt: '买入' },
-        { txt: '一拆' },
-        { txt: '二拆' },
-        { txt: '三拆' },
-        { txt: '卖出' },
-      ],
-      mapTIME: [
-        { time: ''},
-        { time: '' },
-        { time: '' },
-        { time: '' },
-        { time: '' },
-        { time: '' },
-      ],
-      mapStatus: 0,
-      roundList:[
-        [
-          '1','2','3','4'
-        ],[
-          '1','2','3','4'
-        ],[
-          '1','2','3','4'
-        ],[
-          '1','2','3','4'
+  export default {
+    data () {
+      return {
+        balance: {},
+        test: {width: '50%'},
+        maskShow: false,
+        buyShow:false,
+        sum: undefined,
+        columnarList: [
+          { height: '16%' },
+          { height: '20%' },
+          { height: '24%' },
+          { height: '28%' },
+          { height: '32%' },
+          { height: '36%' },
+          { height: '40%' },
+          { height: '44%' },
+          { height: '48%' },
+          { height: '52%' },
+          { height: '56%' },
+          { height: '60%' },
+          { height: '64%' },
+          { height: '68%' },
+          { height: '72%' },
+          { height: '76%' },
+          { height: '80%' },
+          { height: '84%' },
+          { height: '88%' },
+          { height: '92%' },
+          { height: '96%' },
+          { height: '100%' },
         ],
-      ],
-      person: {
-			  topSum:undefined,
-        buttonSum: undefined,
-      },
-      leftToday:{width: ''},
-      leftTotal:{width: ''},
-      rightToday:{width: ''},
-      rightTotal:{width: ''},
-      tip: '',
-      pkgLvl: [],
-      pkgLvlMap: {
-        'LV1': '一星会员',
-        'LV2': '二星会员',
-        'LV3': '三星会员',
-        'LV4': '四星会员',
-        'LV5': '五星会员'
-      },
-      buyLvl: '1'
-		}
-	},
-	components: {
-    Prompt,
-		HeadMenu,
-    FootNav
-	},
-	mounted () {
-    const _this = this;
-		getUSDTBalance().then(res => {
-			if (res.data.code === 0) {
-				// console.log(res.data)
-				_this.balance = res.data.result
-			}
-		})
-    getPosPerson().then(res => {
-			if (res.data.code === 0) {
-				_this.person = res.data.result;
-        _this.person.topSum = _this.person.leftToday + _this.person.rightToday
-        _this.person.buttonSum = _this.person.leftTotal + _this.person.rightTotal
-
-        _this.leftToday.width = (_this.person.leftTodayPercent * 50)+ '%'
-        _this.leftTotal.width = (_this.person.leftTotalPercent * 50) +'%';
-        _this.rightToday.width =  (_this.person.rightTodayPercent * 50) +'%';
-        _this.rightTotal.width = (_this.person.rightTotalPercent * 50) +'%';
+        mapTXT: [
+          { txt: '开始排队'},
+          { txt: '买入' },
+          { txt: '一拆' },
+          { txt: '二拆' },
+          { txt: '三拆' },
+          { txt: '卖出' },
+        ],
+        mapTIME: [
+          { time: ''},
+          { time: '' },
+          { time: '' },
+          { time: '' },
+          { time: '' },
+          { time: '' },
+        ],
+        mapStatus: 0,
+        roundList:[
+          [
+            '1','2','3','4'
+          ],[
+            '1','2','3','4'
+          ],[
+            '1','2','3','4'
+          ],[
+            '1','2','3','4'
+          ],
+        ],
+        person: {
+          topSum:undefined,
+          buttonSum: undefined,
+        },
+        leftToday:{width: ''},
+        leftTotal:{width: ''},
+        rightToday:{width: ''},
+        rightTotal:{width: ''},
+        tip: '',
+        pkgLvl: [],
+        pkgLvlMap: {
+          'LV1': '一星会员',
+          'LV2': '二星会员',
+          'LV3': '三星会员',
+          'LV4': '四星会员',
+          'LV5': '五星会员'
+        },
+        buyLvl: '1'
       }
-		})
-
-    // 获取配套列表
-    getPKGList().then(res=>{
-      const {code, result} = res.data
-
-      if (code === 0) {
-        this.pkgLvl = result
-      }
-    })
-
-    // 获取拆分进程
-    getSplitProcess().then(res => {
-      const {code, result} = res.data
-
-      if (code === 0) {
-        this.mapTIME[0] = {time: this.fDate(result.lineupTime)}
-        this.mapTIME[1] = result.price || ''
-        this.mapStatus = result.status
-      }
-    })
-	},
-  methods: {
-    recharge(){
-      // 暂不开放
-      this.tip = '暂未开放'
-      this.$refs.promptRef.show()
-      return
-
-      this.maskShow=true
     },
-    checkSafePwd(){
+    components: {
+      Prompt,
+      HeadMenu,
+      FootNav
+    },
+    mounted () {
+      const _this = this;
+      getUSDTBalance().then(res => {
+        if (res.data.code === 0) {
+          // console.log(res.data)
+          _this.balance = res.data.result
+        }
+      })
+      getPosPerson().then(res => {
+        if (res.data.code === 0) {
+          _this.person = res.data.result;
+          _this.person.topSum = _this.person.leftToday + _this.person.rightToday
+          _this.person.buttonSum = _this.person.leftTotal + _this.person.rightTotal
 
-    },
-    cancel(){
-      this.maskShow=false
-    },
-    changeUserInfo(){
-      this.maskShow=false
-    },
-    confirmBuyPKG () {
-      const lvl = parseInt(this.buyLvl)
-      buyPKG(lvl).then(res => {
-        const {code, msg} = res.data
+          _this.leftToday.width = (_this.person.leftTodayPercent * 50)+ '%'
+          _this.leftTotal.width = (_this.person.leftTotalPercent * 50) +'%';
+          _this.rightToday.width =  (_this.person.rightTodayPercent * 50) +'%';
+          _this.rightTotal.width = (_this.person.rightTotalPercent * 50) +'%';
+        }
+      })
 
-        this.tip = msg
-        this.$refs.promptRef.show()
+      // 获取配套列表
+      getPKGList().then(res=>{
+        const {code, result} = res.data
 
         if (code === 0) {
-          this.buyShow = false
+          this.pkgLvl = result
+        }
+      })
+
+      // 获取拆分进程
+      getSplitProcess().then(res => {
+        const {code, result} = res.data
+
+        if (code === 0) {
+          this.mapTIME[0] = {time: this.fDate(result.lineupTime)}
+          this.mapTIME[1] = result.price || ''
+          this.mapStatus = result.status
         }
       })
     },
-    /**
-     * 格式化时间
-     * @param {String} strDate
-     * @returns {*}
-     */
-    fDate (strDate) {
-      const d = new Date(strDate)
-      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+    methods: {
+      recharge(){
+        // 暂不开放
+        this.tip = '暂未开放'
+        this.$refs.promptRef.show()
+        return
+
+        this.maskShow=true
+      },
+      checkSafePwd(){
+
+      },
+      cancel(){
+        this.maskShow=false
+      },
+      changeUserInfo(){
+        this.maskShow=false
+      },
+      confirmBuyPKG () {
+        let params = new URLSearchParams()
+        params.append('level', parseInt(this.buyLvl))
+        buyPKG(params).then(res => {
+          const {code, msg} = res.data
+
+          this.tip = msg
+          this.$refs.promptRef.show()
+
+          if (code === 0) {
+            this.buyShow = false
+          }
+        })
+      },
+      /**
+       * 格式化时间
+       * @param {String} strDate
+       * @returns {*}
+       */
+      fDate (strDate) {
+        const d = new Date(strDate)
+        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+      }
     }
   }
-}
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus'>
@@ -369,8 +370,8 @@ export default {
       display flex
       margin-top 4px
       >p
-       margin 0 16px
-       padding-top 20px
+        margin 0 16px
+        padding-top 20px
       .top-box
         display flex
         flex-direction column
@@ -397,22 +398,22 @@ export default {
               top 0
               left 50%
             }&:nth-of-type(1){
-              /*width 30%*/
-              top 0
-              right 50%
-              background-color #FFCA00
-              border-top-left-radius 100px
-              border-bottom-left-radius 100px
-              /*flex 1*/
-            }&:nth-of-type(3){
-              /*width 10%*/
-              top 0
-              left 50%
-              background-color #F77220
-              border-top-right-radius 100px
-              border-bottom-right-radius 100px
-              /*flex 1*/
-            }
+               /*width 30%*/
+               top 0
+               right 50%
+               background-color #FFCA00
+               border-top-left-radius 100px
+               border-bottom-left-radius 100px
+               /*flex 1*/
+             }&:nth-of-type(3){
+                /*width 10%*/
+                top 0
+                left 50%
+                background-color #F77220
+                border-top-right-radius 100px
+                border-bottom-right-radius 100px
+                /*flex 1*/
+              }
           }
   .vip-title
     position relative
@@ -560,193 +561,193 @@ export default {
         .decide
           color #FFAE11
           border-left 1px solid #CCC
-	.vipcenter
-		background url('./BG.png')
-		.vip-content
-			.huobijiaoyi
-				width 100%
-				height 7.066667rem
-				margin-top .16rem
-				opacity 0.8
-				background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
-				border-radius .133333rem
-				.process-container
-					display flex
-					justify-content space-around
-					padding-top .373333rem
-					.process-item
-						width 2.786667rem
-						height 1.613333rem
-						padding .293333rem .293333rem 0
-						box-sizing border-box
-						background url('../../../assets/币@2x.png') 0 0 / 2.786667rem 1.613333rem no-repeat
-						.process-item-title
-							height .4rem
-							line-height .4rem
-							padding-bottom .08rem
-							border-bottom 1px solid #FFCA00
-							color #EEE
-							text-align center
-							font-size .293333rem
-						.process-item-price
-							height .426667rem
-							line-height .426667rem
-							padding-top .106667rem
-							color #FFCA00
-							text-align center
-							font-size .373333rem
-				.flow-process-container
-					height 2.093333rem
-					padding-top .266667rem
-					box-sizing border-box
-					.btn
-						float left
-						width 1.733333rem
-						height .773333rem
-						line-height .773333rem
-						background #FFAE11
-						text-align center
-						border-radius .106667rem
-						font-size .373333rem
-						color #FFF
-						&:first-child
-							margin-left .866667rem
-					.dots
-						float left
-						position relative
-						display flex
-						justify-content space-around
-						width 1.52rem
-						height .773333rem
-						padding .32rem .106667rem
-						box-sizing border-box
-						&::after
-							position absolute
-							left 0
-							bottom -0.333333rem
-							height .333333rem
-							line-height .333333rem
-							content '排队等待中...'
-							font-size .24rem
-							color #FFF
-						&.complate
-							&::after
-								display none
-						.dot
-							width .133333rem
-							height .133333rem
-							&.golden
-								background url('../../../assets/goldenDot.png') 0 0 / .133333rem .133333rem no-repeat
-							&.gray
-								background url('../../../assets/grayDot.png') 0 0 / .133333rem .133333rem no-repeat
-						&:last-child
-							float right
-							width 1.8rem
-							height 1.053333rem
-							padding 0
-							flex-direction column
-							&::after
-								top .453333rem
-								left -1.44rem
-								display none
-				.coin-container
-					display flex
-					justify-content space-around
-					.coin-item
-						width 2.413333rem
-						height 1.226667rem
-						box-sizing border-box
-						padding-top .08rem
-						background url('../../../assets/Rectangle3Copy5.png') 0 0 / 2.413333rem 1.226667rem no-repeat
-						.coin-item-title
-							height .4rem
-							line-height .4rem
-							padding-bottom .08rem
-							border-bottom 1px solid #FFCA00
-							color #EEE
-							text-align center
-							font-size .293333rem
-						.coin-item-price
-							height .426667rem
-							line-height .426667rem
-							padding-top .106667rem
-							color #FFCA00
-							text-align center
-							font-size .373333rem
-			.todayR
-				margin-top .16rem
-				.jine
-					margin-left .44rem
-					font-size .533333rem
-				.totalR
-					float right
-					position relative
-					width 50%
-					font-size .373333rem
-					color #CCC
-					.jine
-						color #FFCA00
-					&::before
-						position absolute
-						content ''
-						left -0.586667rem
-						top .373333rem
-						width .026667rem
-						height .586667rem
-						background #FFCA00
-			.chaifenzoushi
-				width 100%
-				height 5.12rem
-				margin-top .16rem
-				opacity 0.8
-				background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
-				border-radius .133333rem
-				.zoushi-container
+  .vipcenter
+    background url('./BG.png')
+    .vip-content
+      .huobijiaoyi
+        width 100%
+        height 7.066667rem
+        margin-top .16rem
+        opacity 0.8
+        background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
+        border-radius .133333rem
+        .process-container
+          display flex
+          justify-content space-around
+          padding-top .373333rem
+          .process-item
+            width 2.786667rem
+            height 1.613333rem
+            padding .293333rem .293333rem 0
+            box-sizing border-box
+            background url('../../../assets/币@2x.png') 0 0 / 2.786667rem 1.613333rem no-repeat
+            .process-item-title
+              height .4rem
+              line-height .4rem
+              padding-bottom .08rem
+              border-bottom 1px solid #FFCA00
+              color #EEE
+              text-align center
+              font-size .293333rem
+            .process-item-price
+              height .426667rem
+              line-height .426667rem
+              padding-top .106667rem
+              color #FFCA00
+              text-align center
+              font-size .373333rem
+        .flow-process-container
+          height 2.093333rem
+          padding-top .266667rem
+          box-sizing border-box
+          .btn
+            float left
+            width 1.733333rem
+            height .773333rem
+            line-height .773333rem
+            background #FFAE11
+            text-align center
+            border-radius .106667rem
+            font-size .373333rem
+            color #FFF
+            &:first-child
+              margin-left .866667rem
+          .dots
+            float left
+            position relative
+            display flex
+            justify-content space-around
+            width 1.52rem
+            height .773333rem
+            padding .32rem .106667rem
+            box-sizing border-box
+            &::after
+              position absolute
+              left 0
+              bottom -0.333333rem
+              height .333333rem
+              line-height .333333rem
+              content '排队等待中...'
+              font-size .24rem
+              color #FFF
+            &.complate
+              &::after
+                display none
+            .dot
+              width .133333rem
+              height .133333rem
+              &.golden
+                background url('../../../assets/goldenDot.png') 0 0 / .133333rem .133333rem no-repeat
+              &.gray
+                background url('../../../assets/grayDot.png') 0 0 / .133333rem .133333rem no-repeat
+            &:last-child
+              float right
+              width 1.8rem
+              height 1.053333rem
+              padding 0
+              flex-direction column
+              &::after
+                top .453333rem
+                left -1.44rem
+                display none
+        .coin-container
+          display flex
+          justify-content space-around
+          .coin-item
+            width 2.413333rem
+            height 1.226667rem
+            box-sizing border-box
+            padding-top .08rem
+            background url('../../../assets/Rectangle3Copy5.png') 0 0 / 2.413333rem 1.226667rem no-repeat
+            .coin-item-title
+              height .4rem
+              line-height .4rem
+              padding-bottom .08rem
+              border-bottom 1px solid #FFCA00
+              color #EEE
+              text-align center
+              font-size .293333rem
+            .coin-item-price
+              height .426667rem
+              line-height .426667rem
+              padding-top .106667rem
+              color #FFCA00
+              text-align center
+              font-size .373333rem
+      .todayR
+        margin-top .16rem
+        .jine
+          margin-left .44rem
+          font-size .533333rem
+        .totalR
+          float right
+          position relative
+          width 50%
+          font-size .373333rem
+          color #CCC
+          .jine
+            color #FFCA00
+          &::before
+            position absolute
+            content ''
+            left -0.586667rem
+            top .373333rem
+            width .026667rem
+            height .586667rem
+            background #FFCA00
+      .chaifenzoushi
+        width 100%
+        height 5.12rem
+        margin-top .16rem
+        opacity 0.8
+        background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
+        border-radius .133333rem
+        .zoushi-container
           .chart-content
             position relative
             margin 0 auto
             width 8.426667rem
             height 2.24rem
-					.current-price
-						height .84rem
-						padding .253333rem .84rem .173333rem
-						box-sizing border-box
-						text-align right
-						font-size .32rem
-						color #FFF
+        .current-price
+          height .84rem
+          padding .253333rem .84rem .173333rem
+          box-sizing border-box
+          text-align right
+          font-size .32rem
+          color #FFF
 
-			.chaifenjincheng
-				width 100%
-				height 3.386667rem
-				margin-top .16rem
-				opacity 0.8
-				background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
-				border-radius .133333rem
-			.shujufenxi
-				width 100%
-				height 3.493333rem
-				margin-top .16rem
-				opacity 0.8
-				background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
-				border-radius .133333rem
-			.vip-title
-				position relative
-				height 1.333333rem
-				line-height 1.333333rem
-				padding-left .586667rem
-				opacity 0.8
-				background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
-				box-shadow 0 .026667rem .053333rem 0 rgba(0, 0, 0, .5)
-				border-radius .133333rem
-				font-size .48rem
-				color #FFCA00
-				&::before
-					position absolute
-					content ''
-					width .066667rem
-					height .453333rem
-					left .346667rem
-					top .44rem
-					background #FFCA00
-					border-radius 1.333333rem
+      .chaifenjincheng
+        width 100%
+        height 3.386667rem
+        margin-top .16rem
+        opacity 0.8
+        background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
+        border-radius .133333rem
+      .shujufenxi
+        width 100%
+        height 3.493333rem
+        margin-top .16rem
+        opacity 0.8
+        background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
+        border-radius .133333rem
+      .vip-title
+        position relative
+        height 1.333333rem
+        line-height 1.333333rem
+        padding-left .586667rem
+        opacity 0.8
+        background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
+        box-shadow 0 .026667rem .053333rem 0 rgba(0, 0, 0, .5)
+        border-radius .133333rem
+        font-size .48rem
+        color #FFCA00
+        &::before
+          position absolute
+          content ''
+          width .066667rem
+          height .453333rem
+          left .346667rem
+          top .44rem
+          background #FFCA00
+          border-radius 1.333333rem
 </style>

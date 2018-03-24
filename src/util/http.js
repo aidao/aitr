@@ -360,9 +360,9 @@ export function getPKGList () {
  * @param level
  * @returns {AxiosPromise<any>}
  */
-export function buyPKG (level) {
+export function buyPKG (params) {
   let token = JSON.parse(localStorage.getItem('__token__'))
-  return axios.post('/pkg/buy', {level}, {
+  return axios.post('/pkg/buy', params, {
     headers: {
       'access_account': token.accessAccount,
       'access_token': token.accessToken
