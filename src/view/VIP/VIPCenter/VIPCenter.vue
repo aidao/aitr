@@ -274,18 +274,7 @@
     mounted () {
       this.getBalance()
 
-      getPosPerson().then(res => {
-        if (res.data.code === 0) {
-          this.person = res.data.result;
-          this.person.topSum = this.person.leftToday + this.person.rightToday
-          this.person.buttonSum = this.person.leftTotal + this.person.rightTotal
-
-          this.leftToday.width = (this.person.leftTodayPercent * 50)+ '%'
-          this.leftTotal.width = (this.person.leftTotalPercent * 50) +'%';
-          this.rightToday.width =  (this.person.rightTodayPercent * 50) +'%';
-          this.rightTotal.width = (this.person.rightTotalPercent * 50) +'%';
-        }
-      })
+      this.getPosInfo()
 
       // 获取配套列表
       getPKGList().then(res=>{
@@ -337,6 +326,7 @@
           if (code === 0) {
             this.buyShow = false
             this.getBalance()
+            this.getPosInfo()
           }
         })
       },
@@ -354,6 +344,20 @@
           if (res.data.code === 0) {
             // console.log(res.data)
             this.balance = res.data.result
+          }
+        })
+      },
+      getPosInfo() {
+        getPosPerson().then(res => {
+          if (res.data.code === 0) {
+            this.person = res.data.result;
+            this.person.topSum = this.person.leftToday + this.person.rightToday
+            this.person.buttonSum = this.person.leftTotal + this.person.rightTotal
+
+            this.leftToday.width = (this.person.leftTodayPercent * 50)+ '%'
+            this.leftTotal.width = (this.person.leftTotalPercent * 50) +'%';
+            this.rightToday.width =  (this.person.rightTodayPercent * 50) +'%';
+            this.rightTotal.width = (this.person.rightTotalPercent * 50) +'%';
           }
         })
       }
