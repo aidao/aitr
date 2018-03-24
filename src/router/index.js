@@ -484,7 +484,6 @@ router.beforeEach ((to, from, next) => {
 })
 axios.interceptors.response.use(function (response) {
 	if (response.data.code === 10005) {
-		alert('login out time')
 		localStorage.clear()
 		router.replace({
 			path: '/login'
