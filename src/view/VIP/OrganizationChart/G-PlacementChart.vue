@@ -573,6 +573,7 @@ export default {
 				box-sizing :border-box
 				padding-left :.133333rem
 				border :0
+				outline none
 		.search-text
 			background: #FFCA00
 			border-radius :.053333rem
