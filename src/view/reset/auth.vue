@@ -66,7 +66,7 @@
         btndisabled: false,
         params:{},
         InterVal : undefined, //  定时器
-        count: 10,
+        count: 60,
         curCount: undefined
       }
     },
