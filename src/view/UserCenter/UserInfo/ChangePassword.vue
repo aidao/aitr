@@ -104,7 +104,7 @@
         // 检验安全码
         verifySafePwd(safePwdParams).then(res => {
           if (res.data.code !== 0) {
-            this.tip = '安全码输入错误'
+            this.tip = '安全码错误'
             this.$refs.promptRef.show()
             return
           }
@@ -122,7 +122,7 @@
 
           verifyPwd(verifyPwdParams).then(_res => {
             if(0 !== _res.data.code) {
-              this.tip = '旧密码码输入错误'
+              this.tip = '旧密码码错误'
               this.$refs.promptRef.show()
               this.cancel()
               return

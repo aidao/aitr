@@ -4,7 +4,7 @@
       <lang-seletor></lang-seletor>
     </GHeader>
     <div class="triangle"></div>
-    <p>确认重置</p>
+    <p class="page-title">确认重置</p>
     <div class="input-box">
       <input type="text" v-model="account" readonly="readonly">
       <input type="email" v-model="userEmail" readonly="readonly">
@@ -101,18 +101,15 @@
           this.$refs.promptAlert.show()
           return
         }
-
         const isPwdCorrect = this.validate('pwd', this.pwd) && this.checkCfmPwd(this.cfmPwd)
         if(!isPwdCorrect) return
 
-
         const isSafePwdCorrect = this.validate('safepwd', this.safepwd) && this.checkCfmSafepwd(this.cfmSafepwd)
         if(!isSafePwdCorrect) return
-
         let params = new URLSearchParams()
         params.append('account', this.account)
         params.append('pwd', this.pwd)
-        params.append('safePwd', this.safePwd)
+        params.append('safePwd', this.safepwd)
         params.append('verifyCode', this.verifyCode)
 
         resetPwdAndSafePwd(params).then(res =>{
@@ -226,18 +223,19 @@
     flex-direction column
     height 100vh
     background-color #faf8f8
-    p
+    overflow auto
+    p.page-title
       text-align center
       font-size 24px
       line-height 40px
+      margin 5px 0 10px
     .input-box
       width 80%
       margin 18px auto
-      display flex
-      flex-direction column
       .box-auth
         display: flex
         justify-content space-between
+        min-height 52px
         >button
           &:disabled
             background-color #cccccc
@@ -253,14 +251,14 @@
           display inline-block
           width 2.293rem
     input
-      flex 1
       border-radius 6px
       border 1px solid #ccc
       font-size .373333rem
       line-height 1
       padding 6px 12px
-      margin 8px 0
-      min-width 20px
+      margin 5px 0
+      width 100%
+      box-sizing border-box
     button
       width 80%
       margin 0 auto
@@ -268,6 +266,7 @@
       background-color #FFCA00
       font-size 18px
       line-height 38px
+      min-height 38px
       border none
   .triangle
     height 0.186rem
