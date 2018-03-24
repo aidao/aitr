@@ -146,7 +146,6 @@
       cancel () {
         this.maskShow = false
         this.safePwd = ''
-        this.confirmPwd = ''
         this.$refs.confirmPwd.value = ''
       },
       getVerifySafePwd () {
