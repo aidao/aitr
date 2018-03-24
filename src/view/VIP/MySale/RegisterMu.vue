@@ -145,6 +145,9 @@ export default {
 				this.direction = this.$route.query.direction === 'l' ? '左区' : '右区'
 			}
 			this.supaccount = this.$route.query.parentId
+      if (this.$route.query.refaccount) {
+        this.refaccount = this.$route.query.refaccount
+      }
 		}
 		getUSDTBalance().then(res => {
 			if (res.data.code === 0) {
@@ -320,7 +323,9 @@ export default {
 				if (res.data.code === 0) {
 					this.tipShow(res.data.msg)
 					this.$store.commit('emptyTempInf')
-					this.callbackUrl()
+          setTimeout(() => {
+            this.callbackUrl()
+          }, 1000)
 				} else {
 
 					this.tipShow(res.data.msg)

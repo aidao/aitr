@@ -60,7 +60,7 @@
 									<img v-else-if="v.level=='v5'" src="../../../assets/v5@2x.png" alt="">
 									<img v-else-if="v.level=='v6'" src="../../../assets/v6@2x.png" alt="">
 								</div>
-								<img src="../../../assets/添加@2x.png" class="select-btn" alt="" @click="selectRefAccount(v)" v-show="selectMode">
+								<img src="../../../assets/添加@2x.png" class="select-btn" alt="" @click="selectRefAccount(v)">
 							</div>
 					</div>
 				</div>

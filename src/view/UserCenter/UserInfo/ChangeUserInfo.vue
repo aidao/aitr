@@ -2,26 +2,24 @@
 	<div class="jiangjin-detail">
 		<HeadMenu :pageTitle="title"></HeadMenu>
 		<form action="" @submit.prevent="getVerifySafePwd">
-			<div>
-				<ul class="nav-list">
-					<li v-if="type === 'nickname'">
-						<input
-							type="text"
-							placeholder="输入2-16位英文或汉字"
-							v-model="userInfo.nickname"
-							ref="nickName"
-							@blur="checkNickname(userInfo.nickname)"/>
-					</li>
-					<li v-if="type !== 'nickname'">
-						<input
-							type="text"
-							placeholder="输入邮箱地址"
-							v-model="userInfo.email"
-							ref="email"
-							@blur="checkEmail(userInfo.email)"/>
-					</li>
-				</ul>
-			</div>
+      <ul class="nav-list">
+        <li class="nav-item" v-if="type === 'nickname'">
+          <input
+            type="text"
+            placeholder="输入2-16位英文或汉字"
+            v-model="userInfo.nickname"
+            ref="nickName"
+            @blur="checkNickname(userInfo.nickname)"/>
+        </li>
+        <li class="nav-item" v-if="type !== 'nickname'">
+          <input
+            type="text"
+            placeholder="输入邮箱地址"
+            v-model="userInfo.email"
+            ref="email"
+            @blur="checkEmail(userInfo.email)"/>
+        </li>
+      </ul>
 			<div class="bottom">
 				<input type="submit" class="oks" value="确认修改" />
 				<span class="back" @click="callbackUrl">返回</span>
@@ -96,11 +94,11 @@ export default {
 				this.tip = '会员姓名不能为空'
 				this.$refs.promptRef.show()
 			} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(nickName)) {
-				this.tip = '会员姓名只能输入汉字或字母'
+				this.tip = '会员姓名只允许输入2-16位字母或汉字'
 				this.$refs.promptRef.show()
 			}
-			else if (this.getByteLen(nickName)<4 || this.getByteLen(nickName) > 16) {
-				this.tip = '字符长度需要在4-16之间'
+			else if (this.getByteLen(nickName)<2 || this.getByteLen(nickName) > 16) {
+				this.tip = '会员姓名只允许输入2-16位字母或汉字'
 				this.$refs.promptRef.show()
 			}
 		},
@@ -115,15 +113,15 @@ export default {
 				this.$refs.promptRef.show()
 			}
 		},
-    checkSafePwd (safepwd) {
-      if (!safepwd) {
-        this.tip = '安全码不能为空'
-        this.$refs.promptRef.show()
-      } else if (!/^[a-zA-Z0-9]{8,16}$/.test(safepwd)) {
-        this.tip = '安全码格式不正确'
-        this.$refs.promptRef.show()
-      }
-    },
+		checkSafePwd (safepwd) {
+			if (!safepwd) {
+				this.tip = '安全码不能为空'
+				this.$refs.promptRef.show()
+			} else if (!/^[a-zA-Z0-9]{8,16}$/.test(safepwd)) {
+				this.tip = '安全码格式不正确'
+				this.$refs.promptRef.show()
+			}
+		},
 		getByteLen(val) { //  输出汉字和字母的字符数
 			return val.length
 		},
@@ -133,11 +131,11 @@ export default {
 				this.$refs.promptRef.show()
 				return
 			} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(this.userInfo.nickname)) {
-				this.tip = '会员姓名只能输入汉字或字母'
+				this.tip = '会员姓名只允许输入2-16位字母或汉字'
 				this.$refs.promptRef.show()
 				return
 			} else if (this.userInfo.nickname.length < 2 || this.userInfo.nickname.length > 16) {
-				this.tip = '会员姓名长度只允许输入2-16位字母或数字'
+				this.tip = '会员姓名只允许输入2-16位字母或汉字'
 				this.$refs.promptRef.show()
 				return
 			}
@@ -169,49 +167,50 @@ export default {
 				return
 			}
 
-      // 验证安全码
+			// 验证安全码
 			let confirmPwd = this.$refs.confirmPwd.value
-      let safePwdToken = ''
+			let safePwdToken = ''
 			let paramsForGetVerifySafePwd = new URLSearchParams()
-      paramsForGetVerifySafePwd.append('safe_pwd', confirmPwd)
+			paramsForGetVerifySafePwd.append('safe_pwd', confirmPwd)
 
-      verifySafePwd(paramsForGetVerifySafePwd).then(res => {
-        if (res.data.code === 40011) {
-          this.tip = '会员安全码错误'
-          this.$refs.promptRef.show()
-          return
-        }
-        safePwdToken = res.data.result.safePwdToken
+			verifySafePwd(paramsForGetVerifySafePwd).then(res => {
+				if (res.data.code === 40011) {
+					this.tip = '安全码错误'
+					this.$refs.promptRef.show()
+					return
+				}
+				safePwdToken = res.data.result.safePwdToken
 
-        if (this.type === 'nickname') {
-          let paramsForUpdateNickname = new URLSearchParams()
-          let nickName = this.$refs.nickName.value
-          paramsForUpdateNickname.append('safe_pwd_token', safePwdToken)
-          paramsForUpdateNickname.append('nickname', nickName)
-          updateNickname(paramsForUpdateNickname).then(res => {
-            // this.$refs.confirmPwd.value = ''
-            if (res.data.code === 0) {
-              this.tip = '修改成功'
-              this.$refs.promptRef.show()
+				if (this.type === 'nickname') {
+					let paramsForUpdateNickname = new URLSearchParams()
+					let nickName = this.$refs.nickName.value
+					paramsForUpdateNickname.append('safe_pwd_token', safePwdToken)
+					paramsForUpdateNickname.append('nickname', nickName)
+					updateNickname(paramsForUpdateNickname).then(res => {
+						// this.$refs.confirmPwd.value = ''
+						if (res.data.code === 0) {
+							this.tip = '修改成功'
+							this.$refs.promptRef.show()
+							this.callbackUrl()
+						}
+						this.maskShow = false
+					})
+				} else {
+					let paramsForUpdateEmail = new URLSearchParams()
+					let email = this.$refs.email.value
+					paramsForUpdateEmail.append('safe_pwd_token', safePwdToken)
+					paramsForUpdateEmail.append('email', email)
+					updateEmail(paramsForUpdateEmail).then(res => {
+						// this.$refs.confirmPwd.value = ''
+						if (res.data.code === 0) {
+							this.tip = '修改成功'
               this.callbackUrl()
-            }
-            this.maskShow = false
-          })
-        } else {
-          let paramsForUpdateEmail = new URLSearchParams()
-          let email = this.$refs.email.value
-          paramsForUpdateEmail.append('safe_pwd_token', safePwdToken)
-          paramsForUpdateEmail.append('email', email)
-          updateEmail(paramsForUpdateEmail).then(res => {
-            // this.$refs.confirmPwd.value = ''
-            if (res.data.code === 0) {
-              this.tip = res.data.msg
-              this.$refs.promptRef.show()
-            }
-            this.maskShow = false
-          })
-        }
-      })
+							this.$refs.promptRef.show()
+						}
+						this.maskShow = false
+					})
+				}
+			})
 		},
 
 		// 返回
@@ -226,6 +225,8 @@ export default {
 	.jiangjin-detail
 		height 100%
 		background #f2f2f2
+		.nav-list li
+			padding 0
 		.mask
 			position fixed
 			z-index 1
@@ -286,7 +287,7 @@ export default {
 			input
 				display block
 				width 8.72rem
-				height 1.333333rem!important
+				height 1.1723rem!important
 				box-sizing border-box
 				margin 0 auto
 				background #ffca00
@@ -301,7 +302,7 @@ export default {
 				text-align :center
 				font-size :.426667rem
 				color :white
-				height :1.333333rem
+				height 1.1723rem
 				line-height :1.333333rem
 				&.back
 					background-color :#D2D2D2
@@ -313,8 +314,7 @@ export default {
 	.nav-list input{
 		width: 100%;
 		border: none;
-		padding-left: 0;
-		padding-right: 0;
+		padding: 0 0.346667rem 0 0.466667rem;
 	}
 </style>
 
