@@ -50,7 +50,8 @@ export default {
           path: '/mywallet'
         }
       ],
-      hasLogined: false
+      hasLogined: false,
+      positionStyle: null
 		}
 	},
 	mounted () {

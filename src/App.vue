@@ -24,6 +24,38 @@
 	mounted() {
 		this.show=this.prompt.show
 		this.checkLogin()
+
+   		/*let winHeight = window.innerHeight
+		window.onresize = () => {
+			setTimeout(() => {
+			let docHeight = window.innerHeight
+			if(docheight < windheight){            
+		        this.hideFootNav = true
+		    }else{
+		        this.hideFootNav = false
+		    }
+		    setTimeout(() => {
+		    	winHeight = docHeight
+		    }, 50)
+		}, 100)*/
+		let oldHeight = window.innerHeight
+		window.onresize = () => {
+			// setTimeout(() => {
+				let newHeight = window.innerHeight
+				if (newHeight < oldHeight) {
+					this.hideFootNav = true
+				} else {
+					this.hideFootNav = false
+				}
+				/*if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+					this.hideFootNav = true
+				} else {
+					this.hideFootNav = false
+				}*/
+				oldHeight = newHeight
+			// }, 50)
+			
+		}
 		/*window.addEventListener('click', function() {
 			if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
 			setTimeout(() => {

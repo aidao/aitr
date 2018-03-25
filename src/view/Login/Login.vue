@@ -51,12 +51,18 @@ export default {
 	methods: {
     validate (fieldName, fieldValue) {
       const options = {
-        userName: {
+        /*userName: {
           rules: ['required', 'enOrNumber', { type: 'size', min: 5, max: 18 }],
           msg: {
             required: '用户名不能为空',
             enOrNumber: '用户名只允许输入5-18位字母或数字',
             size: '用户名只允许输入5-18位字母或数字'
+          }
+        },*/
+        userName: {
+          rules: ['required'],
+          msg: {
+            required: '用户名不能为空'
           }
         },
         userPwd: {
