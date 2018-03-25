@@ -9,6 +9,11 @@ const Index = resolve => {
 		resolve(module)
 	})
 }
+const NotFound = resolve => {
+	import('view/404/404.vue').then(module => {
+		resolve(module)
+	})
+}
 const Login = resolve => {
 	import('view/Login/Login').then(module => {
 		resolve(module)
@@ -450,6 +455,10 @@ const routes = [
 	{
 		path: '/reset/new-safe',
 		component: resetNewSafe
+	},
+	{
+		path: '/404',
+		component: NotFound
 	}
 ]
 
@@ -470,7 +479,7 @@ router.beforeEach ((to, from, next) => {
 	const lang = i18n.locale || 'ch'
 	loadLanguageAsync(lang).then(() => next())
 
-	if (to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth' && to.path !== '/reset/new-pwd' && to.path !== '/reset/new-safe') {
+	if (to.path !== '/404' && to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth' && to.path !== '/reset/new-pwd' && to.path !== '/reset/new-safe') {
 		localStorage.setItem('lastVisitPath', to.path)
 
 		if (!sessionStorage.getItem('__token__')) {
@@ -483,10 +492,16 @@ router.beforeEach ((to, from, next) => {
 	}
 })
 axios.interceptors.response.use(function (response) {
+	// 登录超时
 	if (response.data.code === 10005) {
 		localStorage.clear()
 		router.replace({
 			path: '/login'
+		})
+	} else if (response.data.code === 10009) {
+		localStorage.clear()
+		router.replace({
+			path: '/404'
 		})
 	}
 	return response

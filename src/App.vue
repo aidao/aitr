@@ -18,20 +18,20 @@
 			hasLogined: false,
 			isIndexPage: false,
 			hideFootNav: false,
-      mainMenuActiveItem: 0
+	  mainMenuActiveItem: 0
 		}
 	},
 	mounted() {
 		this.show=this.prompt.show
 		this.checkLogin()
 		/*window.addEventListener('click', function() {
-	        if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
-	        setTimeout(() => {
-	        	// document.activeElement.scrollIntoView(false)
-	          // document.activeElement.scrollIntoViewIfNeeded(false)
-	        }, 100)
-	      }
-	    })*/
+			if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+			setTimeout(() => {
+				// document.activeElement.scrollIntoView(false)
+			  // document.activeElement.scrollIntoViewIfNeeded(false)
+			}, 100)
+		  }
+		})*/
 
 	},
 	watch:{
@@ -43,15 +43,15 @@
 			}
 		},
 		$route (state) {
-			this.isIndexPage = state.path === '/index'
-			this.hideFootNav = ['/index', '/registermu', '/usercenter', '/cgpwd', '/cgsfw' ].indexOf(state.path) > -1 || state.path.indexOf('coininfo') > -1 || state.path.indexOf('cointransfer') > -1 || state.path.indexOf('changeuserinfo') > -1
+			this.isIndexPage = (state.path === '/index')
+			this.hideFootNav = ['/index', '/registermu', '/usercenter', '/cgpwd', '/cgsfw', '/404' ].indexOf(state.path) > -1 || state.path.indexOf('coininfo') > -1 || state.path.indexOf('cointransfer') > -1 || state.path.indexOf('changeuserinfo') > -1
 			this.checkLogin()
 
-      if(state.path.indexOf('organizationchart') > -1) {
-			  this.mainMenuActiveItem = 1
-      } else {
-        this.mainMenuActiveItem = ['/vip', '/organizationchart', '/mysale', '/tradecenter', '/mywallet'].indexOf(state.path)
-      }
+			if(state.path.indexOf('organizationchart') > -1) {
+					  this.mainMenuActiveItem = 1
+			  } else {
+				this.mainMenuActiveItem = ['/vip', '/organizationchart', '/mysale', '/tradecenter', '/mywallet'].indexOf(state.path)
+			  }
 		}
 	} ,
 	components:{
@@ -68,9 +68,9 @@
 			const token = JSON.parse(localStorage.getItem('__token__'))
 			this.hasLogined = token ? true : false
 		},
-    switchFootNav (index) {
+	switchFootNav (index) {
 		  this.mainMenuActiveItem = index
-    }
+	}
 	}
 }
 </script>

@@ -379,3 +379,13 @@ export function getSplitProcess () {
     }
   })
 }
+
+export function serverUpdating () {
+  let token = JSON.parse(localStorage.getItem('__token__'))
+  return axios.get('/updating', {
+    headers: {
+      'access_account': token ? token.accessAccount : null,
+      'access_token': token ? token.accessToken : null
+    }
+  })
+}
