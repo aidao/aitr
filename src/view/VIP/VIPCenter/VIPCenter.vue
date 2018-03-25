@@ -195,6 +195,7 @@
 				sum: undefined,
 				splitProcessLoaded: false,
 				preLineUp: false,
+				isBuying: false,
 				columnarList: [
 					{ height: '16%' },
 					{ height: '20%' },
@@ -320,6 +321,13 @@
 				this.maskShow=false
 			},
 			confirmBuyPKG () {
+				if(this.isBuying) {
+					this.tip = '正在购买中...'
+					this.$refs.promptRef.show()
+					return
+				}
+				this.isBuying = true
+				// setTimeout(() => {
 				let params = new URLSearchParams()
 				params.append('level', parseInt(this.buyLvl))
 				buyPKG(params).then(res => {
@@ -333,7 +341,11 @@
 						this.getBalance()
 						this.getPosInfo()
 					}
+					this.isBuying = false
+				}, err => {
+					this.isBuying = false
 				})
+				// }, 5000)
 			},
 			/**
 			 * 格式化时间
