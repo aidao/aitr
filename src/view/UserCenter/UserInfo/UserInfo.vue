@@ -290,15 +290,14 @@ export default {
 			bottom 0
 			background rgba(0, 0, 0, .5)
 			.alert-content
-				position relative
+				position absolute
 				width 7.28rem
 				height 4.426667rem
 				background #FFF
 				left 50%
-				// top 50%
-				top 6.493333rem
+				top 50%
 				margin-left -3.64rem
-				// margin-top -1.546667rem
+				margin-top -2.21333rem
 				border-radius .133333rem
 				.title
 					height .56rem

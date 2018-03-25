@@ -2,24 +2,24 @@
 	<div class="jiangjin-detail">
 		<HeadMenu :pageTitle="title"></HeadMenu>
 		<form action="" @submit.prevent="getVerifySafePwd">
-      <ul class="nav-list">
-        <li class="nav-item" v-if="type === 'nickname'">
-          <input
-            type="text"
-            placeholder="输入2-16位英文或汉字"
-            v-model="userInfo.nickname"
-            ref="nickName"
-            @blur="checkNickname(userInfo.nickname)"/>
-        </li>
-        <li class="nav-item" v-if="type !== 'nickname'">
-          <input
-            type="text"
-            placeholder="输入邮箱地址"
-            v-model="userInfo.email"
-            ref="email"
-            @blur="checkEmail(userInfo.email)"/>
-        </li>
-      </ul>
+	  <ul class="nav-list">
+		<li class="nav-item" v-if="type === 'nickname'">
+		  <input
+			type="text"
+			placeholder="输入2-16位英文或汉字"
+			v-model="userInfo.nickname"
+			ref="nickName"
+			@blur="checkNickname(userInfo.nickname)"/>
+		</li>
+		<li class="nav-item" v-if="type !== 'nickname'">
+		  <input
+			type="text"
+			placeholder="输入邮箱地址"
+			v-model="userInfo.email"
+			ref="email"
+			@blur="checkEmail(userInfo.email)"/>
+		</li>
+	  </ul>
 			<div class="bottom">
 				<input type="submit" class="oks" value="确认修改" />
 				<span class="back" @click="callbackUrl">返回</span>
@@ -207,7 +207,7 @@ export default {
 						// this.$refs.confirmPwd.value = ''
 						if (res.data.code === 0) {
 							this.tip = '修改成功'
-              this.callbackUrl()
+			  this.callbackUrl()
 							this.$refs.promptRef.show()
 						}
 						this.maskShow = false
@@ -239,16 +239,15 @@ export default {
 			bottom 0
 			background rgba(0, 0, 0, .5)
 			.alert-content
-				position relative
+				position absolute
 				width 7.28rem
 				height 4.426667rem
 				background #FFF
 				left 50%
-				// top 50%
-				top 6.493333rem
 				margin-left -3.64rem
-				// margin-top -1.546667rem
 				border-radius .133333rem
+				top 50%
+				margin-top -2.21333rem
 				.title
 					height .56rem
 					line-height .56rem
