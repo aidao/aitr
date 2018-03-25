@@ -126,27 +126,30 @@ export default {
 			return val.length
 		},
 		getVerifySafePwd () {
-			if (!this.userInfo.nickname) {
-				this.tip = '会员姓名不能为空'
-				this.$refs.promptRef.show()
-				return
-			} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(this.userInfo.nickname)) {
-				this.tip = '会员姓名只允许输入2-16位字母或汉字'
-				this.$refs.promptRef.show()
-				return
-			} else if (this.userInfo.nickname.length < 2 || this.userInfo.nickname.length > 16) {
-				this.tip = '会员姓名只允许输入2-16位字母或汉字'
-				this.$refs.promptRef.show()
-				return
-			}
-			if (!this.userInfo.email) {
-				this.tip = '邮箱不能为空'
-				this.$refs.promptRef.show()
-				return
-			} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(this.userInfo.email)) {
-				this.tip = '邮箱格式不正确'
-				this.$refs.promptRef.show()
-				return
+			if (this.type === 'nickname') {
+				if (!this.userInfo.nickname) {
+					this.tip = '会员姓名不能为空'
+					this.$refs.promptRef.show()
+					return
+				} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(this.userInfo.nickname)) {
+					this.tip = '会员姓名只允许输入2-16位字母或汉字'
+					this.$refs.promptRef.show()
+					return
+				} else if (this.userInfo.nickname.length < 2 || this.userInfo.nickname.length > 16) {
+					this.tip = '会员姓名只允许输入2-16位字母或汉字'
+					this.$refs.promptRef.show()
+					return
+				}
+			} else {
+				if (!this.userInfo.email) {
+					this.tip = '邮箱不能为空'
+					this.$refs.promptRef.show()
+					return
+				} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(this.userInfo.email)) {
+					this.tip = '邮箱格式不正确'
+					this.$refs.promptRef.show()
+					return
+				}
 			}
 			this.maskShow = true
 		},
@@ -309,12 +312,3 @@ export default {
 				&.oks
 					background :#FFCA00
 </style>
-
-<style>
-	.nav-list input{
-		width: 100%;
-		border: none;
-		padding: 0 0.346667rem 0 0.466667rem;
-	}
-</style>
-

@@ -97,7 +97,7 @@
           <div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
           <div class="map-round">
             <ul v-for="(item, index) in 5" :key="index">
-              <li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index < mapStatus || (index == mapStatus && idx ==0)}"></li>
+              <li v-for="(tem, idx) in 4" :key="idx" :class="{'active': mapStatus && (index < mapStatus || (index == mapStatus && idx ==0))}"></li>
             </ul>
             <ul>
               <li></li>

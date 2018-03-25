@@ -326,13 +326,3 @@
         &.oks
           background :#FFCA00
 </style>
-
-<style>
-  .nav-list input{
-    width: 100%;
-    outline: none;
-    border: none;
-    padding-left: 0;
-    padding-right: 0;
-  }
-</style>

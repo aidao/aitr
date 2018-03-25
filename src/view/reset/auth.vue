@@ -36,8 +36,8 @@
         v-model="cfmSafepwd"
         @blur="checkCfmSafepwd(cfmSafepwd)"
         ref="cfmSafepwd">
+      <button type="button" @click="onSubmit" style="margin-bottom: 10px;width: 100%;">完成</button>
     </div>
-    <button type="button" @click="onSubmit">完成</button>
     <prompt :tip="tip" ref="promptAlert"></prompt>
   </div>
 </template>
@@ -228,10 +228,11 @@
       text-align center
       font-size 24px
       line-height 40px
-      margin 5px 0 10px
+      margin 5px 0 0
+      min-height 40px
     .input-box
       width 80%
-      margin 18px auto
+      margin 0 auto 18px auto
       .box-auth
         display: flex
         justify-content space-between
@@ -246,7 +247,7 @@
           font-size .373333rem
           line-height 1
           border none
-          margin 8px 0 8px 8px
+          margin 5px 0 5px 5px 
           white-space nowrap
           display inline-block
           width 2.293rem

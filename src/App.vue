@@ -24,6 +24,15 @@
 	mounted() {
 		this.show=this.prompt.show
 		this.checkLogin()
+		/*window.addEventListener('click', function() {
+	        if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+	        setTimeout(() => {
+	        	// document.activeElement.scrollIntoView(false)
+	          // document.activeElement.scrollIntoViewIfNeeded(false)
+	        }, 100)
+	      }
+	    })*/
+
 	},
 	watch:{
 		'prompt.show': function (val, oldVal) {

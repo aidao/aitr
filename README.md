@@ -6,6 +6,7 @@
 
 ``` bash
 # install dependencies
+set PATH=C:\Program Files\nodejs;%PATH%;
 npm install
 
 # serve with hot reload at localhost:8080

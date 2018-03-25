@@ -18,7 +18,7 @@
   .m-header
     position relative
     width 100%
-    height 1.28rem
+    min-height 1.28rem
     background #000
     .logo
       position absolute
