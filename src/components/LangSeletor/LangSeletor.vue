@@ -1,5 +1,5 @@
 <template>
-  <select class="select-lang" v-model="lang" @change="changeLang">
+  <select class="select-lang" v-model="lang" @change="changeLang" disabled>
     <option selected value="ch">简体中文</option>
     <option value="en">English</option>
     <option value="ko">韩文</option>

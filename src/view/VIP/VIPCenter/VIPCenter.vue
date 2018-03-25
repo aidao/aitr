@@ -534,7 +534,6 @@
 			.title
 				height .56rem
 				line-height .56rem
-				margin 0 auto .64rem auto
 				padding-top .906667rem
 				text-align center
 				font-size .426667rem
@@ -557,7 +556,7 @@
 				display flex
 				height 1.12rem
 				box-sizing border-box
-				margin-top .373333rem
+				margin-top .64rem
 				border-top 1px solid #CCC
 				font-size .373333rem
 				.cancel, .decide
