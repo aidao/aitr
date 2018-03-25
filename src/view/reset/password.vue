@@ -9,7 +9,8 @@
       <input type="text"
              placeholder="请输入用户名"
              v-model="account"
-             @blur="checkAccount(account)">
+             @blur="checkAccount(account)"
+             ref="account" >
     </div>
     <button type="button" @click="onSubmit(account)">下一步</button>
     <prompt :tip="tip" ref="promptAlert"></prompt>
@@ -49,10 +50,12 @@
       onSubmit(account){
         if (!account) {
           this.tip = '用户名不能为空'
+          this.$refs.account.focus()
           this.$refs.promptAlert.show()
           return
         } else if (!/^\w{5,18}$/.test(account)) {
           this.tip = '用户名格必须为5-18个字符'
+          this.$refs.account.focus()
           this.$refs.promptAlert.show()
           return
         }else{

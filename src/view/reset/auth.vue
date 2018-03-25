@@ -9,7 +9,7 @@
       <input type="text" v-model="account" readonly="readonly">
       <input type="email" v-model="userEmail" readonly="readonly">
       <div class="box-auth">
-        <input type="text" placeholder="请输入邮箱验证码" v-model="verifyCode">
+        <input type="text" placeholder="请输入邮箱验证码" v-model="verifyCode" ref="verifyCode">
         <button type="button" @click="getAuth" :disabled="btndisabled">{{bthTxt}}</button>
       </div>
       <input
@@ -99,12 +99,15 @@
         if (!this.verifyCode) {
           this.tip = '验证码不能为空'
           this.$refs.promptAlert.show()
+          this.$refs.verifyCode.focus()
           return
         }
         const isPwdCorrect = this.validate('pwd', this.pwd) && this.checkCfmPwd(this.cfmPwd)
+        this.$refs.pwd.focus()
         if(!isPwdCorrect) return
 
         const isSafePwdCorrect = this.validate('safepwd', this.safepwd) && this.checkCfmSafepwd(this.cfmSafepwd)
+        this.$refs.safepwd.focus()
         if(!isSafePwdCorrect) return
         let params = new URLSearchParams()
         params.append('account', this.account)
