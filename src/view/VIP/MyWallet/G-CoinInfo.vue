@@ -168,7 +168,7 @@ export default {
 				this.transferData = this.transferData.concat(list)
 				this.isDataLoaded = true
 				this.pagenum = res.data.result.pageNum
-        this.totalPageCount = res.data.result.count
+        this.totalPageCount = Math.ceil(res.data.result.count / 5)
 
         if(cb) cb()
 			})
