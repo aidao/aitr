@@ -93,17 +93,17 @@
 			</div>
 			<div class="chaifenjincheng">
 				<div class="vip-title">拆分进程</div>
-				<div class="vip-map">
+				<div class="vip-map" v-if="splitProcessLoaded">
 					<div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
 					<div class="map-round">
 						<ul v-for="(item, index) in 5" :key="index">
-							<li v-for="(tem, idx) in 4" :key="idx" :class="{'active': mapStatus && (index < mapStatus || (index == mapStatus && idx ==0))}"></li>
+							<li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index < mapStatus || (mapStatus !=0 && index == mapStatus && idx == 0) || (preLineUp && idx == 0 && index == 0)}"></li>
 						</ul>
 						<ul>
 							<li></li>
 						</ul>
 					</div>
-					<div class="map-time" v-if="splitProcessLoaded">
+					<div class="map-time">
 						<span v-for="(item, index) in mapTIME" :key="index">{{item.time}}</span>
 					</div>
 				</div>
@@ -194,6 +194,7 @@
 				buyShow:false,
 				sum: undefined,
 				splitProcessLoaded: false,
+				preLineUp: false,
 				columnarList: [
 					{ height: '16%' },
 					{ height: '20%' },
@@ -293,6 +294,10 @@
 					this.mapTIME[1] = {time: result.price || ''}
 					this.mapStatus = result.status
 					this.splitProcessLoaded = true
+
+					this.preLineUp = (this.mapStatus == 0 && result.lineupTime)
+					console.info('res.data', res.data)
+					console.info('preLineUp', this.preLineUp)
 				}
 			})
 		},

@@ -38,23 +38,26 @@
 		    	winHeight = docHeight
 		    }, 50)
 		}, 100)*/
-		let oldHeight = window.innerHeight
-		window.onresize = () => {
-			// setTimeout(() => {
-				let newHeight = window.innerHeight
-				if (newHeight < oldHeight) {
-					this.hideFootNav = true
-				} else {
-					this.hideFootNav = false
-				}
-				/*if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
-					this.hideFootNav = true
-				} else {
-					this.hideFootNav = false
-				}*/
-				oldHeight = newHeight
-			// }, 50)
-			
+		// Android浏览器检测软键盘弹出
+		if (navigator.userAgent.toLowerCase().indexOf('android') > -1) {
+			let oldHeight = window.innerHeight
+			window.onresize = () => {
+				// setTimeout(() => {
+					let newHeight = window.innerHeight
+					if (newHeight < oldHeight) {
+						this.hideFootNav = true
+					} else {
+						this.hideFootNav = false
+					}
+					/*if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+						this.hideFootNav = true
+					} else {
+						this.hideFootNav = false
+					}*/
+					oldHeight = newHeight
+				// }, 50)
+				
+			}
 		}
 		/*window.addEventListener('click', function() {
 			if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
