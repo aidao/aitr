@@ -47,7 +47,9 @@
 					if (newHeight < oldHeight) {
 						this.hideFootNav = true
 					} else {
-						this.hideFootNav = false
+						if(document.querySelector('.index-menu')) {
+							this.hideFootNav = false
+						}
 					}
 					/*if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
 						this.hideFootNav = true
