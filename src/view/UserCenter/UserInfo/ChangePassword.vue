@@ -1,7 +1,7 @@
 <template>
 	<div class="changepwd">
 		<HeadMenu pageTitle="修改密码"></HeadMenu>
-		<form action="" @submit.prevent="getVerifySafePwd">
+		<form action="" @submit.prevent="changeUserPwd">
 			<ul class="nav-list">
 				<li>
 					<input
@@ -97,6 +97,50 @@
 					return
 				}
 
+				if(!this.getVerifySafePwd()) {
+					return
+				}
+
+				let verifyPwdParams = new URLSearchParams()
+				let confirmPwd = this.$refs.confirmPwd.value
+
+				/*if (safePwd === this.pwd) {
+					this.tip = '密码和安全码不能相同'
+					this.$refs.promptRef.show()
+					return
+				}*/
+
+				verifyPwdParams.append('pwd', confirmPwd)
+				verifyPwd(verifyPwdParams).then(_res => {
+					if(0 !== _res.data.code) {
+						this.tip = '旧密码码错误'
+						this.$refs.promptRef.show()
+						this.cancel()
+						return
+					}
+
+					let pwdToken = _res.data.result.pwdToken
+					let verifyPwdd = this.$refs.cfmPwd.value
+					let updatePwdParams = new URLSearchParams()
+					updatePwdParams.append('pwd', verifyPwdd)
+					updatePwdParams.append('pwd_token', pwdToken)
+
+					updatePwd(updatePwdParams).then(res => {
+						if (res.data.code === 40012) {
+							this.tip = '密码修改失败'
+							this.$refs.promptRef.show()
+						}
+						if (res.data.code === 0) {
+							this.tip = '修改成功'
+							this.$refs.promptRef.show()
+							this.callbackUrl()
+						}
+						this.maskShow = false
+						this.$refs.confirmPwd.value = ''
+					})
+				});
+			},
+			checkSafePwd (callback) {
 				let safePwdParams = new URLSearchParams()
 				let safePwd = this.$refs.safePwd.value
 				safePwdParams.append('safe_pwd', safePwd)
@@ -108,46 +152,8 @@
 						this.$refs.promptRef.show()
 						return
 					}
-
-					let verifyPwdParams = new URLSearchParams()
-					let confirmPwd = this.$refs.confirmPwd.value
-
-					if (safePwd === this.pwd) {
-						this.tip = '密码和安全码不能相同'
-						this.$refs.promptRef.show()
-						return
-					}
-
-					verifyPwdParams.append('pwd', confirmPwd)
-
-					verifyPwd(verifyPwdParams).then(_res => {
-						if(0 !== _res.data.code) {
-							this.tip = '旧密码码错误'
-							this.$refs.promptRef.show()
-							this.cancel()
-							return
-						}
-
-						let pwdToken = _res.data.result.pwdToken
-						let verifyPwdd = this.$refs.cfmPwd.value
-						let updatePwdParams = new URLSearchParams()
-						updatePwdParams.append('pwd', verifyPwdd)
-						updatePwdParams.append('pwd_token', pwdToken)
-
-						updatePwd(updatePwdParams).then(res => {
-							if (res.data.code === 40012) {
-								this.tip = '密码修改失败'
-								this.$refs.promptRef.show()
-							}
-							if (res.data.code === 0) {
-								this.tip = '修改成功'
-								this.$refs.promptRef.show()
-								this.callbackUrl()
-							}
-							this.maskShow = false
-							this.$refs.confirmPwd.value = ''
-						})
-					});
+					if(callback) callback()
+					
 				})
 			},
 			cancel () {
@@ -160,36 +166,37 @@
 					this.tip = '旧密码不能为空'
 					this.$refs.promptRef.show()
 					this.$refs.confirmPwd.focus()
-					return
+					return false
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.confirmPwd)) {
 					this.tip = '旧密码应为8-16位的数字或字母'
 					this.$refs.promptRef.show()
 					this.$refs.confirmPwd.focus()
-					return
+					return false
 				}
 				if (!this.pwd) {
 					this.tip = '新密码不能为空'
 					this.$refs.promptRef.show()
 					this.$refs.pwd.focus()
-					return
+					return false
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.pwd)) {
 					this.tip = '只能输入8-16位的数字或字母'
 					this.$refs.promptRef.show()
 					this.$refs.pwd.focus()
-					return
+					return false
 				}
 				if (!this.cfmPwd) {
 					this.tip = '确认新密码不能为空'
 					this.$refs.cfmPwd.focus()
 					this.$refs.promptRef.show()
-					return
+					return false
 				} else if (this.cfmPwd !== this.pwd) {
 					this.tip = '两次密码输入不一致'
 					this.$refs.promptRef.show()
 					this.$refs.cfmPwd.focus()
-					return
+					return false
 				}
-				this.maskShow = true
+				// this.maskShow = true
+				return true
 			},
 			checkPwd (pwd) {
 				if (!/^[a-zA-Z0-9]{8,16}$/.test(pwd)) {

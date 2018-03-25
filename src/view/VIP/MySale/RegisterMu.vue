@@ -6,7 +6,7 @@
 			<div class="form-content">
 				<div class="m-input">
 					<div class="title">会员账号:</div>
-					<input type="text" @blur="validate('account', account)" v-model="account" ref="account" name="account" placeholder="请输入5-8位汉字或字母......" />
+					<input type="text" @blur="validate('account', account)" v-model="account" ref="account" name="account" placeholder="请输入5-18位数字或字母......" />
 				</div>
 
 				<div class="m-input">
@@ -213,7 +213,7 @@ export default {
 		      rules: ['enOrNumber', { type: 'size', min: 5, max: 18 }],
           msg: {
             enOrNumber: '会员账号只允许输入英文或者数字',
-            size: '字符长度需要在5-18之间'
+            size: '会员账号只允许输入5-18位英文或者数字'
           }
         },
         nickname: {
