@@ -105,7 +105,7 @@
 
         verifySafePwd(verifySafePwdParams).then(res => {
           if (res.data.code === 40011) {
-            this.tip = '会员安全码错误'
+            this.tip = '旧安全码错误'
             this.$refs.promptRef.show()
             return
           }
@@ -116,7 +116,7 @@
           if (safecode === verifySafecode) {
             updateSafePwd(updateSafePwdParams).then(res => {
               if (res.data.code === 40011) {
-                this.tip = '会员安全码错误'
+                this.tip = '旧安全码错误'
                 this.$refs.promptRef.show()
               }
               if (res.data.code === 40013) {

@@ -1,5 +1,5 @@
 <template>
-	<div class="organization">
+	<div class="organization" style="margin-bottom: 20px">
 		<head-menu :pageTitle="title"></head-menu>
 		<div class="content">
 			<div class="top">
