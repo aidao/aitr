@@ -1,15 +1,9 @@
+import login from './ch/login'
 const ln = {
   common: {
     Login: '登录'
   },
-  login: {
-    tips: {
-      name: '请输入用户名',
-      pwd: '请输入密码'
-    },
-    welcome: '欢迎登录',
-    forgotPwd: '忘记密码？'
-  }
+  login: login
 }
 export default ln
 // 	PresentPrice
