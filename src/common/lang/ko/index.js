@@ -3,6 +3,7 @@ import mywallet from './mywallet'
 import mysale from './mysale'
 import password from './password'
 import userInfo from './userInfo'
+import VIPCenter from './vipCenter'
 
 const ln = {
   common: {
@@ -11,6 +12,7 @@ const ln = {
     back: '되돌아간다',
     ok: '제출',
     submit: '제출',
+    cancel: '취소',
     Enter: '들어간다'
   },
   MembershipGrade: {
@@ -20,6 +22,7 @@ const ln = {
   mywallet: mywallet,
   mysale: mysale,
   password: password,
-  userInfo: userInfo
+  userInfo: userInfo,
+  vip: VIPCenter
 }
 export default ln
