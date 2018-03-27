@@ -4,39 +4,39 @@
       <lang-seletor></lang-seletor>
     </GHeader>
     <div class="triangle"></div>
-    <p class="page-title">确认重置</p>
+    <p class="page-title">{{ $t('password.auth') }}</p>
     <div class="input-box">
       <input type="text" v-model="account" readonly="readonly">
       <input type="email" v-model="userEmail" readonly="readonly">
       <div class="box-auth">
-        <input type="text" placeholder="请输入邮箱验证码" v-model="verifyCode" ref="verifyCode">
+        <input type="text" :placeholder="$t('password.authTips.email')" v-model="verifyCode" ref="verifyCode">
         <button type="button" @click="getAuth" :disabled="btndisabled">{{bthTxt}}</button>
       </div>
       <input
         type="password"
-        placeholder="输入新密码，仅限8-16位英文或者数字"
+        :placeholder="$t('password.authTips.pwd')"
         v-model="pwd"
         @blur="validate('pwd', pwd)"
         ref="pwd">
       <input
         type="password"
-        placeholder="确认新密码，与新密码相同"
+        :placeholder="$t('password.authTips.pwd')"
         v-model="cfmPwd"
         @blur="checkCfmPwd(cfmPwd)"
         ref="cfmPwd">
       <input
         type="password"
-        placeholder="输入新安全码，仅限8-16位英文或者数字"
+        :placeholder="$t('password.authTips.safePwd')"
         v-model="safepwd"
         @blur="validate('safepwd', safepwd)"
         ref="safepwd">
       <input
         type="password"
-        placeholder="确认新安全码，与新安全码相同"
+        :placeholder="$t('password.authTips.checkSafePwd')"
         v-model="cfmSafepwd"
         @blur="checkCfmSafepwd(cfmSafepwd)"
         ref="cfmSafepwd">
-      <button type="button" @click="onSubmit" style="margin-bottom: 10px;width: 100%;">完成</button>
+      <button type="button" @click="onSubmit" style="margin-bottom: 10px;width: 100%;">{{ $t('password.commit') }}</button>
     </div>
     <prompt :tip="tip" ref="promptAlert"></prompt>
   </div>
@@ -61,13 +61,14 @@
         cfmPwd: '',
         safepwd: '',
         cfmSafepwd: '',
-        bthTxt: '发送验证',
+        bthTxt: '',
         tip: '',
         btndisabled: false,
         params:{},
         InterVal : undefined, //  定时器
         count: 60,
-        curCount: undefined
+        curCount: undefined,
+        lang: 'ch'
       }
     },
     components: {
@@ -78,6 +79,7 @@
     mounted (){
       this.account = sessionStorage.getItem('account')
       this.userEmail = sessionStorage.getItem('userEmail')
+      this.bthTxt=this.$t('password.send');
     },
     methods:{
       getAuth(){  //  获取验证码
@@ -142,7 +144,7 @@
         if(this.curCount==0){
           window.clearInterval(this.InterVal);//停止计时器
           this.btndisabled=false;
-          this.bthTxt='发送验证';
+          this.bthTxt=this.$t('password.send');
         }else{
           this.curCount--;
           this.bthTxt = this.curCount + 's';
@@ -250,7 +252,7 @@
           font-size .373333rem
           line-height 1
           border none
-          margin 5px 0 5px 5px 
+          margin 5px 0 5px 5px
           white-space nowrap
           display inline-block
           width 2.293rem

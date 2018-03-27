@@ -4,10 +4,10 @@
       <lang-seletor></lang-seletor>
     </GHeader>
     <div class="triangle"></div>
-    <p>忘记密码</p>
+    <p>{{ $t('password.forgotPwd') }}</p>
     <div class="input-box">
       <input type="text"
-             placeholder="请输入用户名"
+             :placeholder="$t('password.tips.account')"
              v-model="account"
              @blur="checkAccount(account)"
              ref="account" >
@@ -29,13 +29,17 @@
     data () {
       return {
         account: undefined,
-        tip: ''
+        tip: '',
+        lang: 'ch'
       }
     },
     components: {
       Prompt,
       GHeader,
       LangSeletor
+    },
+    mounted () {
+      console.log(this.$t('password.account'))
     },
     methods:{
       checkAccount (account) {

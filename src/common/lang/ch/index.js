@@ -1,6 +1,7 @@
 import login from './login'
 import mywallet from './mywallet'
 import mysale from './mysale'
+import password from './password'
 
 const ln = {
   common: {
@@ -16,7 +17,8 @@ const ln = {
   },
   login: login,
   mywallet: mywallet,
-  mysale: mysale
+  mysale: mysale,
+  password: password
 }
 export default ln
 // 	PresentPrice
