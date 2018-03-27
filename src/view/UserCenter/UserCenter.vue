@@ -1,32 +1,32 @@
 <template>
 	<div class="jiangjin-detail">
-		<HeadMenu pageTitle="个人信息"></HeadMenu>
+		<HeadMenu :pageTitle="$t('userInfo.userCenter')"></HeadMenu>
 		<div>
 			<ul class="nav-list">
 				<li>
-					<div class="nav-label">会员账号</div>
+					<div class="nav-label">{{ $t('userInfo.account') }}</div>
           <span class="nav-value">{{userInfo.account}}</span>
 				</li>
 				<router-link to="/changeuserinfo/nickname" tag="li">
-					<div class="nav-label">会员名称</div>
+					<div class="nav-label">{{ $t('userInfo.name') }}</div>
           <span class="nav-value">{{userInfo.nickname}}</span><div class="arrow">></div>
 				</router-link>
 				<li>
-					<div class="nav-label">当前级别</div>
+					<div class="nav-label">{{ $t('userInfo.level') }}</div>
           <span class="nav-value">{{userInfo.level}}</span>
 				</li>
 				<router-link to="/changeuserinfo/email" tag="li">
-					<div class="nav-label">邮箱</div>
+					<div class="nav-label">{{ $t('userInfo.email') }}</div>
           <span class="nav-value">{{userInfo.email}}</span><div class="arrow">></div>
 				</router-link>
 			</ul>
 			<ul class="nav-list">
 				<router-link to="/cgpwd" tag="li">
-					<div class="nav-label">登录密码</div>
+					<div class="nav-label">{{ $t('userInfo.loginPwd') }}</div>
 					<div class="arrow">></div>
 				</router-link>
 				<router-link to="/cgsfw" tag="li">
-					<div class="nav-label">安全码</div>
+					<div class="nav-label">{{ $t('userInfo.safePwd') }}</div>
 					<div class="arrow">></div>
 				</router-link>
 			</ul>
@@ -46,7 +46,8 @@ import {LoginOut, getAccountInfo} from 'util/http'
 export default {
   data () {
     return {
-      userInfo: {}
+      userInfo: {},
+      lang: 'ch'
     }
   },
   components: {
