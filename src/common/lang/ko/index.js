@@ -2,6 +2,7 @@ import login from './login'
 import mywallet from './mywallet'
 import mysale from './mysale'
 import password from './password'
+import userInfo from './userInfo'
 import VIPCenter from './vipCenter'
 
 const ln = {
@@ -21,6 +22,7 @@ const ln = {
   mywallet: mywallet,
   mysale: mysale,
   password: password,
+  userInfo: userInfo,
   vip: VIPCenter
 }
 export default ln

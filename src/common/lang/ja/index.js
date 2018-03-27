@@ -3,6 +3,7 @@ import mywallet from './mywallet'
 import mysale from './mysale'
 import password from './password'
 import VIPCenter from './vipCenter'
+import userInfo from './userInfo'
 
 const ln = {
   common: {
@@ -21,6 +22,7 @@ const ln = {
   mywallet: mywallet,
   mysale: mysale,
   password: password,
+  userInfo: userInfo,
   vip: VIPCenter
 }
 export default ln
