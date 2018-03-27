@@ -91,8 +91,8 @@ import {validator} from 'util/util'
 
 import HeadMenu from '@/components/HeadMenu/HeadMenu'
 import Prompt from '@/components/Prompt/Prompt'
-import RecommendChart from '../Organizationchart/G-RecommendChart'
-import PlacementChart from '../Organizationchart/G-PlacementChart'
+import RecommendChart from '../OrganizationChart/G-RecommendChart'
+import PlacementChart from '../OrganizationChart/G-PlacementChart'
 
 export default {
 	name: 'RegisterMu',
