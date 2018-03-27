@@ -33,8 +33,8 @@
 
 		</div>
 		<div class="bottom">
-			<span class="oks" @click="callbackUrl">返回</span>
-			<span class="back" @click="logOut">退出登录</span>
+			<span class="oks" @click="callbackUrl">{{ $t('userInfo.back') }}</span>
+			<span class="back" @click="logOut">{{ $t('userInfo.logout') }}</span>
 		</div>
 	</div>
 </template>

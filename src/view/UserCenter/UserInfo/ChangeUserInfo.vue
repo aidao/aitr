@@ -6,7 +6,7 @@
 		<li class="nav-item" v-if="type === 'nickname'">
 		  <input
 			type="text"
-			placeholder="输入2-16位英文或汉字"
+			:placeholder="$t('userInfo.infoChangeTips.name')"
 			v-model="userInfo.nickname"
 			ref="nickName"
 			@blur="checkNickname(userInfo.nickname)"/>
@@ -14,31 +14,31 @@
 		<li class="nav-item" v-if="type !== 'nickname'">
 		  <input
 			type="text"
-			placeholder="输入邮箱地址"
+			:placeholder="$t('userInfo.infoChangeTips.email')"
 			v-model="userInfo.email"
 			ref="email"
 			@blur="checkEmail(userInfo.email)"/>
 		</li>
 	  </ul>
 			<div class="bottom">
-				<input type="submit" class="oks" value="确认修改" />
-				<span class="back" @click="callbackUrl">返回</span>
+				<input type="submit" class="oks" :value="$t('userInfo.commit')" />
+				<span class="back" @click="callbackUrl">{{ $t('userInfo.back') }}</span>
 			</div>
 		</form>
 		<div class="mask" v-show="maskShow">
 			<div class="alert-content">
-				<div class="title">输入当前安全码</div>
+				<div class="title">{{ $t('userInfo.dialog.safePwd') }}</div>
 				<input
 					class="confirmpwd"
 					ref="confirmPwd"
 					type="password"
 					v-model="safePwd"
-					placeholder="输入您的当前安全码"
+					:placeholder="$t('userInfo.dialog.tips')"
 					@blur="checkSafePwd(safePwd)"
 				>
 				<div class="decision">
-					<div class="cancel" @click="cancel">取消</div>
-					<div class="decide" @click="changeUserInfo">确定</div>
+					<div class="cancel" @click="cancel">{{ $t('userInfo.dialog.cancel') }}</div>
+					<div class="decide" @click="changeUserInfo">{{ $t('userInfo.dialog.save') }}</div>
 				</div>
 			</div>
 		</div>
@@ -69,9 +69,9 @@ export default {
 	mounted () {
 		this.type = this.$route.params.type
 		if (this.type === 'nickname') {
-			this.title = '会员姓名'
+			this.title = this.$t('userInfo.name')
 		} else {
-			this.title = '邮箱'
+			this.title = this.$t('userInfo.email')
 		}
 
 		this.getUserInfo()
