@@ -23,7 +23,7 @@
       </scroller>
 
 			<div class="btn">
-				<router-link :to="{name: 'mywallet'}" tag="span">返回</router-link>
+				<router-link :to="{name: 'mywallet'}" tag="span">{{ $t('common.back') }}</router-link>
 			</div>
 		</div>
 	</div>
@@ -53,36 +53,24 @@ export default {
 		HeadMenu
 	},
 	created () {
-		console.log('created')
 		let typesid = parseInt(this.$route.params.typeid)
 		this.types = typesid
 		console.log(`typeid 是 ${typesid}`)
-		switch (typesid) {
-		case 0:
-			this.title = '注册币'
-			this.showTransfer = true
-			break
-		case 1:
-			this.title = '收益币'
-			this.showTransfer = true
-			break
-		case 2:
-			this.title = '重构币'
-			this.showTransfer = false
-			break
-		case 3:
-			this.title = '众筹币'
-			this.showTransfer = false
-			break
-		case 4:
-			this.title = '拆分币'
-			this.showTransfer = false
-			break
-		case 5:
-			this.title = '消费币'
-			this.showTransfer = false
-			break
-		}
+    const coinTitle = [
+      this.$t('mywallet.coinZhuCe'),
+      this.$t('mywallet.coinShouYi'),
+      this.$t('mywallet.coinChongGou'),
+      this.$t('mywallet.coinZhongChou'),
+      this.$t('mywallet.coinChaiFen'),
+      this.$t('mywallet.coinXiaoFei')
+    ]
+    this.title = coinTitle[typesid]
+    if (typesid < 2) {
+		  // 注册币，收益币
+      this.showTransfer = true
+    } else {
+      this.showTransfer = false
+    }
 		this.getData(typesid, this.pagenum)
 	},
 	watch: {

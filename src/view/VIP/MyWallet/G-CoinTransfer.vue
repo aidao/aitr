@@ -3,37 +3,37 @@
     <div class="content">
       <div class="center" >
         <div class="tips" v-if="types == 1">
-          收益币余额:
+          {{$t('mywallet.coinShouYi') + $t('mywallet.balance')}}:
         </div>
         <div class="values" v-if="types == 1">
           {{walletData.earningsCoin}}
         </div>
         <div class="tips" v-if="types == 0">
-          注册币余额:
+          {{$t('mywallet.coinZhuCe') + $t('mywallet.balance')}}:
         </div>
         <div class="values" v-if="types == 0">
           {{walletData.registerCoin}}
         </div>
         <div class="tips">
-          接收会员账号:
+          {{$t('mywallet.ReceivingMemberNumber')}}:
         </div>
         <div class="valuess">
           <input
             type="text"
             ref="userId"
-            placeholder="输入收款会员编号"
+            :placeholder="$t('mywallet.placeholder.TransferTo')"
             @blur="validate('userId', transformInfo.userId)"
             @click.prevent="countFocus('userId')"
             v-model="transformInfo.userId">
         </div>
         <div class="tips">
-          转出积分数量:
+          {{$t('mywallet.NumberOfPointsTransferredOut')}}:
         </div>
         <div class="valuess">
           <input
             type="tel"
             ref="count"
-            placeholder="输入转出积分数量"
+            :placeholder="$t('mywallet.placeholder.TransferAmount')"
             @blur="validate('coinNum', transformInfo.coinNum)"
             @click.prevent="countFocus('count')"
             v-model="transformInfo.coinNum">
@@ -41,8 +41,8 @@
       </div>
 
       <div class="bottom">
-        <span class="oks" @click="comfirmTransfer">确定</span>
-        <span class="back" @click="callbackUrl">返回</span>
+        <span class="oks" @click="comfirmTransfer">{{$t('common.submit')}}</span>
+        <span class="back" @click="callbackUrl">{{$t('common.back')}}</span>
       </div>
     </div>
     <g-alert @options="safeCodeOptions" v-show="showSafeCodeAlert">

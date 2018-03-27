@@ -1,14 +1,14 @@
 <template>
 	<div class="transactions">
-		<head-menu pageTitle="转账"></head-menu>
+		<head-menu :pageTitle="$t('common.transaction')"></head-menu>
 		<div class="content">
 			<div class="top">
 				<router-link to="/transferrouter/cointransfer/1" tag="div" data-aa="0" >
-					<span @click="changeComponent('shouyi')">收益币</span>
+					<span @click="changeComponent('shouyi')">{{ $t('mywallet.coinShouYi') }}</span>
 					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="!isShowTriangle">
 				</router-link>
 				<router-link to="/transferrouter/cointransfer/0" tag="div" data-aa="0" >
-					<span  @click="changeComponent('zhuce')">注册币</span>
+					<span  @click="changeComponent('zhuce')">{{ $t('mywallet.coinZhuCe') }}</span>
 					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="isShowTriangle">
 				</router-link>
 			</div>

@@ -1,9 +1,16 @@
 import login from './ch/login'
+import mywallet from './ch/mywallet'
+
 const ln = {
   common: {
-    Login: '登录'
+    Login: '登录',
+    transaction: '转账',
+    back: '返回',
+    ok: '确定',
+    submit: '确定'
   },
-  login: login
+  login: login,
+  mywallet: mywallet
 }
 export default ln
 // 	PresentPrice
