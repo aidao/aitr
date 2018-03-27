@@ -2,6 +2,7 @@ import login from './login'
 import mywallet from './mywallet'
 import mysale from './mysale'
 import password from './password'
+import VIPCenter from './vipCenter'
 
 const ln = {
   common: {
@@ -10,6 +11,7 @@ const ln = {
     back: 'Back',
     ok: 'OK',
     submit: 'Submit',
+    cancel: 'Cancel',
     Enter: 'Enter'
   },
   MembershipGrade: {
@@ -18,6 +20,7 @@ const ln = {
   login: login,
   mywallet: mywallet,
   mysale: mysale,
-  password: password
+  password: password,
+  vip: VIPCenter
 }
 export default ln
