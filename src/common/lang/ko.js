@@ -1,5 +1,6 @@
 import login from './ko/login'
 import mywallet from './ko/mywallet'
+import mysale from './ko/mysale'
 
 const ln = {
   common: {
@@ -7,10 +8,15 @@ const ln = {
     transaction: '이체비',
     back: '되돌아간다',
     ok: '제출',
-    submit: '제출'
+    submit: '제출',
+    Enter: '들어간다'
+  },
+  MembershipGrade: {
+    Regular: '보통 회원'
   },
   login: login,
-  mywallet: mywallet
+  mywallet: mywallet,
+  mysale: mysale
 }
 export default ln
 

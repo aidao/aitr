@@ -1,5 +1,6 @@
 import login from './en/login'
 import mywallet from './en/mywallet'
+import mysale from './en/mysale'
 
 const ln = {
   common: {
@@ -7,9 +8,14 @@ const ln = {
     transaction: 'Transfer',
     back: 'Back',
     ok: 'OK',
-    submit: 'Submit'
+    submit: 'Submit',
+    Enter: 'Enter'
+  },
+  MembershipGrade: {
+    Regular: 'Regular membership'
   },
   login: login,
-  mywallet: mywallet
+  mywallet: mywallet,
+  mysale: mysale
 }
 export default ln

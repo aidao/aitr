@@ -1,79 +1,79 @@
 <template>
 	<div class="registermu">
-		<HeadMenu :pageTitle="pageTitle"></HeadMenu>
+		<HeadMenu :pageTitle="$t('mysale.RegisterParentAccount')"></HeadMenu>
 		<div style="height:100%; overflow: auto">
 		<form action="" @submit.prevent="registerMuAcc">
 			<div class="form-content">
 				<div class="m-input">
-					<div class="title">会员账号:</div>
-					<input type="text" @blur="validate('account', account)" v-model="account" ref="account" name="account" placeholder="请输入5-18位数字或字母......" />
+					<div class="title">{{ t.fields.MemberAccount }}:</div>
+					<input type="text" @blur="validate('account', account)" v-model="account" ref="account" name="account" :placeholder="t.placeholder.MemberAccount" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">会员姓名:</div>
-					<input type="text" @blur="validate('nickname', nickname)" v-model="nickname" ref="nickname" placeholder="输入2-16位汉字或字母......" />
+					<div class="title">{{ t.fields.MemberName }}:</div>
+					<input type="text" @blur="validate('nickname', nickname)" v-model="nickname" ref="nickname" :placeholder="t.placeholder.MemberName" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">登录密码:</div>
-					<input type="password" @blur="validate('pwd', pwd)" v-model="pwd" ref="pwd" placeholder="请输入8-16位字母或数字......" />
+					<div class="title">{{ t.fields.LoginPassword }}:</div>
+					<input type="password" @blur="validate('pwd', pwd)" v-model="pwd" ref="pwd" :placeholder="t.placeholder.LoginPassword" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">确认登录密码:</div>
-					<input type="password" @blur="checkCfmPwd(cfmPwd)" v-model="cfmPwd" ref="cfmPwd" placeholder="与登录密码相同......" />
+					<div class="title">{{ t.fields.ConfirmLoginPassword }}:</div>
+					<input type="password" @blur="checkCfmPwd(cfmPwd)" v-model="cfmPwd" ref="cfmPwd" :placeholder="t.placeholder.ConfirmLoginPassword" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">安全码:</div>
-					<input type="password" @blur="validate('safepwd', safepwd)" v-model="safepwd" ref="safepwd" placeholder="输入8-16位英文或数字......" />
+					<div class="title">{{ t.fields.SecurityCode }}:</div>
+					<input type="password" @blur="validate('safepwd', safepwd)" v-model="safepwd" ref="safepwd" :placeholder="t.placeholder.SecurityCode" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">确认安全码:</div>
-					<input type="password" @blur="checkCfmSafepwd(cfmSafepwd)" v-model="cfmSafepwd" ref="cfmSafepwd" placeholder="与登录安全码相同......" />
+					<div class="title">{{ t.fields.ConfirmSecurityCode }}:</div>
+					<input type="password" @blur="checkCfmSafepwd(cfmSafepwd)" v-model="cfmSafepwd" ref="cfmSafepwd" :placeholder="t.placeholder.ConfirmSecurityCode" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">会员级别:</div>
-					<input type="text" value="普通会员" disabled />
+					<div class="title">{{ t.fields.MembershipGrade }}:</div>
+					<input type="text" :value="$t('MembershipGrade.Regular')" disabled />
 				</div>
 
 				<div class="m-input" @click="saveInfo">
-					<div class="title">推荐人:
-						<span class="entry">进入 <span class="tuijiantu" @click="selectData('recommend')">推荐图</span></span>
+					<div class="title">{{ t.fields.Referee }}:
+						<span class="entry">{{ $t('common.Enter') }} <span class="tuijiantu" @click="selectData('recommend')">{{ t.fields.RefereeDiagram }}</span></span>
 					</div>
 					<div @click="selectData('recommend')">
 						<input type="text" ref="" v-model="refaccount" @input="hiddeSupMap" disabled />
 					</div>
 				</div>
 				<div class="m-input" @click="saveInfo">
-					<div class="title">接点人: <span class="entry">进入 <span class="jiediantu"  @click="selectData('placement')">接点图</span></span></div>
+					<div class="title">{{ t.fields.ContactPerson }}: <span class="entry">进入 <span class="jiediantu"  @click="selectData('placement')">{{ t.fields.ContactDiagram }}</span></span></div>
 					<div @click="selectData('placement')">
 						<input type="text" ref="supAccount" v-model="supaccount" disabled />
 					</div>
 				</div>
 
 				<div class="m-input">
-					<div class="title">市场位置:</div>
+					<div class="title">{{ t.fields.MarketPosition }}:</div>
 					<input type="text" ref="position" v-model="direction" disabled />
 				</div>
 
 				<div class="m-input">
-					<div class="title">邮箱:</div>
-					<input type="mail" @blur="validate('email', email)" v-model="email" ref="email" name="mail" placeholder="输入您的邮箱地址" />
+					<div class="title">{{ t.fields.Email }}:</div>
+					<input type="mail" @blur="validate('email', email)" v-model="email" ref="email" name="mail" :placeholder="t.placeholder.Email" />
 				</div>
 
 				<div class="m-input">
-					<div class="title">注册币余额:</div>
+					<div class="title">{{ t.fields.RegisterCurrencyBalance }}:</div>
 					<input type="text" v-model="balance" disabled />
 				</div>
 			</div>
 
 			<div class="submit">
-				<div class="tips-10">提示: 每次注册需要消耗10个注册币</div>
-				<input type="submit" value="确定">
-				<input type="button" class="back" @click="callbackUrl" value="返回">
+				<div class="tips-10">{{t.alert}}</div>
+				<input type="submit" :value="$t('common.submit')">
+				<input type="button" class="back" @click="callbackUrl" :value="$t('common.back')">
 			</div>
 		</form>
 		</div>
@@ -113,7 +113,8 @@ export default {
 			showJieDian: false,
 			inSelectMode: false,
 			selectDataType: null,
-      pageTitle: '注册母账户'
+      pageTitle: '注册母账户',
+      t: null
 		}
 	},
 	components: {
@@ -132,6 +133,7 @@ export default {
 		this.cfmSafepwd = obj.cfmSafepwd
 		this.email = obj.email
 		this.refaccount = sessionStorage.getItem('ref_account')? sessionStorage.getItem('ref_account'):sessionStorage.getItem('account')
+    this.t = this.$t('mysale.RegisterParentAccountPage')
 	},
 	computed:{
 		uid(){

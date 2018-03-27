@@ -8,7 +8,11 @@ const ln = {
     transaction: '转账',
     back: '返回',
     ok: '确定',
-    submit: '确定'
+    submit: '确定',
+    Enter: '进入'
+  },
+  MembershipGrade: {
+    Regular: '普通会员'
   },
   login: login,
   mywallet: mywallet,
