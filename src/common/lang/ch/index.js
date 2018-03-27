@@ -1,6 +1,6 @@
-import login from './ch/login'
-import mywallet from './ch/mywallet'
-import mysale from './ch/mysale'
+import login from './login'
+import mywallet from './mywallet'
+import mysale from './mysale'
 
 const ln = {
   common: {
