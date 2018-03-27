@@ -59,7 +59,8 @@ export default {
 			userInfo: {},
 			safePwd: '',
 			maskShow: false,
-			tip: ''
+      tip: '',
+      lang: 'ch'
 		}
 	},
 	components: {

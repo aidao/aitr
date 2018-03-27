@@ -1,6 +1,6 @@
 <template>
 	<div class="changepwd">
-		<HeadMenu pageTitle="修改密码"></HeadMenu>
+		<HeadMenu :pageTitle="$t('userInfo.changeUserPwd')"></HeadMenu>
 		<form action="" @submit.prevent="changeUserPwd">
 			<ul class="nav-list">
 				<li>
@@ -10,7 +10,7 @@
 						ref="confirmPwd"
 						name="pwd"
 						v-model="confirmPwd"
-						placeholder="输入旧密码"
+						:placeholder="$t('userInfo.confirmPwd')"
 					/>
 				</li>
 				<li>
@@ -20,14 +20,14 @@
 						ref="pwd"
 						name="pwd"
 						v-model="pwd"
-						placeholder="输入新的密码"
+						:placeholder="$t('userInfo.newPwd')"
 					/>
 				</li>
 				<li>
 					<input
 						type="password"
 						ref="cfmPwd"
-						placeholder="确认新密码"
+						:placeholder="$t('userInfo.checkNewPwd')"
 						v-model="cfmPwd"
 						@blur="checkCfmPwd(cfmPwd)"
 					/>
@@ -35,25 +35,25 @@
 			</ul>
 
 			<div class="bottom">
-				<input type="submit" class="oks" value="确认修改">
-				<span class="back" @click="callbackUrl">返回</span>
+				<input type="submit" class="oks" :value="$t('userInfo.commit')">
+				<span class="back" @click="callbackUrl">{{ $t('userInfo.back') }}</span>
 			</div>
 		</form>
 
 		<div class="mask" v-show="maskShow">
 			<div class="alert-content">
-				<div class="title">输入安全码</div>
+				<div class="title">{{ $t('userInfo.dialog.safePwd') }}</div>
 				<input
 					class="confirmpwd"
 					ref="safePwd"
 					type="password"
 					v-model="safePwd"
 					@blur="checkSafePwd(safePwd)"
-					placeholder="输入您的安全码"
+					:placeholder="$t('userInfo.dialog.tips')"
 				>
 				<div class="decision">
-					<div class="cancel" @click="cancel">取消</div>
-					<div class="decide" @click="changeUserPwd">确定</div>
+					<div class="cancel" @click="cancel">{{ $t('userInfo.dialog.cancel') }}</div>
+					<div class="decide" @click="changeUserPwd">{{ $t('userInfo.dialog.save') }}</div>
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,8 @@
 				cfmPwd: '',
 				tip: '',
 				confirmPwd: '',
-				safePwd: ''
+        safePwd: '',
+        lang: 'ch'
 			}
 		},
 		components: {
@@ -88,7 +89,7 @@
 			},
 			changeUserPwd () {
 				if (!this.confirmPwd) {
-					this.tip = '当前密码不能为空'
+					this.tip = this.$t('userInfo.changePwdValidation.pwdEmpty')
 					this.$refs.promptRef.show()
 					return
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.confirmPwd)) {
@@ -153,7 +154,7 @@
 						return
 					}
 					if(callback) callback()
-					
+
 				})
 			},
 			cancel () {

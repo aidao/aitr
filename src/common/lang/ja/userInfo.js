@@ -21,6 +21,22 @@ const ln = {
     save: '确定'
   },
 
+  // 修改密码
+  changeUserPwd: '修改密码',
+  confirmPwd: '输入旧密码',
+  newPwd: '输入新的密码',
+  changePwdValidation: {
+    pwdEmpty: '当前密码不能为空'
+  },
+
+  // 修改安全码
+  changeSafePwd: '修改安全码',
+  verifySafePwd: '输入旧的安全码',
+  newSafePwd: '输入新的安全码',
+  checkNewSafePwd: '确认新安全码',
+  changeSafePwdValidation: {
+  },
+
   // 按钮
   back: '戻る',
   commit: '确认修改',

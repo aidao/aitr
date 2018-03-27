@@ -1,6 +1,6 @@
 <template>
   <div class="changepwd">
-    <HeadMenu pageTitle="修改安全码"></HeadMenu>
+    <HeadMenu :pageTitle="$t('userInfo.changeSafePwd')"></HeadMenu>
     <form action="" @submit.prevent="getVerifySafePwd">
 
       <ul class="nav-list">
@@ -11,7 +11,7 @@
             ref="verifySafePwd"
             name="account"
             v-model="verifySafePwd"
-            placeholder="输入旧的安全码"
+            :placeholder="$t('userInfo.verifySafePwd')"
           />
         </li>
         <li>
@@ -21,14 +21,14 @@
             ref="safecode"
             name="account"
             v-model="safecode"
-            placeholder="输入新的安全码"
+            :placeholder="$t('userInfo.newSafePwd')"
           />
         </li>
         <li>
           <input
             type="password"
             ref="verifySafecode"
-            placeholder="确认新安全码"
+            :placeholder="$t('userInfo.checkNewSafePwd')"
             v-model="cfmSafecode"
             @blur="checkCfmSafecode(cfmSafecode)"
           />
@@ -36,25 +36,25 @@
       </ul>
 
       <div class="bottom">
-        <input type="submit" class="oks" value="确认修改">
-        <span class="back" @click="callbackUrl">返回</span>
+        <input type="submit" class="oks" :value="$t('userInfo.commit')">
+        <span class="back" @click="callbackUrl">{{ $t('userInfo.back') }}</span>
       </div>
     </form>
 
     <div class="mask" v-show="maskShow">
       <div class="alert-content">
-        <div class="title">输入当前安全码</div>
+        <div class="title">{{ $t('userInfo.dialog.safePwd') }}</div>
         <input
           class="confirmpwd"
           ref="verifySafePwd"
           type="password"
           v-model="verifySafePwd"
           @blur="checkVerifySafePwd(verifySafePwd)"
-          placeholder="输入您的当前安全码"
+          :placeholder="$t('userInfo.dialog.tips')"
         >
         <div class="decision">
-          <div class="cancel" @click="cancel">取消</div>
-          <div class="decide" @click="changeUserSafePwd">确定</div>
+          <div class="cancel" @click="cancel">{{ $t('userInfo.dialog.cancel') }}</div>
+          <div class="decide" @click="changeUserSafePwd">{{ $t('userInfo.dialog.save') }}</div>
         </div>
       </div>
     </div>
@@ -75,7 +75,8 @@
         tip: '',
         safecode: '',
         cfmSafecode: '',
-        verifySafePwd: ''
+        verifySafePwd: '',
+        lang: 'ch'
       }
     },
     components: {
