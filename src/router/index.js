@@ -478,11 +478,11 @@ router.beforeEach ((to, from, next) => {
 	// 加载多语言
 	const lang = localStorage.getItem('__locale__') || 'ch'
 	loadLanguageAsync(lang).then(() => next())
-
 	if (to.path !== '/404' && to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth' && to.path !== '/reset/new-pwd' && to.path !== '/reset/new-safe') {
 		localStorage.setItem('lastVisitPath', to.path)
 
 		if (!sessionStorage.getItem('__token__')) {
+      localStorage.removeItem('__token__')
 			router.push({ name: 'login' })
 		} else {
 			next()
