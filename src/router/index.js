@@ -476,7 +476,7 @@ router.beforeEach ((to, from, next) => {
 		return
 	}
 	// 加载多语言
-	const lang = i18n.locale || 'ch'
+	const lang = localStorage.getItem('__locale__') || 'ch'
 	loadLanguageAsync(lang).then(() => next())
 
 	if (to.path !== '/404' && to.path !== '/login' && to.path !== '/reset' && to.path !== '/reset/auth' && to.path !== '/reset/new-pwd' && to.path !== '/reset/new-safe') {

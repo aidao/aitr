@@ -1,24 +1,24 @@
 <template>
 	<div class="jiangjin-detail">
-		<HeadMenu pageTitle="我的销售"></HeadMenu>
+		<HeadMenu :pageTitle="$t('mysale.mysale')"></HeadMenu>
 		<div>
 			<ul class="nav-list">
 				<router-link to="/registermu" tag="li">
-					<div class="nav-label">注册母账户</div>
+					<div class="nav-label">{{$t('mysale.RegisterParentAccount')}}</div>
 					<div class="arrow">></div>
 				</router-link>
 				<router-link to="/noOpn" tag="li">
-					<div class="nav-label">注册子账户</div>
+					<div class="nav-label">{{$t('mysale.RegisterSubsidiaryAccount')}}</div>
 					<div class="arrow">></div>
 				</router-link>
 			</ul>
 			<ul class="nav-list">
 				<router-link to="/noOpn" tag="li">
-					<div class="nav-label">解绑子账户</div>
+					<div class="nav-label">{{$t('mysale.UnbindSubaccount')}}</div>
 					<div class="arrow">></div>
 				</router-link>
 				<router-link to="/noOpn" tag="li">
-					<div class="nav-label">绑定母账户</div>
+					<div class="nav-label">{{$t('mysale.BindParentAccount')}}</div>
 					<div class="arrow">></div>
 				</router-link>
 			</ul>

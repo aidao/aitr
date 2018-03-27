@@ -1,5 +1,6 @@
 import login from './ch/login'
 import mywallet from './ch/mywallet'
+import mysale from './ch/mysale'
 
 const ln = {
   common: {
@@ -10,7 +11,8 @@ const ln = {
     submit: '确定'
   },
   login: login,
-  mywallet: mywallet
+  mywallet: mywallet,
+  mysale: mysale
 }
 export default ln
 // 	PresentPrice
