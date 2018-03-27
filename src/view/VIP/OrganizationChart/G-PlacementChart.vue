@@ -441,12 +441,14 @@
 			</div>
 		</div>
 		<prompt :tip="tip" ref="promptAlert"></prompt>
+    <loading v-show="searchFlag"></loading>
 	</div>
 </template>
 
 <script>
 import {getPosMap, getToken, searchPosMap} from '../../../api/GApi'
 import Prompt from '@/components/Prompt/Prompt'
+import loading from '@/components/loading/loading'
 import axios from 'axios'
 export default {
 	props: {
@@ -456,7 +458,8 @@ export default {
 		return {
 			searchAccount: '',
 			s: null,
-			tip: ''
+			tip: '',
+      searchFlag : false
 		}
 	},
 	created () {
@@ -468,7 +471,8 @@ export default {
 		}
 	},
 	components: {
-		Prompt
+		Prompt,
+    loading
 	},
 	methods: {
 		selectSupAccount(selected) {
@@ -476,10 +480,10 @@ export default {
 		},
 		changeRootMap (uid) {
 			this.getPosMapData(uid)
-			console.log(uid)
+			// console.log(uid)
 		},
 		addAccount (parentId, direction) {
-			console.log(parentId, direction)
+			// console.log(parentId, direction)
 			// this.$router.push({name: 'RegisterMu', params: {parentId, direction}})
 
 			if(this.selectMode) {
@@ -490,6 +494,7 @@ export default {
 		},
 		getPosMapData (uid) {
 			this.s = null
+      this.searchFlag = true
 			if (uid) {
 				axios.get(getPosMap, {
 					headers: getToken(),
@@ -498,14 +503,16 @@ export default {
 					}
 				}).then(res => {
 					this.s = res.data.result
-					console.log(res)
+          this.searchFlag = false
+					// console.log(res)
 				})
 			} else {
 				axios.get(getPosMap, {
 					headers: getToken()
 				}).then(res => {
 					this.s = res.data.result
-					console.log(res)
+          this.searchFlag = false
+					// console.log(res)
 				})
 			}
 		},
@@ -514,6 +521,8 @@ export default {
 			this.$refs.promptAlert.show()
 		},
 		searchAccountMap () {
+      this.s = null
+      this.searchFlag = true
 			if (this.searchAccount) {
 				axios.get(searchPosMap, {
 					params: {
@@ -525,14 +534,18 @@ export default {
 						if (res.data.result) {
 							// 查到了
 							this.s = res.data.result
+              this.searchFlag = false
 						} else {
 							// 不存在
-							this.tip = '查询的账户不存在'
-							this.$refs.promptAlert.show()
+              this.searchFlag = false
+              console.log(this.searchFlag)
+              this.$refs.promptAlert.show()
+              this.tip = '查询的账户不存在'
 						}
 					}
 				})
 			} else {
+        this.searchFlag = false
 				this.tipShow('请输入要查找的会员账号')
 			}
 		}

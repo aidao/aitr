@@ -208,10 +208,11 @@
       comfirmTransfer () {
         if(!this.validate('userId', this.transformInfo.userId)) return
         if(!this.validate('coinNum', this.transformInfo.coinNum)) return
-        if (this.transformInfo.coinNum > this.walletData.registerCoin) {
-          this.showTips('注册币余额不足')
-          return
-        } else if (this.transformInfo.coinNum >= 100000000) {
+        // if (this.transformInfo.coinNum > this.walletData.registerCoin) {
+        //   this.showTips('注册币余额不足')
+        //   return
+        // }
+        if (this.transformInfo.coinNum >= 100000000) {
           this.showTips('转出积分数量不能超出1亿')
           return
         }

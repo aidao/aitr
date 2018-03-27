@@ -66,12 +66,14 @@
 				</div>
 		</div>
 		<prompt :tip="tip" ref="promptAlert"></prompt>
+    <loading v-show="searchFlag"></loading>
 	</div>
 </template>
 
 <script>
 import {getRefMap, getToken, searchRefMap} from '../../../api/GApi'
 import Prompt from '@/components/Prompt/Prompt'
+import loading from '@/components/loading/loading'
 import axios from 'axios'
 export default {
 	props: {
@@ -83,18 +85,21 @@ export default {
 			showChild: false,
 			refMapData: {},
 			accountName: '',
-			tip: ''
+			tip: '',
+      searchFlag: false
 		}
 	},
 	created () {
 		// console.log('created has 执行')
 		// console.log('口令为' + accessAccount)
 		// console.log('账户' + accessToken)
+    this.searchFlag = true
 		axios.get(getRefMap, {
 			headers: getToken()
 		}).then(res => {
 			// console.log(res)
 			if (res.data.code === 0) {
+        this.searchFlag = false
 				let list = res.data.result
 				list.level = 'v' + list.level
 				if (list.children) {
@@ -105,13 +110,15 @@ export default {
 				this.refMapData = list
 				console.log(this.refMapData)
 			} else {
+        this.searchFlag = false
 				this.tip = '请登录'
 				this.$refs.promptAlert.show()
 			}
 		})
 	},
 	components: {
-		Prompt
+		Prompt,
+    loading
 	},
 	methods: {
 		selectRefAccount(selected) {
@@ -141,6 +148,7 @@ export default {
 			this.searchAccount(this.accountName)
 		},
 		searchAccount (targetAccount) {
+      this.searchFlag = true
 			if (targetAccount) {
 				axios.get(searchRefMap, {
 					headers: getToken(),
@@ -150,6 +158,7 @@ export default {
 				}).then(res => {
 					console.log(res)
 					if (res.data.code === 0 && res.data.result) {
+            this.searchFlag = false
 						let list = res.data.result
 						list.level = 'v' + list.level
 						if (list.children) {
@@ -160,6 +169,7 @@ export default {
 						this.refMapData = list
 					} else {
 						if (!res.data.result) {
+              this.searchFlag = false
 							this.tip = '查询的账户不存在'
 							this.$refs.promptAlert.show()
 							return
@@ -170,10 +180,12 @@ export default {
 				}).catch(err => {
 					console.log(err)
 					this.tip = '查询错误'
+          this.searchFlag = false
 					this.$refs.promptAlert.show()
 				})
 			} else {
 				this.tip = '请输入要查询的账户名'
+        this.searchFlag = false
 				this.$refs.promptAlert.show()
 			}
 		}

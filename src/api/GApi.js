@@ -4,7 +4,7 @@ import axios from 'axios'
 const url = 'http://47.75.39.184:8092/api/v1/'
 
 // 正式服IP
-//const url = 'http://47.52.133.247:8092/api/v1/'
+//const url = 'http://api.aitr.com/api/v1/'
 export const getToken = function () {
 	let info = localStorage.getItem('__token__')
 	if (info) {

@@ -71,43 +71,6 @@
 					<div class="totalR">奖金总额<span class="jine">{{ person.totalReward || 0}}</span></div>
 				</div>
 			</div>
-			<div class="chaifenzoushi">
-				<div class="vip-title">拆分走势</div>
-				<div class="zoushi-container">
-					<div class="current-price">当前价格:2.0</div>
-					<div class="chart-content">
-						<ul class="line-white">
-							<li class="white-li" v-for="(item, idx) in 4" :key="idx"></li>
-						</ul>
-						<ul class="columnar">
-							<li :class="[idx<1?'active':'white']" v-for="(item, idx) in columnarList" :key="idx" :style="item"></li>
-						</ul>
-						<ul class="columnar-num">
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
-						</ul>
-					</div>
-					<div class="price-block"></div>
-				</div>
-			</div>
-			<div class="chaifenjincheng">
-				<div class="vip-title">拆分进程</div>
-				<div class="vip-map" v-if="splitProcessLoaded">
-					<div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
-					<div class="map-round">
-						<ul v-for="(item, index) in 5" :key="index">
-							<li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index < mapStatus || (mapStatus !=0 && index == mapStatus && idx == 0) || (preLineUp && idx == 0 && index == 0)}"></li>
-						</ul>
-						<ul>
-							<li></li>
-						</ul>
-					</div>
-					<div class="map-time">
-						<span v-for="(item, index) in mapTIME" :key="index">{{item.time}}</span>
-					</div>
-				</div>
-			</div>
 			<div class="shujufenxi">
 				<div class="vip-title">数据对比 <p>左区 | 右区</p></div>
 				<div class="vip-data">
@@ -139,6 +102,43 @@
 							</ul>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="chaifenjincheng">
+				<div class="vip-title">拆分进程</div>
+				<div class="vip-map" v-if="splitProcessLoaded">
+					<div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
+					<div class="map-round">
+						<ul v-for="(item, index) in 5" :key="index">
+							<li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index < mapStatus || (mapStatus !=0 && index == mapStatus && idx == 0) || (preLineUp && idx == 0 && index == 0)}"></li>
+						</ul>
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+					<div class="map-time">
+						<span v-for="(item, index) in mapTIME" :key="index">{{item.time}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="chaifenzoushi">
+				<div class="vip-title">拆分走势</div>
+				<div class="zoushi-container">
+					<div class="current-price">当前价格:2.0</div>
+					<div class="chart-content">
+						<ul class="line-white">
+							<li class="white-li" v-for="(item, idx) in 4" :key="idx"></li>
+						</ul>
+						<ul class="columnar">
+							<li :class="[idx<1?'active':'white']" v-for="(item, idx) in columnarList" :key="idx" :style="item"></li>
+						</ul>
+						<ul class="columnar-num">
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+						</ul>
+					</div>
+					<div class="price-block"></div>
 				</div>
 			</div>
 		</div>
