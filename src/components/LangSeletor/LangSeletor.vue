@@ -17,7 +17,8 @@
       }
     },
     created () {
-      this.lang = i18n.locale
+      this.lang = localStorage.getItem('__locale__') || i18n.locale
+      loadLanguageAsync(this.lang)
     }
   }
 </script>
