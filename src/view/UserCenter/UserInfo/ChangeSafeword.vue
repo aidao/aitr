@@ -89,11 +89,11 @@
       },
       changeUserSafePwd () {
         if (!this.verifySafePwd) {
-          this.tip = '当前安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.oldSafePwdNotEmpty')
           this.$refs.promptRef.show()
           return
         } else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.verifySafePwd)) {
-          this.tip = '只能输入8-16位的数字或字母'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.safePwdFormat')
           this.$refs.promptRef.show()
           return
         }
@@ -106,7 +106,7 @@
 
         verifySafePwd(verifySafePwdParams).then(res => {
           if (res.data.code === 40011) {
-            this.tip = '旧安全码错误'
+            this.tip = this.$t('userInfo.changeSafePwdValidation.oldSafePwdErr')
             this.$refs.promptRef.show()
             return
           }
@@ -117,15 +117,15 @@
           if (safecode === verifySafecode) {
             updateSafePwd(updateSafePwdParams).then(res => {
               if (res.data.code === 40011) {
-                this.tip = '旧安全码错误'
+                this.tip = this.$t('userInfo.changeSafePwdValidation.oldSafePwdErr')
                 this.$refs.promptRef.show()
               }
               if (res.data.code === 40013) {
-                this.tip = '安全码修改失败'
+                this.tip = this.$t('userInfo.changeSafePwdValidation.modSafePwdFailed')
                 this.$refs.promptRef.show()
               }
               if (res.data.code === 0) {
-                this.tip = '修改成功'
+                this.tip = this.$t('userInfo.changeSafePwdValidation.modSafePwdSuccessed')
                 this.$refs.promptRef.show()
                 this.callbackUrl()
               }
@@ -142,20 +142,20 @@
       getVerifySafePwd () {
 
         if (!this.safecode) {
-          this.tip = '新安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.newSafePwdNotEmpty')
           this.$refs.promptRef.show()
           return
         } else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.safecode)) {
-          this.tip = '只能输入8-16位的数字或字母'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.safePwdFormat')
           this.$refs.promptRef.show()
           return
         }
         if (!this.cfmSafecode) {
-          this.tip = '确认新安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.verNewSafePwdNotEmpty')
           this.$refs.promptRef.show()
           return
         } else if (this.cfmSafecode !== this.safecode) {
-          this.tip = '两次安全码输入不一致'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.newSafePwdDiff')
           this.$refs.promptRef.show()
           return
         }
@@ -164,28 +164,28 @@
       },
       checkSafecode (safecode) {
         if (!safecode) {
-          this.tip = '安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.safePwdNotEmpty')
           this.$refs.promptRef.show()
         } else if (!/^[a-zA-Z0-9]{8,16}$/.test(safecode)) {
-          this.tip = '安全码只能输入8-16位的数字或者字母'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.safePwdFormat')
           this.$refs.promptRef.show()
         }
       },
       checkCfmSafecode (cfmSafecode) {
         if (!cfmSafecode) {
-          this.tip = '新的安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.newSafePwdNotEmpty')
           this.$refs.promptRef.show()
         } else if (cfmSafecode !== this.safecode) {
-          this.tip = '两次安全码输入不一致'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.newSafePwdDiff')
           this.$refs.promptRef.show()
         }
       },
       checkVerifySafePwd (verifySafePwd) {
         if (!verifySafePwd) {
-          this.tip = '当前安全码不能为空'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.oldSafePwdNotEmpty')
           this.$refs.promptRef.show()
         } else if (!/^[a-zA-Z0-9]{8,16}$/.test(verifySafePwd)) {
-          this.tip = '只能输入8-16位的数字或字母'
+          this.tip = this.$t('userInfo.changeSafePwdValidation.safePwdFormat')
           this.$refs.promptRef.show()
         }
       }

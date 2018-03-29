@@ -89,11 +89,11 @@
 			},
 			changeUserPwd () {
 				if (!this.confirmPwd) {
-					this.tip = this.$t('userInfo.changePwdValidation.pwdEmpty')
+					this.tip = this.$t('userInfo.changePwdValidation.pwdNotEmpty')
 					this.$refs.promptRef.show()
 					return
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.confirmPwd)) {
-					this.tip = '只能输入8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.pwdFormat')
 					this.$refs.promptRef.show()
 					return
 				}
@@ -114,7 +114,7 @@
 				verifyPwdParams.append('pwd', confirmPwd)
 				verifyPwd(verifyPwdParams).then(_res => {
 					if(0 !== _res.data.code) {
-						this.tip = '旧密码码错误'
+						this.tip = this.$t('userInfo.changePwdValidation.oldPwdErr')
 						this.$refs.promptRef.show()
 						this.cancel()
 						return
@@ -128,11 +128,11 @@
 
 					updatePwd(updatePwdParams).then(res => {
 						if (res.data.code === 40012) {
-							this.tip = '密码修改失败'
+							this.tip = this.$t('userInfo.changePwdValidation.modPwdFailed')
 							this.$refs.promptRef.show()
 						}
 						if (res.data.code === 0) {
-							this.tip = '修改成功'
+							this.tip = this.$t('userInfo.changePwdValidation.modPwdSuccessed')
 							this.$refs.promptRef.show()
 							this.callbackUrl()
 						}
@@ -149,7 +149,7 @@
 				// 检验安全码
 				verifySafePwd(safePwdParams).then(res => {
 					if (res.data.code !== 0) {
-						this.tip = '安全码错误'
+						this.tip = this.$t('userInfo.changePwdValidation.safePwdErr')
 						this.$refs.promptRef.show()
 						return
 					}
@@ -164,34 +164,34 @@
 			},
 			getVerifySafePwd () {
 				if (!this.confirmPwd) {
-					this.tip = '旧密码不能为空'
+					this.tip = this.$t('userInfo.changePwdValidation.oldPwdNotEmpty')
 					this.$refs.promptRef.show()
 					this.$refs.confirmPwd.focus()
 					return false
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.confirmPwd)) {
-					this.tip = '旧密码应为8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.oldPwdFormat')
 					this.$refs.promptRef.show()
 					this.$refs.confirmPwd.focus()
 					return false
 				}
 				if (!this.pwd) {
-					this.tip = '新密码不能为空'
+					this.tip = this.$t('userInfo.changePwdValidation.newPwdNotEmpty')
 					this.$refs.promptRef.show()
 					this.$refs.pwd.focus()
 					return false
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.pwd)) {
-					this.tip = '只能输入8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.pwdFormat')
 					this.$refs.promptRef.show()
 					this.$refs.pwd.focus()
 					return false
 				}
 				if (!this.cfmPwd) {
-					this.tip = '确认新密码不能为空'
+					this.tip = this.$t('userInfo.changePwdValidation.verNewPwdNotEmpty')
 					this.$refs.cfmPwd.focus()
 					this.$refs.promptRef.show()
 					return false
 				} else if (this.cfmPwd !== this.pwd) {
-					this.tip = '两次密码输入不一致'
+					this.tip = this.$t('userInfo.changePwdValidation.newPwdDiff')
 					this.$refs.promptRef.show()
 					this.$refs.cfmPwd.focus()
 					return false
@@ -201,28 +201,28 @@
 			},
 			checkPwd (pwd) {
 				if (!/^[a-zA-Z0-9]{8,16}$/.test(pwd)) {
-					this.tip = '新密码密码只能输入8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.pwdFormat')
 					this.$refs.promptRef.show()
 				}
 			},
 			checkCfmPwd (cfmPwd) {
 				if (cfmPwd !== this.pwd) {
-					this.tip = '两次密码输入不一致'
+					this.tip = this.$t('userInfo.changePwdValidation.newPwdDiff')
 					this.$refs.promptRef.show()
 				}
 			},
 			checkConfirmPwd (confirmPwd) {
 				if (!/^[a-zA-Z0-9]{8,16}$/.test(confirmPwd)) {
-					this.tip = '旧密码应为8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.oldPwdFormat')
 					this.$refs.promptRef.show()
 				}
 			},
 			checkSafePwd (safePwd) {
 				if (!safePwd) {
-					this.tip = '安全码不能为空'
+					this.tip = this.$t('userInfo.changePwdValidation.safePwdNotEmpty')
 					this.$refs.promptRef.show()
 				} else if (!/^[a-zA-Z0-9]{8,16}$/.test(safePwd)) {
-					this.tip = '应为8-16位的数字或字母'
+					this.tip = this.$t('userInfo.changePwdValidation.safePwdFormat')
 					this.$refs.promptRef.show()
 				}
 			}
