@@ -386,7 +386,7 @@ const routes = [
 		path: '/transferrouter',
 		component: TransferRouter,
 		name: 'TransferRouter',
-		redirect: '/transferrouter/cointransfer/1',
+		redirect: '/transferrouter/cointransfer/0',
 		children: [
 			{
 				path: 'cointransfer/:typeid',
