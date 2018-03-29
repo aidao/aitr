@@ -9,8 +9,19 @@ const ln = {
 
   // 信息修改tips
   infoChangeTips: {
-    name: '输入2-16位英文或汉字',
+    name: 'Enter 2-16 characters',
     email: 'メールアドレスをご入力ください'
+  },
+  // 信息修改校验
+  infoChangeValidation: {
+    nickNameNotEmpty: 'Name cannot be empty',
+    nickNameFormat: 'Only 2-16 characters are allowed',
+    emailNotEmpty: 'E-mail can not be empty',
+    emailFormatErr: 'E-mail format is incorrect',
+    safePwdNotEmpty: 'Security code cannot be empty',
+    safePwdFormatErr: 'Incorrect security code format',
+    safePwdErr: 'Security code error',
+    modSuccessed: 'Success'
   },
 
   // 信息修改安全码弹窗

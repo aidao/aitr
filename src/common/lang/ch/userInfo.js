@@ -12,6 +12,17 @@ const ln = {
     name: '输入2-16位英文或汉字',
     email: '输入邮箱地址'
   },
+  // 信息修改校验
+  infoChangeValidation: {
+    nickNameNotEmpty: '会员姓名不能为空',
+    nickNameFormat: '会员姓名只允许输入2-16位字母或汉字',
+    emailNotEmpty: '邮箱不能为空',
+    emailFormatErr: '邮箱格式不正确',
+    safePwdNotEmpty: '安全码不能为空',
+    safePwdFormatErr: '安全码格式不正确',
+    safePwdErr: '安全码错误',
+    modSuccessed: '修改成功'
+  },
 
   // 信息修改安全码弹窗
   dialog: {
