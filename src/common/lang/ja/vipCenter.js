@@ -2,8 +2,8 @@ export default {
   title: 'VIPエリア',
   trading: {
     title: 'カレンシー取引',
-    cRegistered: '注册币',
-    cRegisteredBalance: '注册币余额',
+    cRegistered: 'Registered currency',
+    cRegisteredBalance: 'Registered currency balance',
     cCrowdfunding: 'クラウドファンディング貨幣',
     cSplit: '分割貨幣',
     cEarnings: '収益貨幣',

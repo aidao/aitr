@@ -1,5 +1,5 @@
 export default {
-  title: 'VIP中心',
+  title: 'VIP zone',
   trading: {
     title: 'Currency trading',
     cRegistered: 'Registered currency',
@@ -14,10 +14,9 @@ export default {
     sell: 'Sell',
     wait: 'Waiting in line…'
   },
-  // todo
   bonus: {
-    title: '今日奖金',
-    total: '奖金总额'
+    title: 'Today\'s bonus',
+    total: 'The total amount of bonus'
   },
   contrast: {
     title: 'Data contrast',
