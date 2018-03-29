@@ -12,7 +12,7 @@
              @blur="checkAccount(account)"
              ref="account" >
     </div>
-    <button type="button" @click="onSubmit(account)">下一步</button>
+    <button type="button" @click="onSubmit(account)">{{ $t('password.next') }}</button>
     <prompt :tip="tip" ref="promptAlert"></prompt>
   </div>
 </template>
@@ -39,26 +39,25 @@
       LangSeletor
     },
     mounted () {
-      console.log(this.$t('password.account'))
     },
     methods:{
       checkAccount (account) {
         if (!account) {
-          this.tip = '用户名不能为空'
+          this.tip = this.$t('password.validation.accountNotEmpty')
           this.$refs.promptAlert.show()
         } else if (!/^\w{5,18}$/.test(account)) {
-          this.tip = '用户名格必须为5-18个字符'
+          this.tip = this.$t('password.validation.accountFormat')
           this.$refs.promptAlert.show()
         }
       },
       onSubmit(account){
         if (!account) {
-          this.tip = '用户名不能为空'
+          this.tip = this.$t('password.validation.accountNotEmpty')
           this.$refs.account.focus()
           this.$refs.promptAlert.show()
           return
         } else if (!/^\w{5,18}$/.test(account)) {
-          this.tip = '用户名格必须为5-18个字符'
+          this.tip = this.$t('password.validation.accountFormat')
           this.$refs.account.focus()
           this.$refs.promptAlert.show()
           return
