@@ -27,7 +27,19 @@ const ln = {
   newPwd: '输入新的密码',
   checkNewPwd: '确认新密码',
   changePwdValidation: {
-    pwdEmpty: '当前密码不能为空'
+    pwdNotEmpty: '当前密码不能为空',
+    pwdFormat: '只能输入8-16位的数字或字母',
+    oldPwdErr: '旧密码码错误',
+    modPwdFailed: '密码修改失败',
+    modPwdSuccessed: '修改成功',
+    safePwdErr: '安全码错误',
+    oldPwdNotEmpty: '旧密码不能为空',
+    oldPwdFormat: '旧密码应为8-16位的数字或字母',
+    newPwdNotEmpty: '新密码不能为空',
+    verNewPwdNotEmpty: '确认新密码不能为空',
+    newPwdDiff: '两次密码输入不一致',
+    safePwdNotEmpty: '安全码不能为空',
+    safePwdFormat: '应为8-16位的数字或字母'
   },
 
   // 修改安全码
@@ -36,6 +48,15 @@ const ln = {
   newSafePwd: '输入新的安全码',
   checkNewSafePwd: '确认新安全码',
   changeSafePwdValidation: {
+    oldSafePwdNotEmpty: '当前安全码不能为空',
+    safePwdFormat: '只能输入8-16位的数字或字母',
+    oldSafePwdErr: '旧安全码错误',
+    modSafePwdFailed: '安全码修改失败',
+    modSafePwdSuccessed: '修改成功',
+    newSafePwdNotEmpty: '新安全码不能为空',
+    verNewSafePwdNotEmpty: '确认新安全码不能为空',
+    newSafePwdDiff: '两次安全码输入不一致',
+    safePwdNotEmpty: '安全码不能为空'
   },
 
   // 按钮
