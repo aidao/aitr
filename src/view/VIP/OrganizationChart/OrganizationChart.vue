@@ -4,11 +4,11 @@
 		<div class="content">
 			<div class="top">
 				<router-link to="/organizationchart/placementchart" tag="div" data-aa="1">
-					<span  @click="changeComponent('placement')">安置结构图</span>
+					<span  @click="changeComponent('placement')">{{$t('org.ArrangementPlan')}}</span>
 					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="isShowTriangle">
 				</router-link>
 				<router-link to="/organizationchart/recommendchart" tag="div" data-aa="0" >
-					<span @click="changeComponent('recommed')">推荐图</span>
+					<span @click="changeComponent('recommed')">{{$t('org.RecommendedFigure')}}</span>
 					<img src="../../../assets/Triangle@1.5x.png" alt="" class="triangle" v-show="!isShowTriangle">
 				</router-link>
 
@@ -25,7 +25,7 @@ export default {
 	data () {
 		return {
 			isShowTriangle: true,
-			title: '安置结构图'
+			title: this.$t('org.ArrangementPlan')
 		}
 	},
 	methods: {
@@ -33,10 +33,10 @@ export default {
 			console.log(num)
 			if (num === 'recommed') {
 				this.isShowTriangle = false
-				this.title = '推荐图'
+				this.title = this.$t('org.RecommendedFigure')
 			} else {
 				this.isShowTriangle = true
-				this.title = '安置结构图'
+				this.title = this.$t('org.ArrangementPlan')
 			}
 		}
 	},

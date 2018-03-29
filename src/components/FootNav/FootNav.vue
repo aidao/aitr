@@ -25,27 +25,27 @@ export default {
       // 菜单
       menu: [
         {
-          name: 'VIP中心',
+          name: this.$t('FootNav.vip'),
           icon: 'vip',
           path: '/vip'
         },
         {
-          name: '组织框架',
+          name: this.$t('FootNav.org'),
           icon: 'org',
           path: '/organizationchart'
         },
         {
-          name: '我的销售',
+          name: this.$t('FootNav.mysale'),
           icon: 'mySale',
           path: '/mysale'
         },
         {
-          name: '交易中心',
+          name: this.$t('FootNav.tradecenter'),
           icon: 'bonusDetail',
           path: '/noOpn'
         },
         {
-          name: '我的钱包',
+          name: this.$t('FootNav.mywallet'),
           icon: 'myWallet',
           path: '/mywallet'
         }

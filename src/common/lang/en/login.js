@@ -3,7 +3,7 @@ const ln = {
     name: 'Please enter your user name',
     pwd: 'Please enter your password'
   },
-  welcome: 'Welcome',
+  welcome: 'Welcome to login',
   forgotPwd: 'Forgot password'
 }
 

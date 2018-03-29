@@ -158,7 +158,7 @@
         >
         <div class="decision">
           <div class="cancel" @click="cancel">{{ $t('common.cancel') }}</div>
-          <div class="decide" @click="changeUserInfo">{{ $t('common.Submit') }}</div>
+          <div class="decide" @click="changeUserInfo">{{ $t('common.submit') }}</div>
         </div>
       </div>
     </div>

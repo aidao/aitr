@@ -1,10 +1,10 @@
 const ln = {
   tips: {
-    name: 'ユーザー名をご入力ください\n',
-    pwd: 'パスワードをご入力ください\n'
+    name: 'ユーザー名をご入力ください',
+    pwd: 'パスワードをご入力ください'
   },
-  welcome: '欢迎登录',
-  forgotPwd: '忘记密码？'
+  welcome: 'Welcome to login',
+  forgotPwd: 'Forgot password？'
 }
 
 export default ln

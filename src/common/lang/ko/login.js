@@ -1,10 +1,10 @@
 const ln = {
   tips: {
-    name: '아이디를 입력해 주세요\n',
-    pwd: '비밀 번호를 입력해 주세요\n'
+    name: '아이디를 입력해 주세요',
+    pwd: '비밀 번호를 입력해 주세요'
   },
-  welcome: '欢迎登录',
-  forgotPwd: '忘记密码？'
+  welcome: 'Welcome to login',
+  forgotPwd: 'Forgot password？'
 }
 
 export default ln

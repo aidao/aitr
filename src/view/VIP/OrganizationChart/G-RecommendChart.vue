@@ -1,14 +1,14 @@
 <template>
 	<div class="recommend-chart">
 		<div class="top">
-				<span>查询:按</span>
-				<div class="vip-account">会员账号</div>
+				<span>{{$t('common.query')}}:{{$t('common.by')}}</span>
+				<div class="vip-account">{{$t('common.MemberAccount')}}</div>
 				<img src="../../../assets/选择@2x.png" alt="" class="choice">
 				<div class="search">
 					<img src="../../../assets/搜索.png" alt="" class="search-icon">
 					<input type="text" v-model="accountName">
 				</div>
-				<div class="search-text" @click="search">搜索</div>
+				<div class="search-text" @click="search">{{$t('common.search')}}</div>
 		</div>
 		<div class="content">
 				<div class="first">

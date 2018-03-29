@@ -171,7 +171,7 @@ export default {
 		selectData (dataType) {
 			this.inSelectMode = true
 			this.selectDataType = dataType
-      this.pageTitle = dataType === 'recommend' ? '推荐图' : '安置结构图'
+      this.pageTitle = dataType === 'recommend' ? this.$t('org.RecommendedFigure') : this.$t('org.ArrangementPlan')
 		},
 		selectRecommend (selected) {
 			this.inSelectMode = false
