@@ -39,6 +39,7 @@
             <li class="dot gray"></li>
             <li class="dot gray"></li>
             <li class="dot gray"></li>
+            <li class="lining-up">{{t.trading.wait}}</li>
           </ul>
           <div class="btn ">{{t.trading.sell}}</div>
           <ul class="dots">
@@ -255,13 +256,7 @@ export default {
       rightTotal: {width: ''},
       tip: '',
       pkgLvl: [],
-      pkgLvlMap: {
-        'LV1': '一星会员',
-        'LV2': '二星会员',
-        'LV3': '三星会员',
-        'LV4': '四星会员',
-        'LV5': '五星会员'
-      },
+      pkgLvlMap: this.$t('vip.levelMap'),
       buyLvl: '1',
       t: {}
     }
@@ -410,6 +405,7 @@ export default {
       > p
         margin 0 16px
         padding-top 20px
+        width 60px
       .top-box
         display flex
         flex-direction column
@@ -660,7 +656,7 @@ export default {
             height .773333rem
             padding .32rem .106667rem
             box-sizing border-box
-            &::after
+            .lining-up
               position absolute
               left 0
               bottom -0.333333rem
@@ -670,7 +666,7 @@ export default {
               font-size .24rem
               color #FFF
             &.complate
-              &::after
+              .lining-up
                 display none
             .dot
               width .133333rem

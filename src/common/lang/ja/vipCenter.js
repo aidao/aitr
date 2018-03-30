@@ -37,5 +37,12 @@ export default {
   thend: {
     title: '分割傾向',
     price: '現価'
+  },
+  levelMap: {
+    'LV1': 'Level 1',
+    'LV2': 'Level 2',
+    'LV3': 'Level 3',
+    'LV4': 'Level 4',
+    'LV5': 'Level 5'
   }
 }

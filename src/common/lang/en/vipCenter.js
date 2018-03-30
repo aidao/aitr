@@ -10,7 +10,7 @@ export default {
     cRefactoring: 'Refactoring currency',
     cConsumption: 'Consumption currency',
     recharge: 'Recharge',
-    buy: 'Buy supporting',
+    buy: 'Buy',
     sell: 'Sell',
     wait: 'Waiting in line…'
   },
@@ -37,5 +37,12 @@ export default {
   thend: {
     title: 'Split thend',
     price: 'Current price'
+  },
+  levelMap: {
+    'LV1': 'Level 1',
+    'LV2': 'Level 2',
+    'LV3': 'Level 3',
+    'LV4': 'Level 4',
+    'LV5': 'Level 5'
   }
 }

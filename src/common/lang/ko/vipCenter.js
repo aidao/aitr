@@ -37,5 +37,12 @@ export default {
   thend: {
     title: '분할 추세도',
     price: '현재 데이터'
+  },
+  levelMap: {
+    'LV1': 'Level 1',
+    'LV2': 'Level 2',
+    'LV3': 'Level 3',
+    'LV4': 'Level 4',
+    'LV5': 'Level 5'
   }
 }
