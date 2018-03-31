@@ -61,17 +61,11 @@ export default {
         },*/
         userName: {
           rules: ['required'],
-          msg: {
-            required: '用户名不能为空'
-          }
+          msg: this.$t('login.errors.userName')
         },
         userPwd: {
           rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
-          msg: {
-            required: '密码不能为空',
-            enOrNumber: '密码错误',
-            size: '密码错误'
-          }
+          msg: this.$t('login.errors.userPwd')
         }
       }
       const fieldOptions = options[fieldName]
@@ -104,7 +98,7 @@ export default {
 			params.append('pwd', this.userPwd)
 			Login(params).then(res => {
 				if (res.data.code === 40008 || res.data.code === 40009 || res.data.code === 400010) {
-					this.tipShow('用户名/密码错误，登录失败')
+					this.tipShow(this.$t('login.loginMsg.fail'))
 				}
 				if (res.data.code === 40003) {
 					this.tipShow(this.res.msg)
@@ -112,7 +106,7 @@ export default {
 				if (res.data.code === 0) {
 					localStorage.setItem('__token__', JSON.stringify(res.data.result))
 					sessionStorage.setItem('__token__', JSON.stringify(res.data.result))
-					this.tipShow('登录成功')
+					this.tipShow(this.$t('login.loginMsg.success'))
 					this.$router.push('/vip')
 				}
 			})
