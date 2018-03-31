@@ -12,6 +12,12 @@ const ln = {
   placeholder: {
     TransferTo: '输入收款会员编号',
     TransferAmount: '输入转出积分数量'
+  },
+  transfer: {
+    errors: {
+      'NoReceiveAccount': '接受会员账号不存在',
+      'NoReferAccount': '账号没有推荐关系'
+    }
   }
 }
 

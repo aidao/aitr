@@ -17,7 +17,7 @@
         </div>
         <div class="detail-container">
           <div class="detail-item" v-if="isDataLoaded && !transferData.length">
-            <div class="tr" style="text-align: center">暂无数据</div>
+            <div class="tr" style="text-align: center">{{$t('common.NoData')}}</div>
           </div>
         </div>
       </scroller>

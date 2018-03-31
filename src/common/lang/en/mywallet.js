@@ -12,6 +12,12 @@ const ln = {
   placeholder: {
     TransferTo: 'Please fill in the receiving member number',
     TransferAmount: 'Please fill in the number of points transferred out'
+  },
+  transfer: {
+    errors: {
+      'NoReceiveAccount': '接受会员账号不存在',
+      'NoReferAccount': 'The account has no recommended relationship'
+    }
   }
 }
 

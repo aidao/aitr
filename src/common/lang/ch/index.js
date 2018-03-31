@@ -14,12 +14,24 @@ const ln = {
     ok: '确定',
     submit: '确定',
     cancel: '取消',
+    confirm: '确认',
     Enter: '进入',
     query: '查询',
     search: '搜索',
     by: '按',
     MemberAccount: '会员帐号',
-    ComingSoon: '暂未开放'
+    ComingSoon: '暂未开放',
+    NoData: '暂无数据'
+  },
+  errors: {
+    safecode: {
+      required: '安全码不能为空',
+      verifyFailed: '安全码输入错误'
+    }
+  },
+  securityCode: {
+    title: '输入安全码',
+    placeholder: '输入您的安全码'
   },
   FootNav: {
     vip: 'VIP中心',

@@ -3,8 +3,8 @@
 		<div class="dialog">
 				<slot></slot>
 				<div class="issure">
-					<div class="cancel" @click="options('cancal')">取消</div>
-					<div class="oks" @click="options('oks')">确认</div>
+					<div class="cancel" @click="options('cancal')">{{$t('common.cancel')}}</div>
+					<div class="oks" @click="options('oks')">{{$t('common.confirm')}}</div>
 				</div>
 		</div>
 	</div>

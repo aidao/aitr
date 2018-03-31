@@ -14,12 +14,24 @@ const ln = {
     ok: 'OK',
     submit: 'Submit',
     cancel: 'Cancel',
+    confirm: 'Confirm',
     Enter: 'Enter',
     query: 'Query',
     search: 'Search',
     by: 'By',
     MemberAccount: 'Member account',
-    ComingSoon: 'Coming soon'
+    ComingSoon: 'Coming soon',
+    NoData: 'Temporarily no data'
+  },
+  errors: {
+    safecode: {
+      required: 'Security code cannot be empty',
+      verifyFailed: 'Security code input error'
+    }
+  },
+  securityCode: {
+    title: 'Security Code',
+    placeholder: 'Please fill in the security code'
   },
   FootNav: {
     vip: 'VIP zone',
