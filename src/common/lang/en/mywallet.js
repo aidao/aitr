@@ -15,8 +15,13 @@ const ln = {
   },
   transfer: {
     errors: {
-      'NoReceiveAccount': '接受会员账号不存在',
-      'NoReferAccount': 'The account has no recommended relationship'
+      'NoReceiveAccount': 'Receive member account does not exist',
+      'NoReferAccount': 'The account has no recommended relationship',
+      'ReceiveAccountRequired': 'The receiving member cannot be empty',
+      'pointsOut': {
+        required: 'The number of transfer points cannot be empty',
+        positiveInt: 'You can only get positive integers'
+      }
     }
   }
 }

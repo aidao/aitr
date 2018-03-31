@@ -224,15 +224,12 @@
           userId: {
             rules: ['required'],
             msg: {
-              required: '接收会员账号不能为空'
+              required: this.$t('mywallet.transfer.errors.ReceiveAccountRequired')
             }
           },
           coinNum: {
             rules: ['required', 'positiveInt'],
-            msg: {
-              required: '转账积分数量不能为空',
-              positiveInt: '转出数量只能为正整数'
-            }
+            msg: this.$t('mywallet.transfer.errors.pointsOut')
           }
         }
         const fieldOptions = options[fieldName]
