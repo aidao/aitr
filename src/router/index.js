@@ -495,12 +495,12 @@ router.beforeEach ((to, from, next) => {
 axios.interceptors.response.use(function (response) {
 	// 登录超时
 	if (response.data.code === 10005) {
-		localStorage.clear()
+		localStorage.removeItem('__token__')
 		router.replace({
 			path: '/login'
 		})
 	} else if (response.data.code === 10009) {
-		localStorage.clear()
+		localStorage.removeItem('__token__')
 		router.replace({
 			path: '/404'
 		})

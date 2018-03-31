@@ -39,7 +39,7 @@ export default {
 		.tip
 			position absolute
 			left 50%
-			top 50%
+			top 40%
 			padding .24rem
 			transform translate(-50%, -50%)
 			line-height .426667rem
