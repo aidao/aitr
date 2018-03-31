@@ -126,6 +126,7 @@
 						this.$router.replace('/login')
 					} else {
 						this.tipShow(msg)
+						this.$refs.verifyCode.focus()
 					}
 				})
 			},

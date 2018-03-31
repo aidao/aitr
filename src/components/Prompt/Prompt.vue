@@ -30,7 +30,7 @@ export default {
 
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	.prompt
-		position fixed
+		position absolute
 		left 0
 		right 0
 		top 0
