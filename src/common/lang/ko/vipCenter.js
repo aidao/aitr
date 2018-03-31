@@ -2,8 +2,8 @@ export default {
   title: 'VIP전용구역',
   trading: {
     title: '화폐교역',
-    cRegistered: '注册币',
-    cRegisteredBalance: '注册币余额',
+    cRegistered: 'Registered currency',
+    cRegisteredBalance: 'Registered currency balance',
     cCrowdfunding: '중주폐',
     cSplit: '분할 통화',
     cEarnings: '수입폐',
@@ -37,5 +37,12 @@ export default {
   thend: {
     title: '분할 추세도',
     price: '현재 데이터'
+  },
+  levelMap: {
+    'LV1': 'Level 1',
+    'LV2': 'Level 2',
+    'LV3': 'Level 3',
+    'LV4': 'Level 4',
+    'LV5': 'Level 5'
   }
 }

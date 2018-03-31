@@ -26,7 +26,7 @@ export default {
     sum: '累计业绩'
   },
   process: {
-    title: '拆分过程',
+    title: '拆分进程',
     line: '开始排队',
     buy: '买入',
     first: '一拆',
@@ -37,5 +37,12 @@ export default {
   thend: {
     title: '拆分走势',
     price: '当前价格'
+  },
+  levelMap: {
+    'LV1': '一星会员',
+    'LV2': '二星会员',
+    'LV3': '三星会员',
+    'LV4': '四星会员',
+    'LV5': '五星会员'
   }
 }

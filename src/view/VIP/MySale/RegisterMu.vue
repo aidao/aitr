@@ -1,6 +1,6 @@
 <template>
 	<div class="registermu">
-		<HeadMenu :pageTitle="$t('mysale.RegisterParentAccount')"></HeadMenu>
+		<HeadMenu :pageTitle="pageTitle"></HeadMenu>
 		<div style="height:100%; overflow: auto">
 		<form action="" @submit.prevent="registerMuAcc">
 			<div class="form-content">
@@ -113,7 +113,7 @@ export default {
 			showJieDian: false,
 			inSelectMode: false,
 			selectDataType: null,
-      pageTitle: '注册母账户',
+      pageTitle: this.$t('mysale.RegisterParentAccount'),
       t: null
 		}
 	},
@@ -171,13 +171,13 @@ export default {
 		selectData (dataType) {
 			this.inSelectMode = true
 			this.selectDataType = dataType
-      this.pageTitle = dataType === 'recommend' ? '推荐图' : '安置结构图'
+      this.pageTitle = dataType === 'recommend' ? this.$t('org.RecommendedFigure') : this.$t('org.ArrangementPlan')
 		},
 		selectRecommend (selected) {
 			this.inSelectMode = false
 			this.refaccount = selected
       this.detection()
-      this.pageTitle = '注册母账户'
+      this.pageTitle = this.$t('org.RecommendedFigure')
 		},
 		selectSupAccount (selected) {
 			this.inSelectMode = false
@@ -185,7 +185,7 @@ export default {
 				this.direction = selected.direction === 'l' ? '左区' : '右区'
 			}
 			this.supaccount = selected.parentId
-      this.pageTitle = '注册母账户'
+      this.pageTitle = this.$t('org.ArrangementPlan')
 		},
 		detection(){  //  检测推荐人获取接点图
 			let params = new URLSearchParams()

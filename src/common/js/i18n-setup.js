@@ -17,7 +17,16 @@ const loadedLanguages = ['ch'] // our default language that is prelaoded
 
 function setI18nLanguage (lang) {
   i18n.locale = lang
-  axios.defaults.headers.common['Accept-Language'] = lang
+  const langCodes = {
+    'ch': 'zh_CN',
+    'en': 'en_US',
+    'ja': 'ja_JP',
+    'ko': 'ko_KR',
+    'es': 'es_ES',
+    'pt': 'pt_PT',
+    'ru': 'ru_RU'
+  }
+  axios.defaults.headers.common['Accept-Language'] = langCodes[lang]
   // document.querySelector('html').setAttribute('lang', lang)
   localStorage.setItem('__locale__', lang)
   return lang

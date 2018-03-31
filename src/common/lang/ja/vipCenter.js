@@ -2,8 +2,8 @@ export default {
   title: 'VIPエリア',
   trading: {
     title: 'カレンシー取引',
-    cRegistered: '注册币',
-    cRegisteredBalance: '注册币余额',
+    cRegistered: 'Registered currency',
+    cRegisteredBalance: 'Registered currency balance',
     cCrowdfunding: 'クラウドファンディング貨幣',
     cSplit: '分割貨幣',
     cEarnings: '収益貨幣',
@@ -37,5 +37,12 @@ export default {
   thend: {
     title: '分割傾向',
     price: '現価'
+  },
+  levelMap: {
+    'LV1': 'Level 1',
+    'LV2': 'Level 2',
+    'LV3': 'Level 3',
+    'LV4': 'Level 4',
+    'LV5': 'Level 5'
   }
 }

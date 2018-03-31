@@ -92,14 +92,14 @@ export default {
 		// 检查会员姓名
 		checkNickname (nickName) {
 			if (!nickName) {
-				this.tip = '会员姓名不能为空'
+				this.tip = this.$t('userInfo.infoChangeValidation.nickNameNotEmpty')
 				this.$refs.promptRef.show()
 			} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(nickName)) {
-				this.tip = '会员姓名只允许输入2-16位字母或汉字'
+				this.tip = this.$t('userInfo.infoChangeValidation.nickNameFormat')
 				this.$refs.promptRef.show()
 			}
 			else if (this.getByteLen(nickName)<2 || this.getByteLen(nickName) > 16) {
-				this.tip = '会员姓名只允许输入2-16位字母或汉字'
+				this.tip = this.$t('userInfo.infoChangeValidation.nickNameFormat')
 				this.$refs.promptRef.show()
 			}
 		},
@@ -107,19 +107,19 @@ export default {
 		// 检查邮箱
 		checkEmail (email) {
 			if (!email) {
-				this.tip = '邮箱不能为空'
+				this.tip = this.$t('userInfo.infoChangeValidation.emailNotEmpty')
 				this.$refs.promptRef.show()
 			} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(email)) {
-				this.tip = '邮箱格式不正确'
+				this.tip = this.$t('userInfo.infoChangeValidation.emailFormatErr')
 				this.$refs.promptRef.show()
 			}
 		},
 		checkSafePwd (safepwd) {
 			if (!safepwd) {
-				this.tip = '安全码不能为空'
+				this.tip = this.$t('userInfo.infoChangeValidation.safePwdNotEmpty')
 				this.$refs.promptRef.show()
 			} else if (!/^[a-zA-Z0-9]{8,16}$/.test(safepwd)) {
-				this.tip = '安全码格式不正确'
+				this.tip = this.$t('userInfo.infoChangeValidation.safePwdFormatErr')
 				this.$refs.promptRef.show()
 			}
 		},
@@ -129,29 +129,29 @@ export default {
 		getVerifySafePwd () {
 			if (this.type === 'nickname') {
 				if (!this.userInfo.nickname) {
-					this.tip = '会员姓名不能为空'
+					this.tip = this.$t('userInfo.infoChangeValidation.nickNameNotEmpty')
 					this.$refs.promptRef.show()
 					this.$refs.nickName.focus()
 					return
 				} else if (!/^[a-zA-Z\u4e00-\u9fa5]+$/.test(this.userInfo.nickname)) {
-					this.tip = '会员姓名只允许输入2-16位字母或汉字'
+					this.tip = this.$t('userInfo.infoChangeValidation.nickNameFormat')
 					this.$refs.promptRef.show()
 					this.$refs.nickName.focus()
 					return
 				} else if (this.userInfo.nickname.length < 2 || this.userInfo.nickname.length > 16) {
-					this.tip = '会员姓名只允许输入2-16位字母或汉字'
+					this.tip = this.$t('userInfo.infoChangeValidation.nickNameFormat')
 					this.$refs.promptRef.show()
 					this.$refs.nickName.focus()
 					return
 				}
 			} else {
 				if (!this.userInfo.email) {
-					this.tip = '邮箱不能为空'
+					this.tip = this.$t('userInfo.infoChangeValidation.emailNotEmpty')
 					this.$refs.promptRef.show()
 					this.$refs.email.focus()
 					return
 				} else if (!/^(\w-*\.*)+@(\w-?)+(\.(com|cn|net))+$/.test(this.userInfo.email)) {
-					this.tip = '邮箱格式不正确'
+					this.tip = this.$t('userInfo.infoChangeValidation.emailFormatErr')
 					this.$refs.promptRef.show()
 					this.$refs.email.focus()
 					return
@@ -167,11 +167,11 @@ export default {
 		// 保存修改
 		changeUserInfo () {
 			if (!this.safePwd) {
-				this.tip = '安全码不能为空'
+				this.tip = this.$t('userInfo.infoChangeValidation.safePwdNotEmpty')
 				this.$refs.promptRef.show()
 				return
 			} else if (!/^[a-zA-Z0-9]{8,16}$/.test(this.safePwd)) {
-				this.tip = '安全码格式不正确'
+				this.tip = this.$t('userInfo.infoChangeValidation.safePwdFormatErr')
 				this.$refs.promptRef.show()
 				return
 			}
@@ -184,7 +184,7 @@ export default {
 
 			verifySafePwd(paramsForGetVerifySafePwd).then(res => {
 				if (res.data.code === 40011) {
-					this.tip = '安全码错误'
+					this.tip = this.$t('userInfo.infoChangeValidation.safePwdErr')
 					this.$refs.promptRef.show()
 					return
 				}
@@ -198,7 +198,7 @@ export default {
 					updateNickname(paramsForUpdateNickname).then(res => {
 						// this.$refs.confirmPwd.value = ''
 						if (res.data.code === 0) {
-							this.tip = '修改成功'
+							this.tip = this.$t('userInfo.infoChangeValidation.modSuccessed')
 							this.$refs.promptRef.show()
 							this.callbackUrl()
 						}
@@ -212,7 +212,7 @@ export default {
 					updateEmail(paramsForUpdateEmail).then(res => {
 						// this.$refs.confirmPwd.value = ''
 						if (res.data.code === 0) {
-							this.tip = '修改成功'
+							this.tip = this.$t('userInfo.infoChangeValidation.modSuccessed')
 			  this.callbackUrl()
 							this.$refs.promptRef.show()
 						}

@@ -1,7 +1,7 @@
 const ln = {
   mywallet: 'My wallet',
   coinShouYi: 'Earnings currency',
-  coinZhuCe: 'Register currency',
+  coinZhuCe: 'Registered currency',
   coinChongGou: 'Refactoring currency',
   coinZhongChou: 'Crowdfunding currency',
   coinChaiFen: 'Split currency',

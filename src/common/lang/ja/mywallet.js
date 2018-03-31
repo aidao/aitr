@@ -1,17 +1,17 @@
 const ln = {
   mywallet: '我的钱包',
-  coinShouYi: '收益币',
+  coinShouYi: '収益貨幣',
   coinZhuCe: '注册币',
-  coinChongGou: '重构币',
-  coinZhongChou: '众筹币',
-  coinChaiFen: '拆分币',
-  coinXiaoFei: '消费币',
-  balance: '余额',
-  ReceivingMemberNumber: '接收会员帐号',
-  NumberOfPointsTransferredOut: '转出积分数量',
+  coinChongGou: '再構成貨幣',
+  coinZhongChou: 'クラウドファンディング貨幣',
+  coinChaiFen: '分割貨幣',
+  coinXiaoFei: '消費貨幣',
+  balance: '残高',
+  ReceivingMemberNumber: '会員番号を受け取る',
+  NumberOfPointsTransferredOut: '振込ポイント量',
   placeholder: {
-    TransferTo: '输入收款会员编号',
-    TransferAmount: '输入转出积分数量'
+    TransferTo: '会員番号を受け取る',
+    TransferAmount: '振込ポイント量をご入力ください'
   }
 }
 

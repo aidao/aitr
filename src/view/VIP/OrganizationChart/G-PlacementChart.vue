@@ -3,9 +3,9 @@
 		<div class="top">
 			<div class="search">
 					<img src="../../../assets/搜索.png" alt="" class="search-icon">
-					<input type="text" placeholder="搜索用户名" v-model="searchAccount">
+					<input type="text" :placeholder="$t('common.MemberAccount')" v-model="searchAccount">
 			</div>
-			<div class="search-text" @click="searchAccountMap">搜索</div>
+			<div class="search-text" @click="searchAccountMap">{{$t('common.search')}}</div>
 		</div>
 		<div class="content" v-if="s">
 			<div class="first">

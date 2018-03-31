@@ -4,6 +4,7 @@ import mysale from './mysale'
 import password from './password'
 import VIPCenter from './vipCenter'
 import userInfo from './userInfo'
+import org from './org'
 
 const ln = {
   common: {
@@ -13,7 +14,19 @@ const ln = {
     ok: 'OK',
     submit: 'Submit',
     cancel: 'Cancel',
-    Enter: 'Enter'
+    Enter: 'Enter',
+    query: 'Query',
+    search: 'Search',
+    by: 'By',
+    MemberAccount: 'Member account',
+    ComingSoon: 'Coming soon'
+  },
+  FootNav: {
+    vip: 'VIP zone',
+    org: 'Organizational structure',
+    mysale: 'My sales',
+    tradecenter: 'ransaction',
+    mywallet: 'My wallet'
   },
   MembershipGrade: {
     Regular: 'Regular membership'
@@ -23,6 +36,7 @@ const ln = {
   mysale: mysale,
   password: password,
   vip: VIPCenter,
-  userInfo: userInfo
+  userInfo: userInfo,
+  org: org
 }
 export default ln

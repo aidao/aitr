@@ -39,6 +39,7 @@
             <li class="dot gray"></li>
             <li class="dot gray"></li>
             <li class="dot gray"></li>
+            <li class="lining-up">{{t.trading.wait}}</li>
           </ul>
           <div class="btn ">{{t.trading.sell}}</div>
           <ul class="dots">
@@ -67,7 +68,11 @@
         </div>
       </div>
       <div class="todayR">
-        <div class="vip-title">{{t.bonus.title}}<span class="jine">{{ person.todayReward || 0}}</span>
+        <div class="vip-title">
+          <span class="todayBonus">
+            {{t.bonus.title}}
+            <span class="jine">{{ person.todayReward || 0}}</span>
+          </span>
           <div class="totalR">{{t.bonus.total}}<span class="jine">{{ person.totalReward || 0}}</span></div>
         </div>
       </div>
@@ -110,7 +115,8 @@
           <div class="map-txt"><span v-for="(item, idx) in mapTXT" :key="idx">{{item.txt}}</span></div>
           <div class="map-round">
             <ul v-for="(item, index) in 5" :key="index">
-              <li v-for="(tem, idx) in 4" :key="idx" :class="{'active': index < mapStatus || (mapStatus !=0 && index == mapStatus && idx == 0) || (preLineUp && idx == 0 && index == 0)}"></li>
+              <li v-for="(tem, idx) in 4" :key="idx"
+                  :class="{'active': index < mapStatus || (mapStatus !=0 && index == mapStatus && idx == 0) || (preLineUp && idx == 0 && index == 0)}"></li>
             </ul>
             <ul>
               <li></li>
@@ -158,7 +164,7 @@
         >
         <div class="decision">
           <div class="cancel" @click="cancel">{{ $t('common.cancel') }}</div>
-          <div class="decide" @click="changeUserInfo">{{ $t('common.Submit') }}</div>
+          <div class="decide" @click="changeUserInfo">{{ $t('common.submit') }}</div>
         </div>
       </div>
     </div>
@@ -167,7 +173,7 @@
         <div class="title">{{t.trading.buy}}</div>
         <div class="tips">{{t.trading.cRegisteredBalance}}：<span class="f-golden">{{balance.registerCoin}}</span></div>
         <select name="buyLvl" id="buyPT" v-model="buyLvl">
-          <option v-for="lvl in pkgLvl" :value="lvl.level">{{pkgLvlMap[lvl.memo]}} ( {{lvl.price}} )</option>
+          <option v-for="lvl in pkgLvl" :value="lvl.level" :key="lvl.level">{{pkgLvlMap[lvl.memo]}} ( {{lvl.price}} )</option>
         </select>
         <div class="decision">
           <div class="cancel" @click="buyShow = false">{{ $t('common.cancel') }}</div>
@@ -180,283 +186,277 @@
 </template>
 
 <script>
-  import Prompt from 'components/Prompt/Prompt'
-  import {getUSDTBalance,getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
-  import HeadMenu from 'components/HeadMenu/HeadMenu'
-  import FootNav from 'components/FootNav/FootNav'
+import Prompt from 'components/Prompt/Prompt'
+import {getUSDTBalance, getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
+import HeadMenu from 'components/HeadMenu/HeadMenu'
+import FootNav from 'components/FootNav/FootNav'
 
-  export default {
-    data () {
-      return {
-        balance: {},
-        test: {width: '50%'},
-        maskShow: false,
-        buyShow:false,
-        sum: undefined,
-        splitProcessLoaded: false,
-        preLineUp: false,
-        isBuying: false,
-        columnarList: [
-          { height: '16%' },
-          { height: '20%' },
-          { height: '24%' },
-          { height: '28%' },
-          { height: '32%' },
-          { height: '36%' },
-          { height: '40%' },
-          { height: '44%' },
-          { height: '48%' },
-          { height: '52%' },
-          { height: '56%' },
-          { height: '60%' },
-          { height: '64%' },
-          { height: '68%' },
-          { height: '72%' },
-          { height: '76%' },
-          { height: '80%' },
-          { height: '84%' },
-          { height: '88%' },
-          { height: '92%' },
-          { height: '96%' },
-          { height: '100%' },
-        ],
-        mapTIME: [
-          { time: ''},
-          { time: '' },
-          { time: '' },
-          { time: '' },
-          { time: '' },
-          { time: '' },
-        ],
-        mapStatus: 0,
-        roundList:[
-          [
-            '1','2','3','4'
-          ],[
-            '1','2','3','4'
-          ],[
-            '1','2','3','4'
-          ],[
-            '1','2','3','4'
-          ],
-        ],
-        person: {
-          topSum:undefined,
-          buttonSum: undefined,
-        },
-        leftToday:{width: ''},
-        leftTotal:{width: ''},
-        rightToday:{width: ''},
-        rightTotal:{width: ''},
-        tip: '',
-        pkgLvl: [],
-        pkgLvlMap: {
-          'LV1': '一星会员',
-          'LV2': '二星会员',
-          'LV3': '三星会员',
-          'LV4': '四星会员',
-          'LV5': '五星会员'
-        },
-        buyLvl: '1',
-        t: {}
-      }
-    },
-    computed: {
-      mapTXT() {
-        return [
-          {txt: this.t.process.line},
-          {txt: this.t.process.buy},
-          {txt: this.t.process.first},
-          {txt: this.t.process.second},
-          {txt: this.t.process.third},
-          {txt: this.t.process.sell},
+export default {
+  data () {
+    return {
+      balance: {},
+      test: {width: '50%'},
+      maskShow: false,
+      buyShow: false,
+      sum: undefined,
+      splitProcessLoaded: false,
+      preLineUp: false,
+      isBuying: false,
+      columnarList: [
+        {height: '16%'},
+        {height: '20%'},
+        {height: '24%'},
+        {height: '28%'},
+        {height: '32%'},
+        {height: '36%'},
+        {height: '40%'},
+        {height: '44%'},
+        {height: '48%'},
+        {height: '52%'},
+        {height: '56%'},
+        {height: '60%'},
+        {height: '64%'},
+        {height: '68%'},
+        {height: '72%'},
+        {height: '76%'},
+        {height: '80%'},
+        {height: '84%'},
+        {height: '88%'},
+        {height: '92%'},
+        {height: '96%'},
+        {height: '100%'}
+      ],
+      mapTIME: [
+        {time: ''},
+        {time: ''},
+        {time: ''},
+        {time: ''},
+        {time: ''},
+        {time: ''}
+      ],
+      mapStatus: 0,
+      roundList: [
+        [
+          '1', '2', '3', '4'
+        ], [
+          '1', '2', '3', '4'
+        ], [
+          '1', '2', '3', '4'
+        ], [
+          '1', '2', '3', '4'
         ]
+      ],
+      person: {
+        topSum: undefined,
+        buttonSum: undefined
+      },
+      leftToday: {width: ''},
+      leftTotal: {width: ''},
+      rightToday: {width: ''},
+      rightTotal: {width: ''},
+      tip: '',
+      pkgLvl: [],
+      pkgLvlMap: this.$t('vip.levelMap'),
+      buyLvl: '1',
+      t: {}
+    }
+  },
+  computed: {
+    mapTXT () {
+      return [
+        {txt: this.t.process.line},
+        {txt: this.t.process.buy},
+        {txt: this.t.process.first},
+        {txt: this.t.process.second},
+        {txt: this.t.process.third},
+        {txt: this.t.process.sell}
+      ]
+    }
+  },
+  components: {
+    Prompt,
+    HeadMenu,
+    FootNav
+  },
+  created () {
+    this.t = this.$t('vip')
+  },
+  mounted () {
+    this.getBalance()
+
+    this.getPosInfo()
+
+    // 获取配套列表
+    getPKGList().then(res => {
+      const {code, result} = res.data
+
+      if (code === 0) {
+        this.pkgLvl = result
       }
+    })
+
+    // 获取拆分进程
+    getSplitProcess().then(res => {
+      const {code, result} = res.data
+      if (code === 0) {
+        this.mapTIME[0] = {time: result.lineupTime ? this.fDate(result.lineupTime) : ''}
+        this.mapTIME[1] = {time: result.price || ''}
+        this.mapStatus = result.status
+        this.splitProcessLoaded = true
+
+        this.preLineUp = (this.mapStatus === 0 && result.lineupTime)
+        console.info('res.data', res.data)
+        console.info('preLineUp', this.preLineUp)
+      }
+    })
+  },
+  methods: {
+    recharge () {
+      // 暂不开放
+      this.tip = '暂未开放'
+      this.$refs.promptRef.show()
+
+      // this.maskShow = true
     },
-    components: {
-      Prompt,
-      HeadMenu,
-      FootNav
+    checkSafePwd () {
+
     },
-    created() {
-      this.t = this.$t('vip')
+    cancel () {
+      this.maskShow = false
     },
-    mounted () {
-      this.getBalance()
-
-      this.getPosInfo()
-
-      // 获取配套列表
-      getPKGList().then(res=>{
-        const {code, result} = res.data
-
-        if (code === 0) {
-          this.pkgLvl = result
-        }
-      })
-
-      // 获取拆分进程
-      getSplitProcess().then(res => {
-        const {code, result} = res.data
-        if (code === 0) {
-          this.mapTIME[0] = {time: result.lineupTime ? this.fDate(result.lineupTime) : ''}
-          this.mapTIME[1] = {time: result.price || ''}
-          this.mapStatus = result.status
-          this.splitProcessLoaded = true
-
-          this.preLineUp = (this.mapStatus == 0 && result.lineupTime)
-          console.info('res.data', res.data)
-          console.info('preLineUp', this.preLineUp)
-        }
-      })
+    changeUserInfo () {
+      this.maskShow = false
     },
-    methods: {
-      recharge(){
-        // 暂不开放
-        this.tip = '暂未开放'
+    confirmBuyPKG () {
+      if (this.isBuying) {
+        this.tip = '正在购买中...'
         this.$refs.promptRef.show()
         return
+      }
+      this.isBuying = true
+      // setTimeout(() => {
+      let params = new URLSearchParams()
+      params.append('level', parseInt(this.buyLvl))
+      buyPKG(params).then(res => {
+        const {code, msg} = res.data
 
-        this.maskShow=true
-      },
-      checkSafePwd(){
+        this.tip = msg
+        this.$refs.promptRef.show()
 
-      },
-      cancel(){
-        this.maskShow=false
-      },
-      changeUserInfo(){
-        this.maskShow=false
-      },
-      confirmBuyPKG () {
-        if(this.isBuying) {
-          this.tip = '正在购买中...'
-          this.$refs.promptRef.show()
-          return
+        if (code === 0) {
+          this.buyShow = false
+          this.getBalance()
+          this.getPosInfo()
         }
-        this.isBuying = true
-        // setTimeout(() => {
-        let params = new URLSearchParams()
-        params.append('level', parseInt(this.buyLvl))
-        buyPKG(params).then(res => {
-          const {code, msg} = res.data
-
-          this.tip = msg
-          this.$refs.promptRef.show()
-
-          if (code === 0) {
-            this.buyShow = false
-            this.getBalance()
-            this.getPosInfo()
-          }
-          this.isBuying = false
-        }, err => {
-          this.isBuying = false
-        })
-        // }, 5000)
-      },
-      /**
+        this.isBuying = false
+      }, () => {
+        this.isBuying = false
+      })
+      // }, 5000)
+    },
+    /**
        * 格式化时间
        * @param {String} strDate
        * @returns {*}
        */
-      fDate (strDate) {
-        const d = new Date(strDate)
-        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
-      },
-      getBalance() {
-        getUSDTBalance().then(res => {
-          if (res.data.code === 0) {
-            // console.log(res.data)
-            this.balance = res.data.result
-          }
-        })
-      },
-      getPosInfo() {
-        getPosPerson().then(res => {
-          if (res.data.code === 0) {
-            this.person = res.data.result;
-            this.person.topSum = this.person.leftToday + this.person.rightToday
-            this.person.buttonSum = this.person.leftTotal + this.person.rightTotal
+    fDate (strDate) {
+      const d = new Date(strDate)
+      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+    },
+    getBalance () {
+      getUSDTBalance().then(res => {
+        if (res.data.code === 0) {
+          // console.log(res.data)
+          this.balance = res.data.result
+        }
+      })
+    },
+    getPosInfo () {
+      getPosPerson().then(res => {
+        if (res.data.code === 0) {
+          this.person = res.data.result
+          this.person.topSum = this.person.leftToday + this.person.rightToday
+          this.person.buttonSum = this.person.leftTotal + this.person.rightTotal
 
-            this.leftToday.width = (this.person.leftTodayPercent * 50)+ '%'
-            this.leftTotal.width = (this.person.leftTotalPercent * 50) +'%';
-            this.rightToday.width =  (this.person.rightTodayPercent * 50) +'%';
-            this.rightTotal.width = (this.person.rightTotalPercent * 50) +'%';
-          }
-        })
-      }
+          this.leftToday.width = (this.person.leftTodayPercent * 50) + '%'
+          this.leftTotal.width = (this.person.leftTotalPercent * 50) + '%'
+          this.rightToday.width = (this.person.rightTodayPercent * 50) + '%'
+          this.rightTotal.width = (this.person.rightTotalPercent * 50) + '%'
+        }
+      })
     }
   }
+}
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus'>
   .f-golden
     color #FFAE11
+
   .vip-data
     display flex
     flex-direction column
     color #eee
     font-size .319rem
     .data-bottom
-
     .data-top
       display flex
       margin-top 4px
-      >p
+      > p
         margin 0 16px
         padding-top 20px
+        width 60px
       .top-box
         display flex
         flex-direction column
         width 65%
+        padding 0 3px
         .box-txt
           display flex
           justify-content space-between
-          >p
+          > p
             margin 4px 0
             font-size .266rem
         .box-color
           display flex
-          /*justify-content center*/
           border: 1px solid #999
           border-radius 100px
           position relative
           height 10px
-          >li{
+          > li {
             position absolute
-            height:10px
-            &:nth-of-type(2){
+            height: 10px
+            &:nth-of-type(2) {
               width 2px
               background-color #fff
               top 0
               left 50%
-            }&:nth-of-type(1){
-               /*width 30%*/
-               top 0
-               right 50%
-               background-color #FFCA00
-               border-top-left-radius 100px
-               border-bottom-left-radius 100px
-               /*flex 1*/
-             }&:nth-of-type(3){
-                /*width 10%*/
-                top 0
-                left 50%
-                background-color #F77220
-                border-top-right-radius 100px
-                border-bottom-right-radius 100px
-                /*flex 1*/
-              }
+            }
+            &:nth-of-type(1) {
+              top 0
+              right 50%
+              background-color #FFCA00
+              border-top-left-radius 100px
+              border-bottom-left-radius 100px
+            }
+            &:nth-of-type(3) {
+              top 0
+              left 50%
+              background-color #F77220
+              border-top-right-radius 100px
+              border-bottom-right-radius 100px
+            }
           }
+
   .vip-title
     position relative
-    >p
+    > p
       position absolute
       top -12px
       left 45%
       font-size .3478783rem
       color #eee
+
   .vip-map
     display flex
     flex-direction column
@@ -481,27 +481,28 @@
         margin 8px 0
         display flex
         justify-content space-between
-        >li
+        > li
           width 6px
-          height:6px
+          height: 6px
           border-radius 3px
-          background-color  #999999
+          background-color #999999
           margin 0 4px
           margin-top 2px
           &:nth-of-type(1)
             margin-top 0
             width 10px
-            height:10px
+            height: 10px
             border-radius 5px
           &.active
             background-color #FFCA00
+
   .columnar-num
     margin-top 4px
     position absolute
     display flex
     justify-content space-between
     width 100%
-    >li
+    > li
       padding 0 4px
       font-size 0.273333rem
       color #FFCA00
@@ -515,7 +516,7 @@
     align-items flex-end
     width 100%
     height 100%
-    &>li
+    & > li
       width 3.8%
       background-color transform
       margin 0 2px
@@ -525,15 +526,17 @@
         background-color #EDDE2F
       &.white
         background-color #fff
+
   .line-white
     display flex
     flex-direction column
     border-bottom 1px solid #ccc
     border-left 1px solid #ccc
     height 100%
-    &>li
+    & > li
       height 25%
       border-top 1px dashed #ccc
+
   .mask
     position fixed
     z-index 1
@@ -594,12 +597,14 @@
         .decide
           color #FFAE11
           border-left 1px solid #CCC
+
   .vipcenter
     background url('./BG.png')
     .vip-content
+      padding-bottom 0.44rem
       .huobijiaoyi
         width 100%
-        height 7.066667rem
+        padding-bottom .44rem
         margin-top .16rem
         opacity 0.8
         background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
@@ -610,12 +615,10 @@
           padding-top .373333rem
           .process-item
             width 2.786667rem
-            height 1.613333rem
-            padding .293333rem .293333rem 0
+            padding .293333rem .293333rem
             box-sizing border-box
             background url('../../../assets/币@2x.png') 0 0 / 2.786667rem 1.613333rem no-repeat
             .process-item-title
-              height .4rem
               line-height .4rem
               padding-bottom .08rem
               border-bottom 1px solid #FFCA00
@@ -623,7 +626,6 @@
               text-align center
               font-size .293333rem
             .process-item-price
-              height .426667rem
               line-height .426667rem
               padding-top .106667rem
               color #FFCA00
@@ -654,7 +656,7 @@
             height .773333rem
             padding .32rem .106667rem
             box-sizing border-box
-            &::after
+            .lining-up
               position absolute
               left 0
               bottom -0.333333rem
@@ -664,7 +666,7 @@
               font-size .24rem
               color #FFF
             &.complate
-              &::after
+              .lining-up
                 display none
             .dot
               width .133333rem
@@ -688,13 +690,11 @@
           justify-content space-around
           .coin-item
             width 2.413333rem
-            height 1.226667rem
             box-sizing border-box
             padding-top .08rem
             border 1px solid #FFCA00
             border-radius 5px
             .coin-item-title
-              height .4rem
               line-height .4rem
               padding-bottom .08rem
               border-bottom 1px solid #FFCA00
@@ -702,7 +702,6 @@
               text-align center
               font-size .293333rem
             .coin-item-price
-              height .426667rem
               line-height .426667rem
               padding-top .106667rem
               color #FFCA00
@@ -713,10 +712,14 @@
         .jine
           margin-left .44rem
           font-size .533333rem
+        .todayBonus
+          float left
+          min-width 38%
         .totalR
-          float right
+          float left
+          min-width 45%
           position relative
-          width 50%
+          padding-left 0.28rem
           font-size .373333rem
           color #CCC
           .jine
@@ -724,7 +727,7 @@
           &::before
             position absolute
             content ''
-            left -0.586667rem
+            left 0
             top .373333rem
             width .026667rem
             height .586667rem
@@ -752,14 +755,13 @@
 
       .chaifenjincheng
         width 100%
-        height 3.386667rem
         margin-top .16rem
         opacity 0.8
         background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
         border-radius .133333rem
       .shujufenxi
         width 100%
-        height 3.493333rem
+        padding-bottom 0.44rem
         margin-top .16rem
         opacity 0.8
         background-image linear-gradient(-180deg, #212121 0%, #040404 100%)
@@ -783,4 +785,8 @@
           top 16px
           background #FFCA00
           border-radius 1.333333rem
+        &:after
+          display block
+          content ''
+          clear: both;
 </style>

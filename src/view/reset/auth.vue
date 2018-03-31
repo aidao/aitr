@@ -99,7 +99,7 @@
 
       onSubmit(){
         if (!this.verifyCode) {
-          this.tip = '验证码不能为空'
+          this.tip = this.$t('password.authValidation.verNotEmpty')
           this.$refs.promptAlert.show()
           this.$refs.verifyCode.focus()
           return
@@ -120,7 +120,7 @@
         resetPwdAndSafePwd(params).then(res =>{
           const {code, msg} = res.data
           if (code === 0) {
-            this.tipShow('重置成功')
+            this.tipShow(this.$t('password.resetSuccess'))
             this.$router.replace('/login')
           } else {
             this.tipShow(msg)
@@ -157,17 +157,17 @@
           pwd: {
             rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
             msg: {
-              required: '登录密码不能为空',
-              enOrNumber: '登录密码只允许输入8-16位英文或数字',
-              size: '登录密码只允许输入8-16位英文或数字'
+              required: this.$t('password.authValidation.pwdNotEmpty'),
+              enOrNumber: this.$t('password.authValidation.pwtFormat'),
+              size: this.$t('password.authValidation.pwtFormat')
             }
           },
           safepwd: {
             rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
             msg: {
-              required: '安全码不能为空',
-              enOrNumber: '安全码只允许输入8-16位英文或数字',
-              size: '安全码只允许输入8-16位英文或数字'
+              required: this.$t('password.authValidation.safePwdNotEmpty'),
+              enOrNumber: this.$t('password.authValidation.safePwdFormat'),
+              size: this.$t('password.authValidation.safePwdFormat')
             }
           },
         }
@@ -185,12 +185,12 @@
         let password = this.$refs.pwd.value
 
         if (!cfmPwd) {
-          this.tipShow('请确认密码')
+          this.tipShow(this.$t('password.authValidation.checkPwd'))
           return false
         }
 
         if (password !== cfmPwd) {
-          this.tipShow('两次输入的密码不同')
+          this.tipShow(this.$t('password.authValidation.pwdDiff'))
           return false
         }
 
@@ -202,12 +202,12 @@
         let safeword = this.$refs.safepwd.value
 
         if (!cfmSafepwd) {
-          this.tipShow('请确认安全码')
+          this.tipShow(this.$t('password.authValidation.checkSafePwd'))
           return false
         }
 
         if (safeword !== cfmSafepwd) {
-          this.tipShow('两次输入的安全码不同')
+          this.tipShow(this.$t('password.authValidation.safePwdDiff'))
           return false
         }
 
@@ -253,9 +253,8 @@
           line-height 1
           border none
           margin 5px 0 5px 5px
-          white-space nowrap
           display inline-block
-          width 2.293rem
+          width 3rem
     input
       border-radius 6px
       border 1px solid #ccc
