@@ -540,13 +540,13 @@ export default {
               this.searchFlag = false
               console.log(this.searchFlag)
               this.$refs.promptAlert.show()
-              this.tip = '查询的账户不存在'
+              this.tip = this.$t('org.errors.account.notExist')
 						}
 					}
 				})
 			} else {
         this.searchFlag = false
-				this.tipShow('请输入要查找的会员账号')
+				this.tipShow(this.$t('org.errors.account.required'))
 			}
 		}
 	}

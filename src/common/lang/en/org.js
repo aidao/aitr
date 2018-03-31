@@ -3,6 +3,12 @@ const ln = {
   RecommendedFigure: 'Recommended figure',
   placeholder: {
     SearchUserName: 'Member account'
+  },
+  errors: {
+  	account: {
+  		required: 'Enter the member account you want find',
+  		notExist: 'The checking account does not exist'
+  	}
   }
 }
 

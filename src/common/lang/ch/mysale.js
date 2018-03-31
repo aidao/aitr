@@ -53,7 +53,8 @@ const ln = {
         required: '登录密码不能为空',
         enOrNumber: '登录密码只允许输入8-16位英文或数字',
         size: '登录密码只允许输入8-16位英文或数字',
-        sameWithSafepwd: '登录密码和安全码不能相同'
+        sameWithSafepwd: '登录密码和安全码不能相同',
+        repeat: '两次登录密码输入不一致'
       },
       safepwd: {
         required: '安全码不能为空',
