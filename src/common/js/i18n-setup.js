@@ -26,7 +26,7 @@ function setI18nLanguage (lang) {
     'pt': 'pt_PT',
     'ru': 'ru_RU'
   }
-  axios.defaults.headers.common['Accept-Language'] = langCodes[lang]
+  axios.defaults.headers.common['lang'] = langCodes[lang]
   // document.querySelector('html').setAttribute('lang', lang)
   localStorage.setItem('__locale__', lang)
   return lang
