@@ -213,38 +213,23 @@ export default {
 		  const options = {
 		    account: {
 		      rules: ['enOrNumber', { type: 'size', min: 5, max: 18 }],
-          msg: {
-            enOrNumber: '会员账号只允许输入英文或者数字',
-            size: '会员账号只允许输入5-18位英文或者数字'
-          }
+          msg: this.$t('mysale.RegisterParentAccountPage.errors.account')
         },
         nickname: {
           rules: ['cnOrEn', { type: 'size', min: 2, max: 16 }],
-          msg: {
-            cnOrEn: '会员姓名只允许输入汉字或者字母',
-            size: '会员姓名只允许输入2-16位字母或汉字'
-          }
+          msg: this.$t('mysale.RegisterParentAccountPage.errors.nickname')
         },
         pwd: {
           rules: ['required', 'enOrNumber', { type: 'size', min: 8, max: 16 }],
-          msg: {
-            required: '登录密码不能为空',
-            enOrNumber: '登录密码只允许输入8-16位英文或数字',
-            size: '登录密码只允许输入8-16位英文或数字'
-          }
+          msg: this.$t('mysale.RegisterParentAccountPage.errors.pwd')
         },
         safepwd: {
           rules: ['enOrNumber', { type: 'size', min: 8, max: 16 }],
-          msg: {
-            enOrNumber: '安全码只允许输入8-16位英文或数字',
-            size: '安全码只允许输入8-16位英文或数字'
-          }
+          msg: this.$t('mysale.RegisterParentAccountPage.errors.safepwd')
         },
         email: {
           rules: ['email'],
-          msg: {
-            email: '邮箱格式应为 英文/数字+“@”符号+英文/数字+“.”符号+com/cn/net'
-          }
+          msg: this.$t('errors.email')
         }
       }
       const fieldOptions = options[fieldName]
@@ -258,46 +243,46 @@ export default {
 		checkCfmPwd (cfmPwd) {
 			let password = this.$refs.pwd.value
 			if (password !== cfmPwd) {
-				this.tipShow('两次输入的密码不同')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.pwd.repeat'))
 				return false
 			}
 		},
 		checkCfmSafepwd (cfmSafepwd) {
 			let safeword = this.$refs.safepwd.value
 			if (safeword !== cfmSafepwd) {
-				this.tipShow('两次输入的安全码不同')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.safepwd.repeat'))
 				return false
 			}
 		},
 		registerMuAcc () {
 			// 检测账户为空问题
 			if (!this.account) {
-				this.tipShow('会员账号不能为空')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.account.required'))
 				return false
 			}
 			// 检测密码为空问题
 			if (!this.pwd) {
-				this.tipShow('密码不能为空')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.pwd.required'))
 				return false
 			}
 			// 检测安全码为空问题
 			if (!this.safepwd) {
-				this.tipShow('安全码不能为空')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.safepwd.required'))
 				return false
 			}
 			// 检测安全码和密码相同问题
 			if (this.pwd === this.safepwd) {
-				this.tipShow('登录密码和安全码不能相同')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.pwd.sameWithSafepwd'))
 				return false
 			}
 			// 2次安全码不一样问题
 			if (!this.safepwd === this.cfmSafepwd) {
-				this.tipShow('两次安全码输入不一致')
+				this.tipShow(this.$t('mysale.RegisterParentAccountPage.errors.safepwd.repeat'))
 				return false
 			}
 			// 邮箱不能为空问题
 			if (!this.email) {
-				this.tipShow('邮箱不能为空')
+				this.tipShow(this.$t('errors.email.required'))
 				return false
 			}
 

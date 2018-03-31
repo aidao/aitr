@@ -27,6 +27,10 @@ const ln = {
     safecode: {
       required: 'Security code cannot be empty',
       verifyFailed: 'Security code input error'
+    },
+    email: {
+      required: 'Mailbox cannot be empty',
+      email: 'Incorrect email format'
     }
   },
   securityCode: {

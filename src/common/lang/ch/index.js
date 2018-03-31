@@ -27,6 +27,10 @@ const ln = {
     safecode: {
       required: '安全码不能为空',
       verifyFailed: '安全码输入错误'
+    },
+    email: {
+      required: '邮箱不能为空',
+      email: '邮箱格式应为 英文/数字+“@”符号+英文/数字+“.”符号+com/cn/net'
     }
   },
   securityCode: {

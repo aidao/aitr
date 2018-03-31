@@ -39,6 +39,30 @@ const ln = {
       Email: '우평함주소를 입력한다',
       RegisterCurrencyBalance: 'USDT잔액'
     },
+    errors: {
+      account: {
+        required: 'Member account cannot be empty',
+        enOrNumber: 'Only English or numbers are allowed',
+        size: 'Only 5-18 bits of English or Numbers are allowed'
+      },
+      nickname: {
+        cnOrEn: 'Only 2-16 bits of English or Chinese characters are allowed',
+        size: 'Only 2-16 bits of English or Chinese characters are allowed'
+      },
+      pwd: {
+        required: 'Password cannot be empty',
+        enOrNumber: 'Only 8-16 bits of English or NUmbers are allowed',
+        size: 'Only 8-16 bits of English or NUmbers are allowed',
+        sameWithSafepwd: 'The login password an security code cannot be the same',
+        repeat: 'The two passwords are different'
+      },
+      safepwd: {
+        required: 'Security code cannot be empty',
+        enOrNumber: 'Only 8-16 bits of English or NUmbers are allowed',
+        size: 'Only 8-16 bits of English or NUmbers are allowed',
+        repeat: 'The two input security codes are different'
+      }
+    },
     alert: '제시:해소할때마다 10개USDT를 소모한다'
   }
 }

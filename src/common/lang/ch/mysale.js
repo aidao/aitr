@@ -40,7 +40,27 @@ const ln = {
       RegisterCurrencyBalance: '注册币余额'
     },
     errors: {
-
+      account: {
+        required: '会员账号不能为空',
+        enOrNumber: '会员账号只允许输入英文或者数字',
+        size: '会员账号只允许输入5-18位英文或者数字'
+      },
+      nickname: {
+        cnOrEn: '会员姓名只允许输入汉字或者字母',
+        size: '会员姓名只允许输入2-16位字母或汉字'
+      },
+      pwd: {
+        required: '登录密码不能为空',
+        enOrNumber: '登录密码只允许输入8-16位英文或数字',
+        size: '登录密码只允许输入8-16位英文或数字',
+        sameWithSafepwd: '登录密码和安全码不能相同'
+      },
+      safepwd: {
+        required: '安全码不能为空',
+        enOrNumber: '安全码只允许输入8-16位英文或数字',
+        size: '安全码只允许输入8-16位英文或数字',
+        repeat: '两次安全码输入不一致'
+      }
     },
     alert: '提示: 每次注册需要消耗10个注册币'
   }
