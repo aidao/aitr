@@ -8,7 +8,7 @@ import org from './org'
 
 const ln = {
   common: {
-    Login: 'Log in',
+    Login: 'Login',
     transaction: 'Transfer',
     back: 'Back',
     ok: 'OK',
