@@ -4,6 +4,8 @@ const ln = {
   RegisterSubsidiaryAccount: '子アカウントを登録します',
   UnbindSubaccount: '子アカウントとの紐付けを解除する',
   BindParentAccount: '親アカウントと紐付けます',
+  LeftRegion: '左区',
+  RightRegion: '右区',
   RegisterParentAccountPage: {
     fields: {
       MemberAccount: '会員アカウント',
@@ -13,7 +15,7 @@ const ln = {
       SecurityCode: 'セキュリティーコード',
       ConfirmSecurityCode: 'セキュリティーコードをご確認ください',
       MembershipGrade: '会員レベル',
-      Referee: '推荐人',
+      Referee: '紹介人',
       RefereeDiagram: '推荐図',
       ContactPerson: '接点人',
       ContactDiagram: '接点図',
@@ -29,7 +31,7 @@ const ln = {
       SecurityCode: '8-16字のアルファベット、数字をご入力ください......',
       ConfirmSecurityCode: 'Same as the login security code......',
       MembershipGrade: '会员级别',
-      Referee: '推荐人',
+      Referee: '紹介人',
       RefereeDiagram: '推荐图',
       ContactPerson: '接点人',
       ContactDiagram: '接点图',

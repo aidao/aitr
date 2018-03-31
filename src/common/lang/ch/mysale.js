@@ -4,6 +4,8 @@ const ln = {
   RegisterSubsidiaryAccount: '注册子账户',
   UnbindSubaccount: '解绑子账户',
   BindParentAccount: '绑定母账户',
+  LeftRegion: '左区',
+  RightRegion: '右区',
   RegisterParentAccountPage: {
     fields: {
       MemberAccount: '会员帐号',
@@ -36,6 +38,9 @@ const ln = {
       MarketPosition: '市场位置',
       Email: '输入您的邮箱地址',
       RegisterCurrencyBalance: '注册币余额'
+    },
+    errors: {
+
     },
     alert: '提示: 每次注册需要消耗10个注册币'
   }

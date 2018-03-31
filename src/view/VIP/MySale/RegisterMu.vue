@@ -48,7 +48,7 @@
 					</div>
 				</div>
 				<div class="m-input" @click="saveInfo">
-					<div class="title">{{ t.fields.ContactPerson }}: <span class="entry">进入 <span class="jiediantu"  @click="selectData('placement')">{{ t.fields.ContactDiagram }}</span></span></div>
+					<div class="title">{{ t.fields.ContactPerson }}: <span class="entry">{{ $t('common.Enter') }} <span class="jiediantu"  @click="selectData('placement')">{{ t.fields.ContactDiagram }}</span></span></div>
 					<div @click="selectData('placement')">
 						<input type="text" ref="supAccount" v-model="supaccount" disabled />
 					</div>
@@ -144,7 +144,7 @@ export default {
 
 		if (this.$route.query) {
 			if (this.$route.query.direction) {
-				this.direction = this.$route.query.direction === 'l' ? '左区' : '右区'
+				this.direction = this.$route.query.direction === 'l' ? this.$t('mysale.LeftRegion') : this.$t('mysale.RightRegion')
 			}
 			this.supaccount = this.$route.query.parentId
       if (this.$route.query.refaccount) {
@@ -182,7 +182,7 @@ export default {
 		selectSupAccount (selected) {
 			this.inSelectMode = false
 			if (selected.direction) {
-				this.direction = selected.direction === 'l' ? '左区' : '右区'
+				this.direction = selected.direction === 'l' ? this.$t('mysale.LeftRegion') : this.$t('mysale.RightRegion')
 			}
 			this.supaccount = selected.parentId
       this.pageTitle = this.$t('org.ArrangementPlan')
@@ -319,7 +319,7 @@ export default {
 			params.append('safe_pwd', this.$refs.safepwd.value)
 			params.append('email', this.$refs.email.value)
 			params.append('sup_account', this.$refs.supAccount.value)
-			params.append('position', this.$refs.position.value === '左区' ? 0 : 1)
+			params.append('position', this.$refs.position.value === this.$t('mysale.LeftRegion') ? 0 : 1)
 			params.append('ref_account', this.refaccount)
 			registerMu(params).then(res => {
 				if (res.data.code === 0) {

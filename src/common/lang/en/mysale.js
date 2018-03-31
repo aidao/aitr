@@ -4,6 +4,8 @@ const ln = {
   RegisterSubsidiaryAccount: 'Register subsidiary account',
   UnbindSubaccount: 'Unbind the subaccount',
   BindParentAccount: 'Bind the parent account',
+  LeftRegion: 'Left area',
+  RightRegion: 'Right area',
   RegisterParentAccountPage: {
     fields: {
       MemberAccount: 'Member account',
