@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
-import { i18n, loadLanguageAsync } from '../common/js/i18n-setup.js'
+import { i18n, loadLanguageAsync, ComingSoon } from '../common/js/i18n-setup.js'
 Vue.use(Router)
 
 const Index = resolve => {
@@ -466,17 +466,12 @@ const router = new Router({
 	routes
 })
 
-const comingSoon = {
-  'ch': '暂未开放',
-  'en': 'Coming soon',
-  'ja': 'Coming soon',
-  'ko': 'Coming soon'
-}
+
 router.beforeEach ((to, from, next) => {
 	if(to.path === '/noOpn') {
 		router.app.$store.commit('commonPrompt', {
 			show: true,
-			tip: comingSoon[i18n.locale]
+			tip: ComingSoon[i18n.locale]
 		})
 		next(false)
 		return

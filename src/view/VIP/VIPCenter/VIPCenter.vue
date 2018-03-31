@@ -190,6 +190,7 @@ import Prompt from 'components/Prompt/Prompt'
 import {getUSDTBalance, getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
 import HeadMenu from 'components/HeadMenu/HeadMenu'
 import FootNav from 'components/FootNav/FootNav'
+import { i18n, loadLanguageAsync, ComingSoon } from 'common/js/i18n-setup.js'
 
 export default {
   data () {
@@ -313,7 +314,7 @@ export default {
   methods: {
     recharge () {
       // 暂不开放
-      this.tip = '暂未开放'
+      this.tip = ComingSoon[i18n.locale]
       this.$refs.promptRef.show()
 
       // this.maskShow = true
@@ -405,7 +406,7 @@ export default {
       > p
         margin 0 16px
         padding-top 20px
-        width 60px
+        width 80px
       .top-box
         display flex
         flex-direction column
@@ -721,6 +722,7 @@ export default {
           position relative
           padding-left 0.28rem
           font-size .373333rem
+          margin-left 15px
           color #CCC
           .jine
             color #FFCA00

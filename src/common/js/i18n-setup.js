@@ -45,3 +45,10 @@ export function loadLanguageAsync (lang) {
   }
   return Promise.resolve(lang)
 }
+
+export const ComingSoon = {
+  'ch': '暂未开放',
+  'en': 'Coming soon',
+  'ja': 'Coming soon',
+  'ko': 'Coming soon'
+}
