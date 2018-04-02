@@ -47,10 +47,10 @@
     </div>
     <g-alert @options="safeCodeOptions" v-show="showSafeCodeAlert">
       <div class="tipss">
-        输入安全码
+        {{$t('securityCode.title')}}
       </div>
       <div>
-        <input type="password" placeholder="输入您的安全码" :style="alertStyle" v-model="safeCode">
+        <input type="password" :placeholder="$t('securityCode.placeholder')" :style="alertStyle" v-model="safeCode">
       </div>
     </g-alert>
     <prompt :tip="tip" ref="promptAlert"></prompt>
@@ -97,6 +97,7 @@
     },
     created () {
       this.initPage()
+      this.errors = this.$t('mywallet.transfer.errors')
     },
     watch: {
       $route () {
@@ -150,7 +151,7 @@
         } else {
           // 确认
           if (!this.safeCode) {
-            this.tip = '安全码不能为空'
+            this.tip = this.$t('errors.safecode.required')
             this.$refs.promptAlert.show()
             return
           }
@@ -166,9 +167,9 @@
               let safePwdToken = res.data.result.safePwdToken
               let url = null
               // 安全码验证成功，判断是注册币还是收益币转账
-              if (this.title === '注册币') {
+              if (this.types === 0) {
                 url = transferRegCoinUrl
-              } else if (this.title === '收益币') {
+              } else if (this.types === 1) {
                 url = transferEarCoinUrl
               }
               this.safeCode = ''
@@ -188,9 +189,9 @@
                   this.$router.push(`/coininfo/${this.$route.params.typeid}`)
                 } else {
                   if (res.data.code === 40009) {
-                    this.showTips('接收会员账号不存在')
+                    this.showTips(this.errors.NoReceiveAccount)
                   } else if (res.data.code === 40014) {
-                    this.showTips('账号没有推荐关系')
+                    this.showTips(this.errors.NoReferAccount)
                   } else {
                     this.showTips(res.data.msg)
                   }
@@ -199,7 +200,7 @@
             } else {
               // 安全码验证失败
               this.safeCode = ''
-              this.tip = '安全码输入错误'
+              this.tip = this.$t('errors.safecode.verifyFailed')
               this.$refs.promptAlert.show()
             }
           })
@@ -223,15 +224,12 @@
           userId: {
             rules: ['required'],
             msg: {
-              required: '接收会员账号不能为空'
+              required: this.$t('mywallet.transfer.errors.ReceiveAccountRequired')
             }
           },
           coinNum: {
             rules: ['required', 'positiveInt'],
-            msg: {
-              required: '转账积分数量不能为空',
-              positiveInt: '转出数量只能为正整数'
-            }
+            msg: this.$t('mywallet.transfer.errors.pointsOut')
           }
         }
         const fieldOptions = options[fieldName]

@@ -14,12 +14,28 @@ const ln = {
     ok: '제출',
     submit: '제출',
     cancel: '취소',
+    confirm: '제출',
     Enter: '들어간다',
     query: '알아',
     search: '검색',
     by: '보다',
     MemberAccount: '회원 계좌번호',
-    ComingSoon: 'Coming soon'
+    ComingSoon: 'Coming soon',
+    NoData: 'Temporarily no data'
+  },
+  errors: {
+    safecode: {
+      required: 'Security code cannot be empty',
+      verifyFailed: 'Security code input error'
+    },
+    email: {
+      required: 'Mailbox cannot be empty',
+      email: 'Incorrect email format'
+    }
+  },
+  securityCode: {
+    title: '안전 코드',
+    placeholder: '안전 코드를 기입하세요'
   },
   FootNav: {
     vip: 'VIP전용구역',

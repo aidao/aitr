@@ -170,7 +170,7 @@ export default {
 					} else {
 						if (!res.data.result) {
               this.searchFlag = false
-							this.tip = '查询的账户不存在'
+							this.tip = this.$t('org.errors.account.notExist')
 							this.$refs.promptAlert.show()
 							return
 						}
@@ -184,7 +184,7 @@ export default {
 					this.$refs.promptAlert.show()
 				})
 			} else {
-				this.tip = '请输入要查询的账户名'
+				this.tip = this.$t('org.errors.account.required')
         this.searchFlag = false
 				this.$refs.promptAlert.show()
 			}

@@ -6,18 +6,24 @@
         <div class="vip-title">{{t.trading.title}}</div>
         <div class="process-container">
           <div class="process-item">
+            <div class="inner-wrapper">
             <div class="process-item-title">{{t.trading.cRegistered}}</div>
             <div class="process-item-price">{{balance.registerCoin}}</div>
+            </div>
           </div>
 
           <div class="process-item">
+            <div class="inner-wrapper">
             <div class="process-item-title">{{t.trading.cCrowdfunding}}</div>
             <div class="process-item-price">{{balance.crowdfundingCoin}}</div>
+            </div>
           </div>
 
           <div class="process-item">
+            <div class="inner-wrapper">
             <div class="process-item-title">{{t.trading.cSplit}}</div>
             <div class="process-item-price">{{balance.splitCoin}}</div>
+            </div>
           </div>
         </div>
 
@@ -190,6 +196,7 @@ import Prompt from 'components/Prompt/Prompt'
 import {getUSDTBalance, getPosPerson, getPKGList, buyPKG, getSplitProcess} from 'util/http'
 import HeadMenu from 'components/HeadMenu/HeadMenu'
 import FootNav from 'components/FootNav/FootNav'
+import { i18n, loadLanguageAsync, ComingSoon } from 'common/js/i18n-setup.js'
 
 export default {
   data () {
@@ -313,7 +320,7 @@ export default {
   methods: {
     recharge () {
       // 暂不开放
-      this.tip = '暂未开放'
+      this.tip = ComingSoon[i18n.locale]
       this.$refs.promptRef.show()
 
       // this.maskShow = true
@@ -405,7 +412,7 @@ export default {
       > p
         margin 0 16px
         padding-top 20px
-        width 60px
+        width 80px
       .top-box
         display flex
         flex-direction column
@@ -614,10 +621,43 @@ export default {
           justify-content space-around
           padding-top .373333rem
           .process-item
+            position relative
             width 2.786667rem
-            padding .293333rem .293333rem
+            padding .14666rem .14666rem
             box-sizing border-box
-            background url('../../../assets/币@2x.png') 0 0 / 2.786667rem 1.613333rem no-repeat
+            display flex
+            .inner-wrapper
+              position relative
+              background rgba(249,220,220,.1)
+              padding 5px
+              border-radius 5px
+              flex 1
+              &::before
+                content ''
+                position absolute
+                top 0
+                right 0
+                width 0
+                height 0
+                border-style solid
+                border-width 0 25px 15px 0
+                border-color transparent #ffdd00 transparent transparent
+            &::before, &::after
+              content ''
+              display block
+              position absolute
+              width 30px
+              height 30px
+            &::before
+              border-top 1px solid #ffdd00
+              border-left 1px solid #ffdd00
+              top 0
+              left 0
+            &::after
+              border-bottom 1px solid #ffdd00
+              border-right 1px solid #ffdd00
+              bottom 0
+              right 0
             .process-item-title
               line-height .4rem
               padding-bottom .08rem
@@ -721,6 +761,7 @@ export default {
           position relative
           padding-left 0.28rem
           font-size .373333rem
+          margin-left 15px
           color #CCC
           .jine
             color #FFCA00

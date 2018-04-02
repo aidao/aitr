@@ -16,7 +16,7 @@ export default {
   },
   bonus: {
     title: 'Today\'s bonus',
-    total: 'The total amount of bonus'
+    total: 'Total bonus'
   },
   contrast: {
     title: 'Data contrast',

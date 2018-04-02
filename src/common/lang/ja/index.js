@@ -13,13 +13,29 @@ const ln = {
     back: '戻る',
     ok: 'を確認する',
     submit: 'を確認する',
-    cancel: '取消',
+    cancel: 'Cancel',
+    confirm: 'を確認する',
     Enter: '進む',
     query: 'サーチ',
     search: '検索',
     by: '',
     MemberAccount: '会員',
-    ComingSoon: 'Coming soon'
+    ComingSoon: 'Coming soon',
+    NoData: 'Temporarily no data'
+  },
+  errors: {
+    safecode: {
+      required: 'Security code cannot be empty',
+      verifyFailed: 'Security code input error'
+    },
+    email: {
+      required: 'Mailbox cannot be empty',
+      email: 'Incorrect email format'
+    }
+  },
+  securityCode: {
+    title: 'セキュリティーコード',
+    placeholder: 'セキュリティーコードをご入力ください'
   },
   FootNav: {
     vip: 'VIPエリア',

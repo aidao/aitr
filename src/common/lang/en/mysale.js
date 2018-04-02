@@ -4,6 +4,8 @@ const ln = {
   RegisterSubsidiaryAccount: 'Register subsidiary account',
   UnbindSubaccount: 'Unbind the subaccount',
   BindParentAccount: 'Bind the parent account',
+  LeftRegion: 'Left area',
+  RightRegion: 'Right area',
   RegisterParentAccountPage: {
     fields: {
       MemberAccount: 'Member account',
@@ -36,6 +38,30 @@ const ln = {
       MarketPosition: 'Market position',
       Email: 'Enter email address',
       RegisterCurrencyBalance: '注册币余额'
+    },
+    errors: {
+      account: {
+        required: 'Member account cannot be empty',
+        enOrNumber: 'Only English or numbers are allowed',
+        size: 'Only 5-18 bits of English or Numbers are allowed'
+      },
+      nickname: {
+        cnOrEn: 'Only 2-16 bits of English or Chinese characters are allowed',
+        size: 'Only 2-16 bits of English or Chinese characters are allowed'
+      },
+      pwd: {
+        required: 'Password cannot be empty',
+        enOrNumber: 'Only 8-16 bits of English or NUmbers are allowed',
+        size: 'Only 8-16 bits of English or NUmbers are allowed',
+        sameWithSafepwd: 'The login password an security code cannot be the same',
+        repeat: 'The two passwords are different'
+      },
+      safepwd: {
+        required: 'Security code cannot be empty',
+        enOrNumber: 'Only 8-16 bits of English or NUmbers are allowed',
+        size: 'Only 8-16 bits of English or NUmbers are allowed',
+        repeat: 'The two input security codes are different'
+      }
     },
     alert: 'Alert: each registration requires 10 USDT'
   }

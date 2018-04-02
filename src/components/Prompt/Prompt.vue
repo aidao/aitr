@@ -30,7 +30,7 @@ export default {
 
 <style scoped lang='stylus' rel='stylesheet/stylus'>
 	.prompt
-		position fixed
+		position absolute
 		left 0
 		right 0
 		top 0
@@ -39,7 +39,7 @@ export default {
 		.tip
 			position absolute
 			left 50%
-			top 50%
+			top 40%
 			padding .24rem
 			transform translate(-50%, -50%)
 			line-height .426667rem

@@ -1,7 +1,7 @@
 const ln = {
   mywallet: '我的钱包',
   coinShouYi: '収益貨幣',
-  coinZhuCe: '注册币',
+  coinZhuCe: 'Registered currency',
   coinChongGou: '再構成貨幣',
   coinZhongChou: 'クラウドファンディング貨幣',
   coinChaiFen: '分割貨幣',
@@ -12,6 +12,17 @@ const ln = {
   placeholder: {
     TransferTo: '会員番号を受け取る',
     TransferAmount: '振込ポイント量をご入力ください'
+  },
+  transfer: {
+    errors: {
+      'NoReceiveAccount': 'Receive member account does not exist',
+      'NoReferAccount': 'The account has no recommended relationship',
+      'ReceiveAccountRequired': 'The receiving member cannot be empty',
+      'pointsOut': {
+        required: 'The number of transfer points cannot be empty',
+        positiveInt: 'You can only get positive integers'
+      }
+    }
   }
 }
 
