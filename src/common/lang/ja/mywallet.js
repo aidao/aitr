@@ -1,5 +1,5 @@
 const ln = {
-  mywallet: '我的钱包',
+  mywallet: '私の財布',
   coinShouYi: '収益貨幣',
   coinZhuCe: 'Registered currency',
   coinChongGou: '再構成貨幣',

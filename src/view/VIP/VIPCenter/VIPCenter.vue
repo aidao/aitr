@@ -264,7 +264,7 @@ export default {
       tip: '',
       pkgLvl: [],
       pkgLvlMap: this.$t('vip.levelMap'),
-      buyLvl: '1',
+      buyLvl: '3',
       t: {}
     }
   },
